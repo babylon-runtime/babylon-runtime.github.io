@@ -1,5 +1,7 @@
 Jekyll theme used : https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
 
+## Install locally
+
 1. Clone repository
 ```
 $ git clone https://github.com/babylon-runtime/babylon-runtime.github.io.git
@@ -17,7 +19,7 @@ $ gem install bundler
 $ bundle install
 ```
 
-5.Serve the site
+5. Serve the site
 ```
 $ bundle exec jekyll serve
 ```
