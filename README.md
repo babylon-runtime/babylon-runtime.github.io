@@ -1,6 +1,12 @@
+# Babylon Runtime Documentation
+
+Available on [babylon-runtime.github.io](https://babylon-runtime.github.io/)
+
+## Contribute
+
 Jekyll theme used : https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
 
-## Install locally
+### Install locally
 
 1. Clone repository
 ```
