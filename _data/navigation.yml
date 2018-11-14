@@ -1,22 +1,37 @@
 # main links
 main:
-  - title: "Quick-Start Guide"
-    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
-  # - title: "About"
-  #   url: https://mmistakes.github.io/minimal-mistakes/about/
-  # - title: "Sample Posts"
-  #   url: /year-archive/
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
-  # - title: "Sitemap"
-  #   url: /sitemap/
+  - title: "Github"
+    url: https://github.com/babylon-runtime/_r
 docs :
-  - title: Getting Started
+  - title: Install & Launch
+    url: "/"
+  - title: Patch Babylon scene
+    url: "/patching/"
+  - title: Selectors
+    url: "/selectors/"
+  - title: Examples
+    url: "/examples/"
+  - title: Advanced Patching
+    url: "/advanced-patching/"
+  - title: How to patch
     children:
-      - title: "Installation"
-        url: "/getting-started/installation/"
-
+      - title: "Colors & Vectors"
+        url: "/how-to-patch/colors-vectors/"
+      - title: "Textures & Materials"
+        url: "/how-to-patch/textures-materials/"
+      - title: "Fresnel Parameters"
+        url: "/how-to-patch/fresnel/"
+      - title: "Lightmaps"
+        url: "/how-to-patch/lightmaps/"
+      - title: "OnPickTrigger"
+        url: "/how-to-patch/onPickTrigger/"
   - title: API
     children:
-      - title: "_r.launch"
+      - title: "_r.launch & _r.ready"
         url: "/api/launch/"
+      - title: "_r.scene, _r.engine, _r.canvas"
+        url: "/api/scene/"
+      - title: "_r.patch"
+        url: "/api/patch/"
+      - title: "_r.select"
+        url: "/api/select"

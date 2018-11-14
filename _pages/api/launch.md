@@ -23,8 +23,6 @@ _r.launch({
 * patching before rendering
 * offline mode, ktx, loading screen & progress loading
 
-
-
 ## Scene
 
 ### Loading *.babylon
