@@ -11,4 +11,13 @@ sidebar:
 
 **_r** is a lightweight, *write less, do more*, [BabylonJS](https://www.babylonjs.com/) library.
 
-The purpose of **_r** is to make BabylonJS much easier to use and maintain in the 3D workflow.
+The purpose of **_r** is to make BabylonJS much easier to use and maintain in the 3D workflow, for both artists and developpers.
+
+```javascript
+_r.launch({
+    assets : "https://models.babylonjs.com/CornellBox/",
+    scene : "cornellBox.babylon",
+    activeCamera : "Camera"
+})
+```
+
