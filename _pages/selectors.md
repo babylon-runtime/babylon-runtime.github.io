@@ -1,4 +1,5 @@
 ---
+title: "Selectors"
 layout: single
 toc : true
 permalink: /selectors/
