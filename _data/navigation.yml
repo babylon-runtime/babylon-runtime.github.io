@@ -3,10 +3,14 @@ main:
   - title: "Github"
     url: https://github.com/babylon-runtime/_r
 docs :
-  - title: Install & Launch
+  - title: "Install & Launch"
     url: "/"
   - title: First Steps
-    url: "/first-steps/"
+    children:
+      - title: "Patching"
+        url: "/first-steps/patching/"
+      - title: "JSON?"
+        url: "/first-steps/json/"
   - title: Selectors
     url: "/selectors/"
   - title: Examples
