@@ -22,6 +22,8 @@ Predefined named colors list is: white, black, yellow, blue, red, green
 
 ## Vectors
 
+All vector properties can be defined:
+
 ```javascript
 "position": {
    "x": 1,

@@ -1,4 +1,5 @@
 ---
+title: "_r.launch"
 layout: single
 toc : true
 permalink: /api/launch/

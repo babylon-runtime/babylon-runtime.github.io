@@ -5,8 +5,8 @@ main:
 docs :
   - title: Install & Launch
     url: "/"
-  - title: Patch Babylon scene
-    url: "/patching/"
+  - title: First Steps
+    url: "/first-steps/"
   - title: Selectors
     url: "/selectors/"
   - title: Examples
@@ -15,10 +15,10 @@ docs :
     url: "/advanced-patching/"
   - title: How to patch
     children:
+      - title: "Materials & Textures"
+        url: "/how-to-patch/materials-textures/"
       - title: "Colors & Vectors"
         url: "/how-to-patch/colors-vectors/"
-      - title: "Textures & Materials"
-        url: "/how-to-patch/textures-materials/"
       - title: "Fresnel Parameters"
         url: "/how-to-patch/fresnel/"
       - title: "Lightmaps"
@@ -27,10 +27,16 @@ docs :
         url: "/how-to-patch/onPickTrigger/"
   - title: API
     children:
-      - title: "_r.launch & _r.ready"
+      - title: "_r.launch"
         url: "/api/launch/"
-      - title: "_r.scene, _r.engine, _r.canvas"
+      - title: "_r.ready"
+        url: "/api/ready/"
+      - title: "_r.scene"
         url: "/api/scene/"
+      - title: "_r.engine"
+        url: "/api/engine/"
+      - title: "_r.canvas"
+        url: "/api/canvas/"
       - title: "_r.patch"
         url: "/api/patch/"
       - title: "_r.select"

@@ -1,8 +1,8 @@
 ---
-title: "_r.select"
+title: "_r.ready"
 layout: single
 toc : true
-permalink: /api/select/
+permalink: /api/ready/
 sidebar:
    nav: "docs"  
 ---

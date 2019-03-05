@@ -1,8 +1,8 @@
 ---
-title: "_r.select"
+title: "_r.canvas"
 layout: single
 toc : true
-permalink: /api/select/
+permalink: /api/canvas/
 sidebar:
    nav: "docs"  
 ---

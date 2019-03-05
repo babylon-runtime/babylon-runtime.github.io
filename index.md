@@ -1,6 +1,7 @@
 ---
 title: "Babylon Runtime"
 layout: single
+toc : true
 sidebar:
    nav: "docs"  
 ---
@@ -15,20 +16,62 @@ The purpose of **_r** is to make BabylonJS much easier to use and maintain in th
 
 ```javascript
 _r.launch({
-    assets : "https://models.babylonjs.com/CornellBox/",
+    assets : "assets/",
     scene : "cornellBox.babylon",
     activeCamera : "Camera"
 })
 ```
-> example of a 3D scene loading
+> Loading a scene with _runtime.
 
 ### For artists
 
 <span style="color:#eb1a1b">\_r</span><span style="color:#2c789b">untime</span> will allow you to:
-- export and reexport your scenes as many as you want without loosing your tweaks
+- export and reexport your scenes as many as you want without loosing your BabylonJS-side tweaks
 - avoid as much as possible writing code
 
 ### For developpers
 
 <span style="color:#eb1a1b">\_r</span><span style="color:#2c789b">untime</span> will allow you to:
 - mass-select & filter elements in a easy way
+
+## Install
+
+### Dependencies
+
+- [BabylonJS](https://www.babylonjs.com/) (yep, 'seems obvious)
+- that's it!
+
+### Usage
+
+Add the online dist in your `<head>` using
+
+`<script src="https://unpkg.com/babylon-runtime/dist/_r.js"></script>`.
+
+Or download locally from the [github repo releases](https://github.com/babylon-runtime/_r/releases).
+
+## Launch
+
+No need to manually create the canvas, _r will do that for you, by using the [launch](api/launch/) function:
+
+```html
+
+<body>
+    <script type="text/javascript">
+        _r.launch({
+            assets : "assets/",
+            scene : "cornellBox.babylon",
+            activeCamera : "Camera"
+        });
+    </script>
+</body>
+
+```
+
+> This load the file **cornellBox.babylon** from the **assets/** folder, and set the camera named **Camera** as default scene active camera.
+
+<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="js,result" data-user="vinc3r" data-slug-hash="xBRwvE" data-preview="true" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="_r.launch - 01">
+  <span>See the Pen <a href="https://codepen.io/vinc3r/pen/xBRwvE/">
+  _r.launch - 01</a> by V!nc3r (<a href="https://codepen.io/vinc3r">@vinc3r</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
