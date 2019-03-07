@@ -49,6 +49,20 @@ Add the online dist in your `<head>` using
 
 Or download locally from the [github repo releases](https://github.com/babylon-runtime/_r/releases).
 
+```html
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <script src="babylon.js"></script>
+    <script src="_r.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+```
+
 ## Launch
 
 No need to manually create the canvas, _r will do that for you, by using the [launch](api/launch/) function:
@@ -75,3 +89,7 @@ No need to manually create the canvas, _r will do that for you, by using the [la
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+<br>
+
+It's now time to do your [firsts steps using \_runtime](/first-steps/launch/).

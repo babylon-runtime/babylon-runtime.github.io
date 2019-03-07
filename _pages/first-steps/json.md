@@ -191,4 +191,12 @@ Code editor | Tips
 [Notepad++](https://notepad-plus-plus.org/) | install [JSToolNpp](http://www.sunjw.us/jstoolnpp/) plugin,<br>then go to Plugins > JSTool > JSFormat
 [Visual Studio Code](https://code.visualstudio.com/) | install [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify) extension,<br>then F1 > Beautify
 
+<br>
+
 Hooray, you're now a JSON master \o/ !
+
+<br>
+
+### Postscript
+
+Technically speaking... patch datas **aren't** strictly using JSON format, but just its visual way of saving data. A patch file is more a javascript file readed like a css file, written as a json one. So let's say it's just a specific \_runtime convention ;)

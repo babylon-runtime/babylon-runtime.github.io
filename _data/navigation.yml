@@ -7,6 +7,8 @@ docs :
     url: "/"
   - title: First Steps
     children:
+      - title: "Loading a file"
+        url: "/first-steps/launch/"
       - title: "Patching"
         url: "/first-steps/patching/"
       - title: "JSON?"
