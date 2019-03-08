@@ -58,7 +58,26 @@ _r.launch({
     assets : "assets/",
     scene : "cornellBox.babylon",
     activeCamera : "Camera",
-    patch: "assets/visual-tweaks.patch"
+    patch: ["assets/visual-tweaks.patch"]
 });
 ```
+
+- take note of the floor material name (*cornellBox.cornellBox.ground.000*) and write in your patch file:
+ 
+```javascript
+[{
+    "cornellBox.cornellBox.ground.000": {
+        "diffuseColor": new BABYLON.Color3(0.2, 0.2, 0.8)
+    }
+}]
+```
+
+The floor is now patched!
+
+<p class="codepen" data-height="316" data-theme-id="light" data-default-tab="js,result" data-user="vinc3r" data-slug-hash="eXWxWp" data-preview="true" style="height: 316px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="_r.patch - 01">
+  <span>See the Pen <a href="https://codepen.io/vinc3r/pen/eXWxWp/">
+  _r.patch - 01</a> by V!nc3r (<a href="https://codepen.io/vinc3r">@vinc3r</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
