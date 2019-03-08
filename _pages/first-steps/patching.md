@@ -102,3 +102,16 @@ As the camera name inside our .babylon file is `Camera`, just add these lines in
     }
 ]
 ```
+
+<p class="codepen" data-height="345" data-theme-id="light" data-default-tab="js,result" data-user="vinc3r" data-slug-hash="NJjJNG" data-preview="true" style="height: 345px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="_r.patch - 02">
+  <span>See the Pen <a href="https://codepen.io/vinc3r/pen/NJjJNG/">
+  _r.patch - 02</a> by V!nc3r (<a href="https://codepen.io/vinc3r">@vinc3r</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+> see [02.html](https://github.com/babylon-runtime/_r.assets/blob/master/babylon-runtime.github.io/examples/first-steps/patching/02.html)
+
+<br>
+
+Here comes the time to take a look about what is [this kind of data saving](../json).
