@@ -81,3 +81,24 @@ The floor is now patched!
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
+> see [01.html](https://github.com/babylon-runtime/_r.assets/blob/master/babylon-runtime.github.io/examples/first-steps/patching/01.html)
+
+Want to move the camera closer to objects?
+
+As the camera name inside our .babylon file is `Camera`, just add these lines into patch:
+
+```javascript
+[{
+        "cornellBox.cornellBox.ground.000": {
+            "diffuseColor": new BABYLON.Color3(0.2, 0.2, 0.8)
+        }
+    },
+    {
+        "Camera": {
+            "position": {
+                "z": -1
+            }
+        }
+    }
+]
+```

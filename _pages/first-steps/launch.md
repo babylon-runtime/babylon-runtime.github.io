@@ -23,6 +23,15 @@ Let's start from the beginning:
 <html>
 <head>
     <meta charset="utf-8">
+    <style>
+        html, body {
+            overflow: hidden;
+            width   : 100%;
+            height  : 100%;
+            margin  : 0;
+            padding : 0;
+        }
+    </style>
     <script src="https://cdn.babylonjs.com/babylon.js"></script>
     <script src="https://unpkg.com/babylon-runtime/dist/_r.js"></script>
 </head>

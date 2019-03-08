@@ -7,7 +7,7 @@ sidebar:
   nav: "docs"  
 ---
 
-You may want to read the [wikipedia page](https://en.wikipedia.org/wiki/JSON) about JSON but basically JSON is a human-readable way to save data.
+You may want to read the [wikipedia page](https://en.wikipedia.org/wiki/JSON) about JSON but basically it's just is a human-readable way to save data.
 
 If you don't know anything about it, don't be scared. It may seem rough at first glance, but it's not :)
 
