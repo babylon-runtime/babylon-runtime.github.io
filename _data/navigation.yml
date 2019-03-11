@@ -15,7 +15,7 @@ docs :
         url: "/first-steps/json/"
   - title: Going further
     children:
-      - title: "Advanced patching"
+      - title: "In-depth patching"
         url: "/going-further/advanced-patching/"
       - title: "Interactions"
         url: "/going-further/interactions/"
@@ -23,6 +23,8 @@ docs :
         url: "/going-further/animate/"
       - title: "Selectors"
         url: "/going-further/selectors/"
+      - title: "Metadatas"
+        url: "/going-further/metadatas/"
   - title: Examples
     url: "/examples/"
   - title: How to patch
