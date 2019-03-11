@@ -40,7 +40,7 @@ Note that according to your preferences, you could also format your patch as fol
 }]
 ```
 
-You will find on this doc' a bad pratice but pratical: comments inside JSON files, which are in theory not allowed!
+You will find on this doc' a bad practice but pratical: comments inside JSON files, which are in theory not allowed!
 
 But leaving a comment inside in your work could be very helpful, so let's close our eyes about that...
 

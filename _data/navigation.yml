@@ -13,12 +13,18 @@ docs :
         url: "/first-steps/patching/"
       - title: "JSON?"
         url: "/first-steps/json/"
-  - title: Selectors
-    url: "/selectors/"
+  - title: Going further
+    children:
+      - title: "Advanced patching"
+        url: "/going-further/advanced-patching/"
+      - title: "Interactions"
+        url: "/going-further/interactions/"
+      - title: "Animate"
+        url: "/going-further/animate/"
+      - title: "Selectors"
+        url: "/going-further/selectors/"
   - title: Examples
     url: "/examples/"
-  - title: Advanced Patching
-    url: "/advanced-patching/"
   - title: How to patch
     children:
       - title: "Materials & Textures"

@@ -2,9 +2,8 @@
 title: "Selectors"
 layout: single
 toc : true
-permalink: /selectors/
+permalink: /going-further/selectors/
 sidebar:
    nav: "docs"  
 ---
 
-./_pages/selectors.md

@@ -12,7 +12,7 @@ You've probably just seen [how to setup](../../#launch) your project. But what i
 We're going to use this [cornell box example](https://github.com/babylon-runtime/_r.assets/tree/master/cornellBox) scene, where you can already find BabylonJS compatible exported files, especially the .babylon using standard materials. Download [this example using this link](https://github.com/babylon-runtime/_r.assets/releases/download/v1.0/cornellBox.zip).
 
 Let's start from the beginning:
-- Create a dedicated folder for your project. A good thing should to be able to run your project inside a local webserver. If not, use Firefox, which allow local javascript execution. On Windows, [EasyPhp](https://www.easyphp.org/) is easy to use.
+- Create a dedicated folder for your project. A good thing should to be able to run your project inside a local webserver (on Windows, [EasyPhp](https://www.easyphp.org/) is easy to use). Note that Firefox allow local javascript execution even without webserver.
 - Create a new file called `index.html`
 - Create a folder named, for example, `assets` and copy inside the files from the `cornellBox\exports\babylon-standard\` folder in the .zip
 - In our examples we will link online version of babylon.js & \_r.js instead of download them locally
