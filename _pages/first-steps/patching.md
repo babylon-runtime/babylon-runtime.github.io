@@ -37,7 +37,7 @@ By sending this patch to \_runtime, you avoid writting these javascript lines:
 ```javascript
 scene.ambientColor = BABYLON.Color3.White();
 scene.clearColor = BABYLON.Color3.FromHexString("#9CC1CE");
-var cameraFPV = scene.getCameraByName("cameraFree.000");
+var cameraFPV = scene.getCameraByName("cameraFPV.000");
 cameraFPV.speed = 0.05;
 cameraFPV.fov = 1.1;
 ```
@@ -67,7 +67,7 @@ _r.launch({
 ```javascript
 [{
     "cornellBox.cornellBox.ground.000": {
-        "diffuseColor": new BABYLON.Color3(0.2, 0.2, 0.8)
+        "diffuseColor": "#3232C8"
     }
 }]
 ```
@@ -90,7 +90,7 @@ As the camera name inside our .babylon file is `Camera`, just add these lines in
 ```javascript
 [{
         "cornellBox.cornellBox.ground.000": {
-            "diffuseColor": new BABYLON.Color3(0.2, 0.2, 0.8)
+            "diffuseColor": "#3232C8"
         }
     },
     {

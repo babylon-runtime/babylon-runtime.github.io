@@ -9,7 +9,7 @@ sidebar:
 
 ## Mass-patching
 
-### Dancing with the star
+### Dancing with the ~~star~~ asterisk
 
 What if we want a bunch of materials using the exact same property? It looks like very annoying to copy-paste a patch for each element, right?
 
