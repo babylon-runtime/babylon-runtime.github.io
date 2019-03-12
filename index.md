@@ -53,7 +53,7 @@ Or download locally from the [github repo releases](https://github.com/babylon-r
 <!doctype html>
 <html>
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <script src="babylon.js"></script>
     <script src="_r.js"></script>
 </head>
@@ -83,9 +83,9 @@ No need to manually create the canvas, _r will do that for you, by using the [la
 
 > This load the file **cornellBox.babylon** from the **assets/** folder, and set the camera named **Camera** as default scene active camera.
 
-<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="js,result" data-user="vinc3r" data-slug-hash="xBRwvE" data-preview="true" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="_r.launch - 01">
-  <span>See the Pen <a href="https://codepen.io/vinc3r/pen/xBRwvE/">
-  _r.launch - 01</a> by V!nc3r (<a href="https://codepen.io/vinc3r">@vinc3r</a>)
+<p class="codepen" data-height="" data-theme-id="light" data-default-tab="js,result" data-user="BabylonRuntime" data-slug-hash="VRrwxQ" data-preview="" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="_r.launch - 01">
+  <span>See the Pen <a href="https://codepen.io/BabylonRuntime/pen/VRrwxQ/">
+  _r.launch - 01</a> by Babylon Runtime (<a href="https://codepen.io/BabylonRuntime">@BabylonRuntime</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
