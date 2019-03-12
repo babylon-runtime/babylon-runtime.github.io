@@ -27,18 +27,6 @@ docs :
         url: "/going-further/metadatas/"
   - title: Examples
     url: "/examples/"
-  - title: How to patch
-    children:
-      - title: "Materials & Textures"
-        url: "/how-to-patch/materials-textures/"
-      - title: "Colors & Vectors"
-        url: "/how-to-patch/colors-vectors/"
-      - title: "Fresnel Parameters"
-        url: "/how-to-patch/fresnel/"
-      - title: "Lightmaps"
-        url: "/how-to-patch/lightmaps/"
-      - title: "OnPickTrigger"
-        url: "/how-to-patch/onPickTrigger/"
   - title: API
     children:
       - title: "_r.launch"
