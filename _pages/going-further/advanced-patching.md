@@ -30,14 +30,14 @@ Note that \_runtime is [**case-sensitive**](https://en.wikipedia.org/wiki/Case_s
 
 So in the example above, `oak-leaves.000`, `leavePoplar01.000` and `chestnutleave` materials will be tweaked, but **not** `oakLeaves`.
 
-<p class="codepen" data-height="" data-theme-id="light" data-default-tab="js,result" data-user="BabylonRuntime" data-slug-hash="VRrwdQ" data-preview="" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="_r.advancedPatching - 01">
+<p class="codepen" data-height="285" data-theme-id="light" data-default-tab="js,result" data-user="BabylonRuntime" data-slug-hash="VRrwdQ" data-preview="true" style="height: 285px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="_r.advancedPatching - 01">
   <span>See the Pen <a href="https://codepen.io/BabylonRuntime/pen/VRrwdQ/">
   _r.advancedPatching - 01</a> by Babylon Runtime (<a href="https://codepen.io/BabylonRuntime">@BabylonRuntime</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-> example with the cornellBox, see [01.html](https://github.com/babylon-runtime/_r.assets/blob/master/babylon-runtime.github.io/examples/going-further/advanced-patching/01.html) using [patch.patch](https://github.com/babylon-runtime/_r.assets/blob/master/babylon-runtime.github.io/examples/going-further/advanced-patching/assets/patch.patch)
+> see [examples/going-further/advanced-patching/01.html](https://github.com/babylon-runtime/_r.assets/blob/master/babylon-runtime.github.io/examples/going-further/advanced-patching/01.html) using [patch.patch](https://github.com/babylon-runtime/_r.assets/blob/master/babylon-runtime.github.io/examples/going-further/advanced-patching/assets/patch.patch)
 
 How to patch also materials using `Leave` *or* `leave`? We could use `*eave*` selector, but it's not very convenient to read an retrieve. That's why we will use multiple selectors.
 
@@ -55,14 +55,14 @@ Sending multiple selectors is very easy to do, just write them successively sepa
 
 In the example above, `oak-leaves.000`, `leavePoplar01.000`, `chestnutleave` and `oakLeaves` materials will be tweaked.
 
-<p class="codepen" data-height="" data-theme-id="light" data-default-tab="js,result" data-user="BabylonRuntime" data-slug-hash="KEyKBK" data-preview="" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="_r.advancedPatching - 02">
+<p class="codepen" data-height="" data-theme-id="light" data-default-tab="js,result" data-user="BabylonRuntime" data-slug-hash="KEyKBK" data-preview="true" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="_r.advancedPatching - 02">
   <span>See the Pen <a href="https://codepen.io/BabylonRuntime/pen/KEyKBK/">
   _r.advancedPatching - 02</a> by Babylon Runtime (<a href="https://codepen.io/BabylonRuntime">@BabylonRuntime</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-> example with the BJS logo in the cornellBox, see [02.html](https://github.com/babylon-runtime/_r.assets/blob/master/babylon-runtime.github.io/examples/going-further/advanced-patching/02.html) using [patch02.patch](https://github.com/babylon-runtime/_r.assets/blob/master/babylon-runtime.github.io/examples/going-further/advanced-patching/assets/patch02.patch)
+> example with the BJS logo in the cornellBox, see [examples/going-further/advanced-patching/02.html](https://github.com/babylon-runtime/_r.assets/blob/master/babylon-runtime.github.io/examples/going-further/advanced-patching/02.html) using [patch02.patch](https://github.com/babylon-runtime/_r.assets/blob/master/babylon-runtime.github.io/examples/going-further/advanced-patching/assets/patch02.patch)
 
 ### Filters
 
@@ -86,12 +86,12 @@ Here only material elements using `leave` or `Leave` in their names will be modi
 
 See [\_r.select API](../../api/select/) to see all available filters.
 
-<p class="codepen" data-height="" data-theme-id="light" data-default-tab="js,result" data-user="BabylonRuntime" data-slug-hash="EMbxLZ" data-preview="" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="_r.advancedPatching - 03">
+<p class="codepen" data-height="" data-theme-id="light" data-default-tab="js,result" data-user="BabylonRuntime" data-slug-hash="EMbxLZ" data-preview="true" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="_r.advancedPatching - 03">
   <span>See the Pen <a href="https://codepen.io/BabylonRuntime/pen/EMbxLZ/">
   _r.advancedPatching - 03</a> by Babylon Runtime (<a href="https://codepen.io/BabylonRuntime">@BabylonRuntime</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-> example with the BJS logo in the cornellBox, see [03.html](https://github.com/babylon-runtime/_r.assets/blob/master/babylon-runtime.github.io/examples/going-further/advanced-patching/03.html) using [patch03.patch](https://github.com/babylon-runtime/_r.assets/blob/master/babylon-runtime.github.io/examples/going-further/advanced-patching/assets/patch03.patch)
+> example with the BJS logo in the cornellBox, see [examples/going-further/advanced-patching/03.html](https://github.com/babylon-runtime/_r.assets/blob/master/babylon-runtime.github.io/examples/going-further/advanced-patching/03.html) using [patch03.patch](https://github.com/babylon-runtime/_r.assets/blob/master/babylon-runtime.github.io/examples/going-further/advanced-patching/assets/patch03.patch)
 
