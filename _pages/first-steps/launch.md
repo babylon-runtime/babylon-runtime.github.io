@@ -39,8 +39,7 @@ Let's start from the beginning:
 <body>
     <script type="text/javascript">
         _r.launch({
-            assets : "assets/",
-            scene : "cornellBox.babylon",
+            scene : "assets/cornellBox.babylon",
             activeCamera : "Camera"
         });
     </script>
@@ -69,11 +68,67 @@ By calling the `_r.launch()` function, \_runtime creates in background for us:
 
 Then, we have few parameters in this `launch` function to set:
 
-| Property | Description |
-| --- | --- |
-| assets | The path where you've exported your scene. |
-| scene | Scene filename.<br>If your BJS version include [loaders](https://doc.babylonjs.com/how_to/load_from_any_file_type), you can load .gltf, .stl & .obj in addition to default .babylon |
-| activeCamera | The name of your camera included in your scene file (we will see later how to load a scene that does not contain a camera) |
+### scene
+
+Scene filename with its path.
+
+If your BJS version include [loaders](https://doc.babylonjs.com/how_to/load_from_any_file_type), you can load .gltf, .stl & .obj in addition to the default .babylon format.
+
+Path is relative to from where the `launch` is executed. An url can be used too, as you may seen on our codepen examples.
+
+```javascript
+_r.launch({
+    scene : "assets/cornellBox.babylon",
+    activeCamera : "Camera"
+});
+```
+
+### activeCamera
+
+As a camera is needed to render the scene, you have to write here the name of your camera included in your scene file.
+
+If your scene file doesn't have a camera, don't panic! You can send a new BJS camera using javascript, like this:
+
+```javascript
+_r.launch({
+    scene : "assets/cornellBox.babylon",
+    activeCamera : function(){
+        var camera = new BABYLON.ArcRotateCamera("runtimeCamera", -1, 1, 8, new BABYLON.Vector3(0, 1.5, 0), _r.scene);
+        return camera;
+    }
+});
+```
+
+But two important points to note:
+
+- by sending a function into `activeCamera`, you must use a `return` to send the result (here, the new camera)
+- have you notice that we've used `_r.scene` instead of `scene`? That's need a quick explanation you can read below.
+
+## \_r.scene
+
+From the moment \_runtime take the hand on your 3d scene, actually just after the `scene : "scene.babylon"` in the `\_r.launch()`, it start working into this newly created scene, reachable using `_r.scene`.
+
+## \_r.ready()
+
+Our BabylonJS scene is now loaded.
+
+```html
+
+<body>
+    <script type="text/javascript">
+        _r.launch({
+            scene : "assets/cornellBox.babylon",
+            activeCamera : "Camera"
+        });
+
+        _r.ready(function(){
+            console.log("scene is loaded & patched!")
+        });
+
+    </script>
+</body>
+
+```
 
 <br>
 

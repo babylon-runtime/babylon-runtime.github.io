@@ -9,8 +9,7 @@ sidebar:
 
 ```javascript
 _r.launch({
-    assets : "https://models.babylonjs.com/CornellBox/",
-    scene : "cornellBox.babylon",
+    scene : "https://models.babylonjs.com/CornellBox/cornellBox.babylon",
     activeCamera : "Camera"
 })
 ```
@@ -75,8 +74,7 @@ _r.launch({
 
 ```javascript 
  _r.launch({
-    assets : "https://models.babylonjs.com/CornellBox/",
-    scene : "cornellBox.glb",
+    scene : "https://models.babylonjs.com/CornellBox/cornellBox.glb",
     beforeFirstRender : function() {
         _r.scene.createDefaultCameraOrLight(true, true, true);
         _r.scene.createDefaultEnvironment();
@@ -93,8 +91,7 @@ TODO
 ### activeCamera by function
 ```javascript 
 _r.launch({
-    assets : "https://models.babylonjs.com/CornellBox/",
-    scene : "cornellBox.glb",
+    scene : "https://models.babylonjs.com/CornellBox/cornellBox.glb",
     activeCamera : function() {
        var camera = new BABYLON.UniversalCamera("UniversalCamera", new BABYLON.Vector3(0, 0, -10), _r.scene);
        return camera;

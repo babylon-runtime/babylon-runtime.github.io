@@ -16,8 +16,7 @@ The purpose of **_r** is to make BabylonJS much easier to use and maintain in th
 
 ```javascript
 _r.launch({
-    assets : "assets/",
-    scene : "cornellBox.babylon",
+    scene : "assets/cornellBox.babylon",
     activeCamera : "Camera"
 })
 ```
@@ -74,8 +73,7 @@ No need to manually create the canvas, _r will do that for you, by using the [la
 <body>
     <script type="text/javascript">
         _r.launch({
-            assets : "assets/",
-            scene : "cornellBox.babylon",
+            scene : "assets/cornellBox.babylon",
             activeCamera : "Camera"
         });
     </script>

@@ -55,8 +55,7 @@ So let's create our first patch file:
 
 ```javascript
 _r.launch({
-    assets : "assets/",
-    scene : "cornellBox.babylon",
+    scene : "assets/cornellBox.babylon",
     activeCamera : "Camera",
     patch: ["assets/visual-tweaks.patch"]
 });
