@@ -81,7 +81,7 @@ The floor is now patched!
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-> see [examples/first-steps/patching/01.html](https://github.com/babylon-runtime/_r.assets/blob/master/babylon-runtime.github.io/examples/first-steps/patching/01.html) using [visual-tweaks.patch](https://github.com/babylon-runtime/_r.assets/blob/master/babylon-runtime.github.io/examples/first-steps/patching/assets/visual-tweaks.patch)
+> see [examples/first-steps/patching/01.html](https://github.com/babylon-runtime/_r.assets/blob/master/examples/first-steps/patching/01.html) using [visual-tweaks.patch](https://github.com/babylon-runtime/_r.assets/blob/master/examples/first-steps/patching/assets/visual-tweaks.patch)
 
 Want to move the camera closer to objects?
 
@@ -110,7 +110,7 @@ As the camera name inside our .babylon file is `Camera`, just add these lines in
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-> see [examples/first-steps/patching/02.html](https://github.com/babylon-runtime/_r.assets/blob/master/babylon-runtime.github.io/examples/first-steps/patching/02.html) using [visual-tweaks02.patch](https://github.com/babylon-runtime/_r.assets/blob/master/babylon-runtime.github.io/examples/first-steps/patching/assets/visual-tweaks02.patch)
+> see [examples/first-steps/patching/02.html](https://github.com/babylon-runtime/_r.assets/blob/master/examples/first-steps/patching/02.html) using [visual-tweaks02.patch](https://github.com/babylon-runtime/_r.assets/blob/master/examples/first-steps/patching/assets/visual-tweaks02.patch)
 
 <br>
 

@@ -17,10 +17,10 @@ docs :
     children:
       - title: "In-depth patching"
         url: "/going-further/advanced-patching/"
-      - title: "Interactions"
-        url: "/going-further/interactions/"
       - title: "Animate"
         url: "/going-further/animate/"
+      - title: "Interactions"
+        url: "/going-further/interactions/"
       - title: "Selectors"
         url: "/going-further/selectors/"
       - title: "Metadatas"

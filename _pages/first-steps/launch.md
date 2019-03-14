@@ -72,6 +72,6 @@ Then, we have few parameters in this `launch` function to set:
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-> see [examples/first-steps/launch/01.html](https://github.com/babylon-runtime/_r.assets/blob/master/babylon-runtime.github.io/examples/first-steps/launch/01.html)
+> see [examples/first-steps/launch/01.html](https://github.com/babylon-runtime/_r.assets/blob/master/examples/first-steps/launch/01.html)
 
 We're now able to start [customizing our scene](../patching).
