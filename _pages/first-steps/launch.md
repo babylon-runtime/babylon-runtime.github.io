@@ -106,11 +106,17 @@ But two important points to note:
 
 ## \_r.scene
 
-From the moment \_runtime take the hand on your 3d scene, actually just after the `scene : "scene.babylon"` in the `\_r.launch()`, it start working into this newly created scene, reachable using `_r.scene`.
+From the moment \_runtime take the hand on your 3d scene - just after the `scene` property in the `\_r.launch()` - it starts working into this newly created scene: `_r.scene`.
+
+This `_r.scene` will be reachable globally, which will be very useful for all your future scripts.
+
+But how to be sure this `_r.scene` exists and is loaded? That where `_r.ready()` comes in.
 
 ## \_r.ready()
 
-Our BabylonJS scene is now loaded.
+This `ready` function will help us to know that our \_runtime scene is loaded.
+
+Usually, this is where your scripts will be called.
 
 ```html
 
@@ -122,7 +128,8 @@ Our BabylonJS scene is now loaded.
         });
 
         _r.ready(function(){
-            console.log("scene is loaded & patched!")
+            console.log("scene is loaded!");
+            _r.scene.activeCamera.position.z = -2;
         });
 
     </script>
@@ -132,4 +139,4 @@ Our BabylonJS scene is now loaded.
 
 <br>
 
-We're now able to start [customizing our scene](../patching).
+But before going deep into these `_r.scene` & `_r.ready()`, let's start first by [customizing our scene](../patching)!
