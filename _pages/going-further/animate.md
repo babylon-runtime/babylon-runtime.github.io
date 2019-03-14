@@ -8,3 +8,5 @@ sidebar:
 ---
 
 Yep, \_runtime will help you to create simple animations, like moving an object and fading a color.
+
+To do so, you're not going to use patches, but a dedicated function called `_r.animate()`.

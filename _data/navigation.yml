@@ -17,6 +17,8 @@ docs :
     children:
       - title: "In-depth patching"
         url: "/going-further/advanced-patching/"
+      - title: "Ready?"
+        url: "/going-further/ready/"
       - title: "Animate"
         url: "/going-further/animate/"
       - title: "Interactions"
