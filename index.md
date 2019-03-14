@@ -45,7 +45,9 @@ _r.launch({
 
 Add the online dist in your `<head>` using
 
-`<script src="https://unpkg.com/babylon-runtime/dist/_r.js"></script>`.
+```html
+<script src="https://unpkg.com/babylon-runtime@latest/dist/_r.min.js"></script>
+```
 
 Or download locally from the [github repo releases](https://github.com/babylon-runtime/_r/releases).
 
@@ -55,7 +57,7 @@ Or download locally from the [github repo releases](https://github.com/babylon-r
 <head>
     <meta charset="utf-8">
     <script src="babylon.js"></script>
-    <script src="_r.js"></script>
+    <script src="_r.min.js"></script>
 </head>
 <body>
 
