@@ -5,7 +5,7 @@ main:
 docs :
   - title: "Install & Launch"
     url: "/"
-  - title: First Steps
+  - title: "Getting Started"
     children:
       - title: "Loading a file"
         url: "/first-steps/launch/"
@@ -25,8 +25,6 @@ docs :
         url: "/going-further/selectors/"
       - title: "Metadatas"
         url: "/going-further/metadatas/"
-  - title: Examples
-    url: "/examples/"
   - title: API
     children:
       - title: "_r.launch"
@@ -43,3 +41,7 @@ docs :
         url: "/api/patch/"
       - title: "_r.select"
         url: "/api/select"
+  - title: Examples
+    url: "/examples/"
+  - title: Showcase
+    url: "/showcase/"

@@ -1,5 +1,5 @@
 ---
-title: "Babylon Runtime"
+title: "Babylon Runtime Documentation"
 layout: single
 toc : true
 sidebar:

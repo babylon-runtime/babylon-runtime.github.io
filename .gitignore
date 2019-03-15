@@ -17,3 +17,4 @@ _site
 .jekyll-metadata
 Gemfile.lock
 .sass-cache
+.ffs_lock

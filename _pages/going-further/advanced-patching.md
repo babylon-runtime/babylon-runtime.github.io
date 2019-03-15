@@ -95,4 +95,4 @@ See [\_r.select API](../../api/select/) to see all available filters.
 
 > example with the BJS logo in the cornellBox, see [examples/going-further/advanced-patching/03.html](https://github.com/babylon-runtime/_r.assets/blob/master/examples/going-further/advanced-patching/03.html) using [patch03.patch](https://github.com/babylon-runtime/_r.assets/blob/master/examples/going-further/advanced-patching/assets/patch03.patch)
 
-TODO: multiple patch files, _r.patch inside _r.ready
+## _r.patch()
