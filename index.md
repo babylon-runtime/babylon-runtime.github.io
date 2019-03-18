@@ -38,6 +38,7 @@ _r.launch({
 ### Dependencies
 
 - [BabylonJS](https://www.babylonjs.com/) (yep, 'seems obvious)
+- (optionnal) [PEP](https://doc.babylonjs.com/how_to/interactions#pointer-interactions) to get touch events
 - that's it!
 
 ### Usage
