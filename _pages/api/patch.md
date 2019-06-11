@@ -13,7 +13,7 @@ sidebar:
 - string values have to be quoted but not boolean & vector.
 
 ```javascript
-"ambientColor": "#2c789b",
+"ambientColor": "#e0684b",
 "alphaIndex": 1,
 "isVisible": false
 ```
@@ -24,7 +24,7 @@ You can use hexadecimal, RGB or predefined named colors:
 
 ```javascript
 "ambientColor": "blue",
-"ambientColor": "#2c789b",
+"ambientColor": "#e0684b",
 "ambientColor": [0.17, 0.47, 0.61]
 ```
 
@@ -39,12 +39,12 @@ You can access to a single material using its name:
 ```javascript
 {
    "myMaterialName.000": {
-      "ambientColor": "#2c789b"
+      "ambientColor": "#e0684b"
    }
 }
 ```
 
-> Material **myMaterialName.000** will get its ambientColor set to **#2c789b**.
+> Material **myMaterialName.000** will get its ambientColor set to **#e0684b**.
 
 You can set up multiples properties on multiples elements:
 
@@ -52,7 +52,7 @@ You can set up multiples properties on multiples elements:
 {
    "myMaterialName.000": {
       "diffuseColor": "gray",
-      "ambientColor": "#2c789b",
+      "ambientColor": "#e0684b",
       "emissiveColor": "#2c1111"
    }
 }
@@ -65,12 +65,12 @@ You can access to any materials containing a keyword in their name, using `*`:
 ```javascript
 {
    "*keyword*": {
-      "ambientColor": "#2c789b"
+      "ambientColor": "#e0684b"
    }
 }
 ```
 
-> Each material having **keyword** in its name will get its ambientColor set to **#2c789b**.
+> Each material having **keyword** in its name will get its ambientColor set to **#e0684b**.
 
 ### Filters
 
@@ -81,12 +81,12 @@ You can add a filter to your selector to be sure working only on materials (usef
 ```javascript
 {
    "*keyword*:material": {
-      "ambientColor": "#2c789b"
+      "ambientColor": "#e0684b"
    }
 }
 ```
 
-In case you're not using this filter and if the property doesn't exist on the element, it will still write on it (but not be read by BabylonJS). For example, without filter it's possible to write a new *ambientColor* property on a mesh having *#2c789b* value as a string.
+In case you're not using this filter and if the property doesn't exist on the element, it will still write on it (but not be read by BabylonJS). For example, without filter it's possible to write a new *ambientColor* property on a mesh having *#e0684b* value as a string.
 
 ## Selector
 
