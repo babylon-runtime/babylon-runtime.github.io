@@ -10,28 +10,34 @@ sidebar:
 
 <p style="text-align:center; width:100%;"><img src="https://raw.githubusercontent.com/babylon-runtime/_r.assets/master/_runtime-logo/exports/_runtime-logo_circleWhite_512.png" alt="babylon runtime logo" width="250" ></p>
 
-**<span style="color:#e0684b">\_r</span>** is a lightweight, *write less, do more*, [BabylonJS](https://www.babylonjs.com/) library.
+<span style="color:#e0684b">\_r</span><span style="color:#201936">untime</span>, aka **<span style="color:#e0684b">\_r</span>**, is a lightweight *write less, do more* [BabylonJS](https://www.babylonjs.com/) library.
 
-The purpose of **_r** is to make BabylonJS much easier to use and maintain in the 3D workflow, for both artists and developpers.
+The purpose of **<span style="color:#e0684b">\_r</span>** is to make BabylonJS much easier to use and maintain in the 3D workflow, for both artists and developpers.
 
 ```javascript
-_r.launch({
-    scene : "assets/cornellBox.babylon",
-    activeCamera : "Camera"
-})
+_r.patch([{
+    "*wood*": {
+        "albedoColor": "red"
+    }
+}]);
 ```
-> Loading a scene with _runtime.
+> Setting red albedoColor for all wood materials with _runtime.
 
 ### For artists
 
 <span style="color:#e0684b">\_r</span><span style="color:#201936">untime</span> will allow you to:
-- export and reexport your scenes as many as you want without loosing your BabylonJS-side tweaks
+- easily tweak your BabylonJS scenes
+- export and reexport your scenes as many as you want without loosing your tweaks
 - avoid as much as possible writing code
+- do simple animations in a fast way
 
 ### For developpers
 
 <span style="color:#e0684b">\_r</span><span style="color:#201936">untime</span> will allow you to:
 - mass-select & filter elements in a easy way
+- manage scene files
+- quickly bind user interactions
+- handle custom metadata & events on assets
 
 ## Install
 
@@ -41,15 +47,15 @@ _r.launch({
 - (optionnal) [PEP](https://doc.babylonjs.com/how_to/interactions#pointer-interactions) to get touch events
 - that's it!
 
-### Usage
+### Integration
 
-Add the online dist in your `<head>` using
+Add the online dist in your `<head>` using:
 
 ```html
 <script src="https://unpkg.com/babylon-runtime@latest/dist/_r.min.js"></script>
 ```
 
-Or download locally from the [github repo releases](https://github.com/babylon-runtime/_r/releases).
+Or download and load it locally from the [github repo releases](https://github.com/babylon-runtime/_r/releases):
 
 ```html
 <!doctype html>
