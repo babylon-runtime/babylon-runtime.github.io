@@ -71,31 +71,50 @@ Or download and load it locally from the [github repo releases](https://github.c
 </html>
 ```
 
-## Launch
+## Use
 
-No need to manually create the canvas, _r will do that for you, by using the [launch](api/launch/) function:
+As soon as _r is loaded, you can start using it in your BabylonJS app:
 
-```html
+```javascript
+var delayCreateScene = function () {
 
-<body>
-    <script type="text/javascript">
-        _r.launch({
-            scene : "assets/cornellBox.babylon",
-            activeCamera : "Camera"
+    var scene = new BABYLON.Scene(engine);
+    scene.createDefaultCamera(true, true, true);
+    scene.createDefaultEnvironment({createGround: false,createSkybox: false});
+
+    BABYLON.SceneLoader.ImportMesh(
+        "",
+        "assets/",
+        "cornellBox.babylon",
+        scene,
+        function () {
+            scene.activeCamera.target = new BABYLON.Vector3(0, 1.5, 0);
+            scene.activeCamera.beta = Math.PI / 2;
+            scene.activeCamera.radius = 10;
+
+            /* babylon runtime */
+            
+            _r.patch([
+                {
+                    "scene": {
+                        "ambientColor": "white"
+                    }
+                },
+                {
+                    "*:material": {
+                        "ambientColor": "#e0684b"
+                    }
+                }
+            ]);
+
+            /***/
         });
-    </script>
-</body>
 
+    return scene;
+};
 ```
 
-> This load the file **cornellBox.babylon** from the **assets/** folder, and set the camera named **Camera** as default scene active camera.
-
-<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="js,result" data-user="BabylonRuntime" data-slug-hash="VRrwxQ" data-preview="true" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="_r.launch - 01">
-  <span>See the Pen <a href="https://codepen.io/BabylonRuntime/pen/VRrwxQ/">
-  _r.launch - 01</a> by Babylon Runtime (<a href="https://codepen.io/BabylonRuntime">@BabylonRuntime</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+> This set scene ambientColor to white, and all materials ambientColor to orange.
 
 <br>
 
