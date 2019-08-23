@@ -10,7 +10,7 @@ sidebar:
 
 <p style="text-align:center; width:100%;"><img src="https://raw.githubusercontent.com/babylon-runtime/_r.assets/master/_runtime-logo/exports/_runtime-logo_circleWhite_512.png" alt="babylon runtime logo" width="250" ></p>
 
-<span style="color:#e0684b">\_r</span><span style="color:#201936">untime</span>, aka **<span style="color:#e0684b">\_r</span>**, is a lightweight *write less, do more* [BabylonJS](https://www.babylonjs.com/) library.
+<span style="color:#e0684b">\_r</span><span style="color:#201936">untime</span>, aka **<span style="color:#e0684b">\_r</span>**, is a lightweight *&laquo;write less, do more&raquo;* [BabylonJS](https://www.babylonjs.com/) library.
 
 The purpose of **<span style="color:#e0684b">\_r</span>** is to make BabylonJS much easier to use and maintain in the 3D workflow, for both artists and developpers.
 
@@ -21,7 +21,7 @@ _r.patch([{
     }
 }]);
 ```
-> Setting red albedoColor for all wood materials with _runtime.
+> applying red albedoColor for all wood materials with _runtime
 
 ### For artists
 
