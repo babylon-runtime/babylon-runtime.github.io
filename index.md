@@ -114,7 +114,7 @@ var delayCreateScene = function () {
 };
 ```
 
-> This set scene ambientColor to white, and all materials ambientColor to orange.
+> using runtime inside a BJS native SceneLoader
 
 <br>
 
