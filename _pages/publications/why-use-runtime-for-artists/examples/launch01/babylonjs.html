@@ -30,8 +30,10 @@
         var canvas = document.getElementById("canvas");
         var engine = new BABYLON.Engine(canvas, true);
         var scene = new BABYLON.Scene(engine);
-        scene.createDefaultCamera(); // default camera, waiting to use the imported one
-        scene.createDefaultEnvironment({ // we need an env map as we are in PBR
+        // default camera, waiting to use the imported one
+        scene.createDefaultCamera();
+        // we need an env map as we are in PBR
+        scene.createDefaultEnvironment({
             createGround: false,
             createSkybox: false
         });
@@ -43,7 +45,8 @@
             function () {
                 var camera = scene.getCameraByName("Camera");
                 camera.attachControl(canvas, true);
-                scene.activeCamera = camera; // activating imported camera
+                // activating imported camera
+                scene.activeCamera = camera;
             });
 
         engine.runRenderLoop(function () {

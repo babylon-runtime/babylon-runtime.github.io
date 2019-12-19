@@ -34,8 +34,10 @@
     <script type="text/javascript">
         _r.launch({
             scene: "https://raw.githubusercontent.com/babylon-runtime/_r.assets/master/cornellBox/exports/glb/cornellBox.glb",
-            activeCamera: "Camera", // activating imported camera
-            beforeFirstRender: function () { // we need an env map as we are in PBR
+            // activating imported camera
+            activeCamera: "Camera",
+            beforeFirstRender: function () {
+                // we need an env map as we are in PBR
                 _r.scene.createDefaultEnvironment({
                     createGround: false,
                     createSkybox: false

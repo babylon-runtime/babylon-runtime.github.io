@@ -1,22 +1,12 @@
 # Why artists should use _runtime
 
----
-
-NOTA BENE:
-
-- launch
-- animate (camera or object)
-- lightmaps
-
----
-
 ![runtime-for-artists-chapo](why-use-runtime-for-artists/runtime-for-artists-chapo.jpg)
 
 ## Behind the scene
 
-When I (Vincent Lamy, aka [V!nc3r](https://forum.babylonjs.com/u/Vinc3r/summary)) first started to get my hands into webGL through Babylon.JS (BJS), while I was used to Unity3D engine, I'm not going to hide that I was a little frightened - but also intrigued: relatively new technology, raw javascript, no official graphic editor, no PBR, no lighting engine...
+When I (Vincent Lamy, aka [V!nc3r](https://forum.babylonjs.com/u/Vinc3r/summary)) first started to get my hands into webGL through Babylon.JS (BJS), while I was used to Unity3D engine I'm not going to hide that I was a little frightened - but also intrigued: relatively new technology, raw javascript, no official graphic editor, no PBR, no lighting engine...
 
-Actually there is an [editor](http://editor.babylonjs.com/) made by a [BJS user](https://github.com/julien-moreau), which is a great piece of work, but our workflow soon get into problematics: artists often need to export & re-export 3D scenes multiple times in a day, and unfortunatly by using the editor you're loosing all your wonderful modifications on the BJS side! Plus as a team we need to work at the same time on our applications.
+Actually there is an [editor](http://editor.babylonjs.com/) made by a [BJS user](https://github.com/julien-moreau), which is a great piece of work but our workflow soon get into problematics: artists often need to export & re-export 3D scenes multiple times in a day, and unfortunatly by using the editor you're loosing all your wonderful modifications on the BJS side! Plus as a team we need to work at the same time on our applications.
 
 That's why, in 2016, my teamate (Fabien Le Vavasseur aka [sharp](https://forum.babylonjs.com/u/sharp/summary)) had in mind to create a kind of overlay of BJS, named \_runtime, to help me speed up my tasks and not be restrict by my javascript skills.
 
@@ -37,20 +27,18 @@ We called this functionnality **patchs**.
 
 So, why an artist would like \_runtime? Because it will not only avoid you to loose some of your tweaks, but also make more easy to write, read and maintain your application.
 
-Take a look at the example above:
-
-The goal is to tweak albedoColor and roughness for all materials using *woods* in their names, and also to enable collisions on all meshes with *\_coll* in their names (and cameras of course).
+If we take as example the need to tweak albedoColor and roughness for all materials using *woods* in their names, and also to enable collisions on all meshes with *\_coll* in their names (cameras also of course):
 
 raw javascript:
 ```javascript
 scene.materials.forEach(function(mtl){
-    if(mtl.name.indexOf("woods")){
+    if(mtl.name.indexOf("woods") != -1){
         mtl.albedoColor = new BABYLON.Color3.FromHexString("#ffe1b2");
         mtl.roughness = 0.8;
     }
 });
 scene.meshes.forEach(function(msh){
-    if(msh.name.indexOf("_coll")){
+    if(msh.name.indexOf("_coll") != -1){
         msh.checkCollisions = true;
     }
 });
@@ -77,7 +65,7 @@ scene.cameras.forEach(function(cam){
 
 If you're not very comfortable with code, as most artists are, you probably already understand how \_runtime could benefit to you.
 
-I often had to deal with hundred of materials, and be able to patch one particular or a bunch of them in a short time is enjoyable. Plus when you work with other artists, they're able to quickly find and modify an existing patch (a simple Ctrl+F and you're ready to go).
+I often had to deal with hundred of materials, and be able to patch one particular or a bunch of them in a short time is enjoyable. Plus when you work with other artists, they can quickly find and modify an existing patch (a simple Ctrl+F and you're ready to go).
 
 ![hundreds-of-materials](why-use-runtime-for-artists/hundreds-of-materials.png)
 
@@ -96,8 +84,10 @@ Using classic workflow, you will get this basic html setup:
         var canvas = document.getElementById("canvas");
         var engine = new BABYLON.Engine(canvas, true);
         var scene = new BABYLON.Scene(engine);
-        scene.createDefaultCamera(); // default camera, waiting to use the imported one
-        scene.createDefaultEnvironment({ // we need an env map as we are in PBR
+ 		// default camera, waiting to use the imported one
+        scene.createDefaultCamera();
+		// we need an env map as we are in PBR
+        scene.createDefaultEnvironment({
             createGround: false,
             createSkybox: false
         });
@@ -109,7 +99,8 @@ Using classic workflow, you will get this basic html setup:
             function () {
                 var camera = scene.getCameraByName("Camera");
                 camera.attachControl(canvas, true);
-                scene.activeCamera = camera; // activating imported camera
+                // activating imported camera
+                scene.activeCamera = camera;
             });
 
         engine.runRenderLoop(function () {
@@ -130,8 +121,10 @@ As for \_runtime, you just have to use the `_r.launch` function:
     <script type="text/javascript">
         _r.launch({
             scene: "cornellBox.glb",
-            activeCamera: "Camera", // activating imported camera
-            beforeFirstRender: function () { // we need an env map as we are in PBR
+            // activating imported camera
+            activeCamera: "Camera",
+            beforeFirstRender: function () {
+                // we need an env map as we are in PBR
                 _r.scene.createDefaultEnvironment({
                     createGround: false,
                     createSkybox: false
@@ -144,14 +137,15 @@ As for \_runtime, you just have to use the `_r.launch` function:
 
 ![first-launch-01](why-use-runtime-for-artists/first-launch-01.png)
 
-> it works!
+> yep, it works!
 
 Now, how to patch our scene? Easiest way to do it is to call patch during launch. Try to guess what's each patch are doing:
 
 ```javascript
 _r.launch({
     scene: "cornellBox.glb",
-    activeCamera: "Camera", // activating imported camera
+    // activating imported camera
+    activeCamera: "Camera",
     patch: [{
             "*.wall01.*": {
                 albedoColor: "red"
@@ -180,8 +174,11 @@ _r.launch({
         }
     ],
     beforeFirstRender: function () {
-        // _r.scene.debugLayer.show(); // uncomment to launch the Inspector
-        _r.scene.createDefaultEnvironment({ // we need an env map as we are in PBR
+        // uncomment below to launch the Inspector
+        // _r.scene.debugLayer.show();
+
+        // we need an env map as we are in PBR
+        _r.scene.createDefaultEnvironment({
             createGround: false,
             createSkybox: false
         });
@@ -203,7 +200,8 @@ BABYLON.SceneLoader.Append(
         camera.speed = 0.1;
         camera.minZ = 0.01;
         camera.attachControl(canvas, true);
-        scene.activeCamera = camera; // activating imported camera
+        // activating imported camera
+        scene.activeCamera = camera;
 
         var wall01Mtl = cornellBox.getMaterialByName("cornellBox.wall01.000");
         wall01Mtl.albedoColor = BABYLON.Color3.Red();
@@ -223,7 +221,8 @@ BABYLON.SceneLoader.Append(
             }
         });
 
-        // scene.debugLayer.show(); // uncomment to launch the Inspector
+        // uncomment below to launch the Inspector
+        // scene.debugLayer.show();
     });
 ```
 
