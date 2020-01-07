@@ -8,16 +8,18 @@ When I (Vincent Lamy, aka [V!nc3r](https://forum.babylonjs.com/u/Vinc3r/summary)
 
 Actually there is an [editor](http://editor.babylonjs.com/) made by a [BJS user](https://github.com/julien-moreau), which is a great piece of work but our workflow soon get into problematics: artists often need to export & re-export 3D scenes multiple times in a day, and unfortunatly by using the editor you're loosing all your wonderful modifications on the BJS side! Plus as a team we need to work at the same time on our applications.
 
-That's why, in 2016, my teamate (Fabien Le Vavasseur aka [sharp](https://forum.babylonjs.com/u/sharp/summary)) had in mind to create a kind of overlay of BJS, named \_runtime, to help me speed up my tasks and not be restrict by my javascript skills.
+That's why in 2016, my teamate (Fabien Le Vavasseur aka [sharp](https://forum.babylonjs.com/u/sharp/summary)) had in mind to create a kind of overlay of BJS to help me speed up my tasks and not be restrict by my javascript skills, named **\_runtime**.
+
+![_runtime-logo-tiny](why-use-runtime-for-artists/_runtime-logo-tiny.png)
 
 This tool allowed me this kind of efficient worklow:
 
 1. Export my scene from Blender (or any 3D modeler),
 2. Tweak materials and interactions in BabylonJS,
-3. Come back to Blender to make some modifications then re-export my scene to BJS...
+3. Come back to Blender to make some modifications, then re-export my scene to BJS...
 4. ... and not loosing any of my tweaks!
 
-We called this functionnality **patchs**.
+We called this not-loosed-modifications: **patchs**.
 
 ![starting-bjs](why-use-runtime-for-artists/starting-bjs.jpg)
 
@@ -27,7 +29,12 @@ We called this functionnality **patchs**.
 
 So, why an artist would like \_runtime? Because it will not only avoid you to loose some of your tweaks, but also make more easy to write, read and maintain your application.
 
-If we take as example the need to tweak albedoColor and roughness for all materials using *woods* in their names, and also to enable collisions on all meshes with *\_coll* in their names (cameras also of course):
+Assuming we have the good practice to name our assets, we can take as example the need to:
+
+- tweak albedoColor and roughness for all materials using `woods` in their names
+- enable collisions on all meshes with `_coll` in their names (cameras also of course)
+
+Here how to patch our scene, using both raw javascript & \_runtime solutions:
 
 raw javascript:
 ```javascript
@@ -61,13 +68,13 @@ scene.cameras.forEach(function(cam){
 }
 ```
 
-> notice the "\*" char which means "no matter what character you found here"
+> notice the "\*" char which means "no matter what characters you found here"
 
 If you're not very comfortable with code, as most artists are, you probably already understand how \_runtime could benefit to you.
 
 I often had to deal with hundred of materials, and be able to patch one particular or a bunch of them in a short time is enjoyable. Plus when you work with other artists, they can quickly find and modify an existing patch (a simple Ctrl+F and you're ready to go).
 
-![hundreds-of-materials](why-use-runtime-for-artists/hundreds-of-materials.png)
+![hundreds-of-materials](why-use-runtime-for-artists/hundreds-of-materials.jpg)
 
 > an example with hundreds of materials
 
@@ -97,9 +104,9 @@ Using classic workflow, you will get this basic html setup:
             "cornellBox.glb",
             scene,
             function () {
+                // activating imported camera
                 var camera = scene.getCameraByName("Camera");
                 camera.attachControl(canvas, true);
-                // activating imported camera
                 scene.activeCamera = camera;
             });
 
@@ -135,11 +142,11 @@ As for \_runtime, you just have to use the `_r.launch` function:
 </body>
 ```
 
-![first-launch-01](why-use-runtime-for-artists/first-launch-01.png)
+![first-launch-01](why-use-runtime-for-artists/first-launch-01.jpg)
 
 > yep, it works!
 
-Now, how to patch our scene? Easiest way to do it is to call patch during launch. Try to guess what's each patch are doing:
+Now, how to patch our scene? Easiest way to do so is to call patch during launch. Try to guess what's each patch are doing:
 
 ```javascript
 _r.launch({
@@ -148,11 +155,11 @@ _r.launch({
     activeCamera: "Camera",
     patch: [{
             "*.wall01.*": {
-                albedoColor: "red"
+                albedoColor: "green"
             }
         }, {
             "*.wall02.*": {
-                albedoColor: "green"
+                albedoColor: "red"
             }
         }, {
             "suzanne.000": {
@@ -186,7 +193,7 @@ _r.launch({
 });
 ```
 
-![launch-02](why-use-runtime-for-artists/launch-02.png)
+![launch-02](why-use-runtime-for-artists/launch-02.jpg)
 
 For comparaison, the raw javascript:
 
@@ -196,18 +203,18 @@ BABYLON.SceneLoader.Append(
     "cornellBox.glb",
     scene,
     function (cornellBox) {
+        // activating imported camera
         var camera = cornellBox.getCameraByName("Camera");
         camera.speed = 0.1;
         camera.minZ = 0.01;
         camera.attachControl(canvas, true);
-        // activating imported camera
         scene.activeCamera = camera;
 
         var wall01Mtl = cornellBox.getMaterialByName("cornellBox.wall01.000");
-        wall01Mtl.albedoColor = BABYLON.Color3.Red();
+        wall01Mtl.albedoColor = BABYLON.Color3.Green();
 
         var wall02Mtl = cornellBox.getMaterialByName("cornellBox.wall02.000");
-        wall02Mtl.albedoColor = BABYLON.Color3.Green();
+        wall02Mtl.albedoColor = BABYLON.Color3.Red();
 
         var suzanneMtl = cornellBox.getMaterialByName("suzanne.000");
         suzanneMtl.metallic = 1;

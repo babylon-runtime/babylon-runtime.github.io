@@ -43,18 +43,18 @@
             "cornellBox.glb",
             scene,
             function (cornellBox) {
+                // activating imported camera
                 var camera = cornellBox.getCameraByName("Camera");
                 camera.speed = 0.1;
                 camera.minZ = 0.01;
                 camera.attachControl(canvas, true);
-                // activating imported camera
                 scene.activeCamera = camera;
 
                 var wall01Mtl = cornellBox.getMaterialByName("cornellBox.wall01.000");
-                wall01Mtl.albedoColor = BABYLON.Color3.Red();
+                wall01Mtl.albedoColor = BABYLON.Color3.Green();
 
                 var wall02Mtl = cornellBox.getMaterialByName("cornellBox.wall02.000");
-                wall02Mtl.albedoColor = BABYLON.Color3.Green();
+                wall02Mtl.albedoColor = BABYLON.Color3.Red();
 
                 var suzanneMtl = cornellBox.getMaterialByName("suzanne.000");
                 suzanneMtl.metallic = 1;

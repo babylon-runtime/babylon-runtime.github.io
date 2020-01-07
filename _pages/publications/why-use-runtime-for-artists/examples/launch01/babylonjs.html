@@ -43,9 +43,9 @@
             "cornellBox.glb",
             scene,
             function () {
+                // activating imported camera
                 var camera = scene.getCameraByName("Camera");
                 camera.attachControl(canvas, true);
-                // activating imported camera
                 scene.activeCamera = camera;
             });
 
