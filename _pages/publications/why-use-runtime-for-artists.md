@@ -233,3 +233,24 @@ BABYLON.SceneLoader.Append(
     });
 ```
 
+## Tool's potential
+
+Below you'll find a bunch of screenshots from 3D applications running with the great help of \_runtime. They was made by the team of Axeon Software, composed by [Fabien Le Vavasseur](https://forum.babylonjs.com/u/sharp/) (core dev of \_runtime), [Sébastien Montlibert](https://forum.babylonjs.com/u/devaxeon/) (dev), [Quentin Davy](https://forum.babylonjs.com/u/crotmoul) (3D artist) and [myself](https://forum.babylonjs.com/u/Vinc3r/activity) (3D artist playing a bit with code), during the past years (since 2016 actually).
+
+As you will see, all these scenes have a lot of assets, and our little artists team would have pulled each other's hair out if we had to tweak all of these in raw javascript. Even our devs use \_runtime to ease their scripts (similar as using jquery for web).
+
+So, feel free to try \_runtime anytime, it can be easily integrated into an already existing project, without breaking everything, just check official website: https://babylon-runtime.github.io/
+
+Demo | Description
+:---: | :---
+Hotel Atlantis<br>![atlantis](why-use-runtime-for-artists/demo/atlantis.jpg) | [Available online](http://www.axeon.fr/CLIENT/UAE/Showreel/MAQUETTE_3D/3DRT/)<br>Allow a day/night circle.<br><br>70 drawcalls (16 mat, 592 meshes), 19 MB, 500k tri 
+Château-Gaillard<br>![chateau-gaillard](why-use-runtime-for-artists/demo/chateau-gaillard.jpg) | (not yet available online)<br>Castle reconstruction as it was from 12th century.<br><br>159 drawcalls (153 mat, 631 meshes), 130 MB, 753k tri 
+Virtual Staging<br>![virtual-staging](why-use-runtime-for-artists/demo/virtual-staging.jpg) | [Available online](http://axeon.fr/CLIENT/INFIME/Virtual_Staging_V2/).<br>Appartment configurator.<br><br>450 drawcalls (444 mat, 542 meshes), 125 MB, 564k tri
+La Bastille<br>![bastille](why-use-runtime-for-artists/demo/bastille.jpg) | [Available online](http://www.axeon.fr/CLIENT/AXEON_SOFTWARE/PARIS_Bastille/)<br>Bastille reconstruction before 1789.<br><br>406 drawcalls (252 mat, 540 meshes), 60 MB, 848k tri 
+Petite duchesse<br>![3dscan-duchesse](why-use-runtime-for-artists/demo/3dscan-duchesse.jpg) | (not yet available online)<br>Simplified 3D scan of a patisserie.<br><br>5 drawcalls (7 mat, 11 meshes), 12 MB, 87k tri 
+Eiffage - Hypérion<br>![hyperion](why-use-runtime-for-artists/demo/hyperion.jpg) | [Available online](http://axeon.fr/CLIENT/EIFFAGE/Bordeaux.Hyperion/MAQUETTE_RT/).<br>Building project in Bordeaux (France).<br><br>833 drawcalls (378 mat, 1535 meshes), 127 MB, 457k tri 
+Ilôt Vernon 1950<br>![ilot-vernon](why-use-runtime-for-artists/demo/ilot-vernon.jpg) | [Available online](https://www.axeon.fr/CLIENT/AXEON_360/3DScan/Vernon_Pasteur/) (check LOD HD 400).<br>Based on a 2017 simplified 3D scan, reconstruction of the building in 1950.<br><br>133 drawcalls (127 mat, 174 meshes), 48 MB, 218k tri 
+MacArthurGlen - Cannock<br>![mag-cannock](why-use-runtime-for-artists/demo/mag-cannock.jpg) | Outlet village project.<br><br>204 drawcalls (151 mat, 1527 meshes), 75 MB, 2 600k tri 
+Rosary<br>![misbaha](why-use-runtime-for-artists/demo/misbaha.jpg) | Ancient Koranic rosary.<br><br>103 drawcalls (47 mat, 204 meshes), 20 MB, 283k tri 
+Nexity - Asnières<br>![nexity-asnieres](why-use-runtime-for-artists/demo/nexity-asnieres.jpg) | [Available online](http://axeon.fr/CLIENT/NEXITY/Asnieres/).<br>Building project in Asnieres (France) (T3 appart in screenshot).<br><br>160 drawcalls (254 mat, 43 meshes), 133 MB , 372k tri
+
