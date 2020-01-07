@@ -34,7 +34,7 @@ Assuming we have the good practice to name our assets, we can take as example th
 - tweak albedoColor and roughness for all materials using `woods` in their names
 - enable collisions on all meshes with `_coll` in their names (cameras also of course)
 
-Here how to patch our scene, using both raw javascript & \_runtime solutions:
+Here how to patch our scene, showing both raw javascript & \_runtime solutions:
 
 raw javascript:
 ```javascript
@@ -55,17 +55,19 @@ scene.cameras.forEach(function(cam){
 ```
 \_runtime:
 ```javascript
-{
-    "*woods*":{
-        albedoColor: "#ffe1b2",
-        roughness: 0.8
+_r.patch([
+    {
+        "*woods*":{
+            albedoColor: "#ffe1b2",
+            roughness: 0.8
+        }
+    },
+    {
+        "*_coll*, *:camera":{
+            checkCollisions: true
+        }
     }
-},
-{
-    "*_coll*, *:camera":{
-        checkCollisions: true
-    }
-}
+]);
 ```
 
 > notice the "\*" char which means "no matter what characters you found here"
@@ -76,7 +78,7 @@ I often had to deal with hundred of materials, and be able to patch one particul
 
 ![hundreds-of-materials](why-use-runtime-for-artists/hundreds-of-materials.jpg)
 
-> an example with hundreds of materials
+> an scene example with hundreds of materials, organized in several patch files
 
 ## Launch & See
 
@@ -91,9 +93,9 @@ Using classic workflow, you will get this basic html setup:
         var canvas = document.getElementById("canvas");
         var engine = new BABYLON.Engine(canvas, true);
         var scene = new BABYLON.Scene(engine);
- 		// default camera, waiting to use the imported one
+        // default camera, waiting to use the imported one
         scene.createDefaultCamera();
-		// we need an env map as we are in PBR
+        // we need an env map as we are in PBR
         scene.createDefaultEnvironment({
             createGround: false,
             createSkybox: false
@@ -142,11 +144,13 @@ As for \_runtime, you just have to use the `_r.launch` function:
 </body>
 ```
 
+It just works!
+
 ![first-launch-01](why-use-runtime-for-artists/first-launch-01.jpg)
 
-> yep, it works!
+> default CornellBox scene with default PBR env
 
-Now, how to patch our scene? Easiest way to do so is to call patch during launch. Try to guess what's each patch are doing:
+Now, how to patch our scene? Easiest way to do so is to call our patches during launch. Try to guess what each patch are doing:
 
 ```javascript
 _r.launch({
@@ -195,7 +199,7 @@ _r.launch({
 
 ![launch-02](why-use-runtime-for-artists/launch-02.jpg)
 
-For comparaison, the raw javascript:
+For comparison, the raw javascript:
 
 ```javascript
 BABYLON.SceneLoader.Append(
@@ -239,7 +243,9 @@ Below you'll find a bunch of screenshots from 3D applications running with the g
 
 As you will see, all these scenes have a lot of assets, and our little artists team would have pulled each other's hair out if we had to tweak all of these in raw javascript. Even our devs use \_runtime to ease their scripts (similar as using jquery for web).
 
-So, feel free to try \_runtime anytime, it can be easily integrated into an already existing project, without breaking everything, just check official website: https://babylon-runtime.github.io/
+So, feel free to try \_runtime anytime, it can be easily integrated into an already existing project, without breaking everything, just check official website to know more: https://babylon-runtime.github.io/
+
+Oh, yep, it's open source :)
 
 Demo | Description
 :---: | :---
