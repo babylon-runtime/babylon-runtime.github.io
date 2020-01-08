@@ -65,22 +65,6 @@ _r.scene.debugLayer.show({overlay: true, embedMode: true, enablePopup: true});
 _r.color("#ff0000");
 ```
 
-## Router
-
-```javascript
-_r.router.trigger(_r.router.get());
-```
-
-```javascript
-_r.router.on("/route-1", function() {
-    console.log("user clicked on index.html#/route-1");
-})
-```
-
-```javascript
-_r.router.set("/route-2");
-```
-
 ## Events
 
 ```javascript
