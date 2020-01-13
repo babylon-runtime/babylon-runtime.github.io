@@ -1,0 +1,10 @@
+---
+
+---
+[
+  {% for api in site.api %} {
+    "title" : "{{ api.title }}",
+    "url": "{{ api.url }}",
+    "content" : "{{ api.content | strip_html | normalize_whitespace  }}"
+  }, {% endfor %}
+]

@@ -1,0 +1,9 @@
+---
+
+---
+[{% for doc in site.data.docs %} {
+    "title" : "{{ doc.title}}",
+    "url": "{{ doc.url }}",
+    "content" : "{{ doc.content | strip_html | normalize_whitespace }}"
+  }, {% endfor %}
+]
