@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Default BabylonJS _runtime page</title>
+    <meta charset="utf-8">
+
+    <!-- BabylonJS -->
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+
+    <!-- _runtime -->
+    <script src="https://unpkg.com/babylon-runtime@latest/dist/_r.min.js"></script>
+
+    <style>
+        html,
+        body {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #canvas {
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+        }
+    </style>
+</head>
+
+<body>
+    <script type="text/javascript">
+        _r.launch({
+            scene: "https://raw.githubusercontent.com/babylon-runtime/_r.assets/master/cornellBox/exports/glb/cornellBox.glb",
+            // activating imported camera
+            activeCamera: "Camera",
+            beforeFirstRender: function () {
+                // we need an env map as we are in PBR
+                _r.scene.createDefaultEnvironment({
+                    createGround: false,
+                    createSkybox: false
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

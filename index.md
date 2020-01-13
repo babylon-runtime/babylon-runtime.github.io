@@ -7,28 +7,34 @@ layout: documentation
 
 <p style="text-align:center; width:100%;"><img src="https://raw.githubusercontent.com/babylon-runtime/_r.assets/master/_runtime-logo/exports/_runtime-logo_circleWhite_512.png" alt="babylon runtime logo" width="250" ></p>
 
-**<span style="color:#eb1a1b">\_r</span>** is a lightweight, *write less, do more*, [BabylonJS](https://www.babylonjs.com/) library.
+<span style="color:#e0684b">\_r</span><span style="color:#201936">untime</span>, aka **<span style="color:#e0684b">\_r</span>**, is a lightweight *&laquo;write less, do more&raquo;* [BabylonJS](https://www.babylonjs.com/) library.
 
-The purpose of **_r** is to make BabylonJS much easier to use and maintain in the 3D workflow, for both artists and developpers.
+The purpose of **<span style="color:#e0684b">\_r</span>** is to make BabylonJS much easier to use and maintain in the 3D workflow, for both artists and developpers.
 
 ```javascript
-_r.launch({
-    scene : "assets/cornellBox.babylon",
-    activeCamera : "Camera"
-})
+_r.patch([{
+    "*wood*": {
+        "albedoColor": "red"
+    }
+}]);
 ```
-> Loading a scene with _runtime.
+> applying red albedoColor for all wood materials with _runtime
 
 ### For artists
 
-<span style="color:#eb1a1b">\_r</span><span style="color:#2c789b">untime</span> will allow you to:
-- export and reexport your scenes as many as you want without loosing your BabylonJS-side tweaks
+<span style="color:#e0684b">\_r</span><span style="color:#201936">untime</span> will allow you to:
+- easily tweak your BabylonJS scenes
+- export and reexport your scenes as many as you want without loosing your tweaks
 - avoid as much as possible writing code
+- do simple animations in a fast way
 
 ### For developpers
 
-<span style="color:#eb1a1b">\_r</span><span style="color:#2c789b">untime</span> will allow you to:
+<span style="color:#e0684b">\_r</span><span style="color:#201936">untime</span> will allow you to:
 - mass-select & filter elements in a easy way
+- manage scene files
+- quickly bind user interactions
+- handle custom metadata & events on assets
 
 ## Install
 
@@ -38,15 +44,15 @@ _r.launch({
 - (optionnal) [PEP](https://doc.babylonjs.com/how_to/interactions#pointer-interactions) to get touch events
 - that's it!
 
-### Usage
+### Integration
 
-Add the online dist in your `<head>` using
+Add the online dist in your `<head>` using:
 
 ```html
 <script src="https://unpkg.com/babylon-runtime@latest/dist/_r.min.js"></script>
 ```
 
-Or download locally from the [github repo releases](https://github.com/babylon-runtime/_r/releases).
+Or download and load it locally from the [github repo releases](https://github.com/babylon-runtime/_r/releases):
 
 ```html
 <!doctype html>
@@ -62,31 +68,50 @@ Or download locally from the [github repo releases](https://github.com/babylon-r
 </html>
 ```
 
-## Launch
+## Use
 
-No need to manually create the canvas, _r will do that for you, by using the [launch](api/launch/) function:
+As soon as _r is loaded, you can start using it in your BabylonJS app:
 
-```html
+```javascript
+var delayCreateScene = function () {
 
-<body>
-    <script type="text/javascript">
-        _r.launch({
-            scene : "assets/cornellBox.babylon",
-            activeCamera : "Camera"
+    var scene = new BABYLON.Scene(engine);
+    scene.createDefaultCamera(true, true, true);
+    scene.createDefaultEnvironment({createGround: false,createSkybox: false});
+
+    BABYLON.SceneLoader.ImportMesh(
+        "",
+        "assets/",
+        "cornellBox.babylon",
+        scene,
+        function () {
+            scene.activeCamera.target = new BABYLON.Vector3(0, 1.5, 0);
+            scene.activeCamera.beta = Math.PI / 2;
+            scene.activeCamera.radius = 10;
+
+            /* babylon runtime */
+            
+            _r.patch([
+                {
+                    "scene": {
+                        "ambientColor": "white"
+                    }
+                },
+                {
+                    "*:material": {
+                        "ambientColor": "#e0684b"
+                    }
+                }
+            ]);
+
+            /***/
         });
-    </script>
-</body>
 
+    return scene;
+};
 ```
 
-> This load the file **cornellBox.babylon** from the **assets/** folder, and set the camera named **Camera** as default scene active camera.
-
-<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="js,result" data-user="BabylonRuntime" data-slug-hash="VRrwxQ" data-preview="true" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="_r.launch - 01">
-  <span>See the Pen <a href="https://codepen.io/BabylonRuntime/pen/VRrwxQ/">
-  _r.launch - 01</a> by Babylon Runtime (<a href="https://codepen.io/BabylonRuntime">@BabylonRuntime</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+> using runtime inside a BJS native SceneLoader
 
 <br>
 

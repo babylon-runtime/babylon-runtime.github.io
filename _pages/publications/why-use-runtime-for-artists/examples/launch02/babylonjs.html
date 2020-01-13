@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Default BabylonJS page</title>
+    <meta charset="utf-8">
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+    <style>
+        html,
+        body {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #canvas {
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id='canvas'></canvas>
+    <script type="text/javascript">
+        var canvas = document.getElementById("canvas");
+        var engine = new BABYLON.Engine(canvas, true);
+        var scene = new BABYLON.Scene(engine);
+        // default camera, waiting to use the imported one
+        scene.createDefaultCamera();
+        // we need an env map as we are in PBR
+        scene.createDefaultEnvironment({
+            createGround: false,
+            createSkybox: false
+        });
+
+        BABYLON.SceneLoader.Append(
+            "https://raw.githubusercontent.com/babylon-runtime/_r.assets/master/cornellBox/exports/glb/",
+            "cornellBox.glb",
+            scene,
+            function (cornellBox) {
+                // activating imported camera
+                var camera = cornellBox.getCameraByName("Camera");
+                camera.speed = 0.1;
+                camera.minZ = 0.01;
+                camera.attachControl(canvas, true);
+                scene.activeCamera = camera;
+
+                var wall01Mtl = cornellBox.getMaterialByName("cornellBox.wall01.000");
+                wall01Mtl.albedoColor = BABYLON.Color3.Green();
+
+                var wall02Mtl = cornellBox.getMaterialByName("cornellBox.wall02.000");
+                wall02Mtl.albedoColor = BABYLON.Color3.Red();
+
+                var suzanneMtl = cornellBox.getMaterialByName("suzanne.000");
+                suzanneMtl.metallic = 1;
+                suzanneMtl.roughness = 0.15;
+
+                cornellBox.materials.forEach(function (mtl) {
+                    if ((mtl.name.indexOf("_r") != -1) ||
+                        (mtl.name.indexOf("logo") != -1)) {
+                        mtl.unlit = true;
+                        mtl.disableLighting = true;
+                    }
+                });
+
+                // uncomment below to launch the Inspector
+                // scene.debugLayer.show();
+            });
+
+        engine.runRenderLoop(function () {
+            scene.render();
+        });
+
+        window.addEventListener("resize", function () {
+            engine.resize();
+        });
+    </script>
+</body>
+
+</html>

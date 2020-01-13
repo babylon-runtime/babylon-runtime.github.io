@@ -3,7 +3,7 @@ main:
   - title: "Github"
     url: https://github.com/babylon-runtime/_r
 docs :
-  - title: "Install & Launch"
+  - title: "Install & Use"
     url: "/"
   - title: "Getting Started"
     children:
