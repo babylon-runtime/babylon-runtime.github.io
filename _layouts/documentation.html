@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include head.html %}
+<body>
+<div>
+    {% include sticky.html %}
+    <div class="tm-sidebar-left uk-visible@m">
+        {% include sidebar.html %}
+    </div>
+    <div class="tm-main uk-section uk-section-default">
+        <div id="main" class="uk-container uk-container-small uk-position-relative">
+            <div>
+                <h1>{{ page.title }}</h1>
+                <section>
+                    {{ content }}
+                </section>
+            </div>
+            {% if page.no_toc != true %}
+            <div class="tm-sidebar-right uk-visible@l">
+                <div uk-sticky="offset: 160" class="uk-sticky uk-active uk-sticky-below uk-sticky-fixed" style="position: fixed; top: 160px; width: 200px;">
+                    <ul id="sidebar-right" uk-scrollspy-nav="closest: li; scroll: true; offset: 100" class="uk-nav uk-nav-default tm-nav uk-nav-parent-icon">
+
+                    </ul>
+                </div>
+            </div>
+            <script>
+                jQuery(document).ready(function($) {
+                    var $list = $('#sidebar-right');
+                    $("#main section").find("h1, h2, h3, h4").each(function(title, element){
+                        var $element = $(element);
+                        $list.append('<li><a href="#'+ $element.attr('id') +'" class="'+ $element.prop('tagName') +'">'+ $element.html() +'</a></li>');
+                    })
+                    UIkit.scrollspy($list[0]);
+                })
+            </script>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% include footer.html %}
+</body>
+</html>

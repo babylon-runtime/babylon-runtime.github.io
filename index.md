@@ -1,9 +1,6 @@
 ---
 title: "Babylon Runtime Documentation"
-layout: single
-toc : true
-sidebar:
-   nav: "docs"  
+layout: documentation
 ---
 
 ## Code less, Babylon more
