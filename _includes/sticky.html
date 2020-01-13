@@ -1,49 +1,63 @@
 <div id="header" uk-sticky="media: 960" class="uk-navbar-container uk-sticky uk-active">
-    <div class="uk-container uk-container-expand">
-        <nav class="uk-navbar">
+    <div class="uk-container uk-visible@m uk-container-expand">
+        <nav class="uk-navbar" >
             <div class="uk-navbar-left">
+                <a href="/" class="uk-navbar-item">
+                    <img src="{{ 'assets/logo.png' | absolute_url}}" width="80px" height="80px"/>
+                </a>
+            </div>
+            <div class="uk-navbar-right">
                 <nav class="uk-navbar-container" uk-navbar>
-                    <a uk-navbar-toggle-icon="" href="#offcanvas" uk-toggle="target: #offcanvas" class="uk-navbar-toggle uk-hidden@m uk-icon uk-navbar-toggle-icon"><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="navbar-toggle-icon"><rect y="9" width="20" height="2"></rect><rect y="3" width="20" height="2"></rect><rect y="15" width="20" height="2"></rect></svg></a>
-                    <div class="uk-navbar-left">
-                        <a href="/" class="uk-navbar-item uk-logo">
-                            <img src="{{ 'assets/logo.png' | absolute_url}}" width="80px" height="80px"/>
-                        </a>
-                        <ul class="uk-navbar-nav uk-visible@m">
-                            <li class="uk-active"><a href="/documentation/">Documentation</a></li>
-                            <li><a href="/">Articles</a></li>
-                            <li><a href="/">API</a></li>
-                        </ul>
-                        <div class="uk-navbar-item">
-                            <form class="uk-search uk-search-default">
-                                <span uk-search-icon></span>
-                                <input class="uk-search-input" type="search" placeholder="Search...">
-                            </form>
-                        </div>
+                    <ul class="uk-navbar-nav">
+                        <li> <a href="/documentation/">Guide</a></li>
+                        <li><a href="/api/">API</a></li>
+                        <li><a href="">Examples</a></li>
+                        <li><a href="/help/">Help</a></li>
+                        <li><a href="/help/">Blog</a></li>
+                    </ul>
+                    <div class="uk-navbar-item">
+                        <form class="uk-search uk-search-default">
+                            <span uk-search-icon></span>
+                            <input class="uk-search-input" type="search" placeholder="Search...">
+                        </form>
+                    </div>
+                    <div class="uk-navbar-item">
+                        <a class="uk-navbar-item" href="https://github.com/babylon-runtime/_r" class="uk-icon-link" uk-icon="icon:github; ratio:2" target="_blank"></a>
                     </div>
                 </nav>
             </div>
-            <div class="uk-navbar-right">
-                <div class="uk-navbar-item uk-visible@m"><a href="../download" class="uk-button uk-button-default tm-button-default uk-icon">Download <canvas uk-icon="icon: download" width="20" height="20" class="uk-icon" hidden="true"></canvas><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="download"><polyline fill="none" stroke="#000" points="14,10 9.5,14.5 5,10"></polyline><rect x="3" y="17" width="13" height="1"></rect><line fill="none" stroke="#000" x1="9.5" y1="13.91" x2="9.5" y2="3"></line></svg></a></div>
-            </div>
         </nav>
     </div>
-</div>
-<div id="offcanvas" uk-offcanvas="mode: push; overlay:true" class="uk-offcanvas">
-    <div class="uk-offcanvas-bar">
-        <div class="uk-panel">
-            <h3>General</h3>
-            <ul class="uk-nav uk-nav-default tm-nav">
-                <li>
-                    <a href="/home.html">Home</a>
-                </li>
-                <li>
-                    <a href="/home.html">Articles</a>
-                </li>
-                <li>
-                    <a href="/home.html">API</a>
-                </li>
-            </ul>
-            {% include sidebar.html %}
-        </div>
+    <div class="uk-container uk-hidden@m">
+        <nav class="uk-navbar">
+            <div class="uk-navbar-left">
+                <ul class="uk-navbar-nav">
+                    <li><a href="/" class="uk-icon-link" uk-icon="home"></a></li>
+                    <li><a href="/documentation/">Guide</a></li>
+                    <li><a href="/api/">API</a></li>
+                    <li><a href="">Examples</a></li>
+                    <li><a href="/help/">Help</a></li>
+                    <li><a href="/help/">Blog</a></li>
+                </ul>
+            </div>
+            <div class="uk-navbar-right">
+                <ul class="uk-navbar-nav">
+                    <li> <a href="https://github.com/babylon-runtime/_r" class="uk-icon-link" uk-icon="icon:github;" target="_blank"></a></li>
+                    <li> <a class="uk-icon-link uk-navbar-toggle" href="#" uk-search-icon></a></li>
+                </ul>
+            </div>
+            <div class="uk-navbar-dropdown" uk-drop="mode: click; cls-drop: uk-navbar-dropdown; boundary: !nav">
+                <div class="uk-grid-small uk-flex-middle" uk-grid>
+                    <div class="uk-width-expand">
+                        <form class="uk-search uk-search-navbar uk-width-1-1">
+                            <input class="uk-search-input" type="search" placeholder="Search..." autofocus>
+                        </form>
+                    </div>
+                    <div class="uk-width-auto">
+                        <a class="uk-navbar-dropdown-close" href="#" uk-close></a>
+                    </div>
+                </div>
+            </div>
+        </nav>
     </div>
 </div>
