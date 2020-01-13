@@ -4,10 +4,6 @@ Available on [babylon-runtime.github.io](https://babylon-runtime.github.io/)
 
 ## Contribute
 
-Jekyll theme used : https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
-
-### Install locally
-
 1. Clone repository
 ```
 git clone https://github.com/babylon-runtime/babylon-runtime.github.io.git
@@ -27,6 +23,9 @@ bundle install
 
 5. Serve the site
 ```
-bundle exec jekyll serve
+./serve.bash
 ```
 and visit it at [http://127.0.0.1:4000](http://127.0.0.1:4000)
+
+6. [Pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)
+
