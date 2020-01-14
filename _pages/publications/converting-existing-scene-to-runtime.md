@@ -188,60 +188,121 @@ cameras.patch:
     }
 }]
 ```
+And, let's be crazy, also our scene:
+
+scene.patch:
+```javascript
+[{
+    "scene": {
+        clearColor: "#10111e",
+        ambientColor: "white",
+    }
+}]
+```
+
 
 ## Simplify the loading
 
-We're just going to get rid of the most of the code, using `_r.launch()`. The only code inside `<body>` tag that we'll keep untouched for now will be the lightmap assignation processing:
+We're just going to get rid of the most of the code, using `_r.launch()`. The only code inside `<body>` tag that we'll keep untouched - for now - will be the lightmap assignation processing.
 
-```javascript
-function assignLightmapOnMaterial(material, lightmap) {
-    material.lightmapTexture = lightmap;
-    // we want using UV2
-    material.lightmapTexture.coordinatesIndex = 1;
-    // our lightmap workflow is a darken one
-    material.useLightmapAsShadowmap = true;
-}
-
-scene.clearColor = new BABYLON.Color3.FromHexString("#10111e");
-/** LIGHTMAP ASSIGNATION PROCESS **/
-scene.ambientColor = BABYLON.Color3.White();
-// lightmapped meshes list
-var lightmappedMeshes = ["wallz.000", "furnitures.000"];
-// we start cycling through them
-for (var i = 0; i < lightmappedMeshes.length; i++) {
-    var currentMesh = scene.getMeshByName(lightmappedMeshes[i]);
-    // lightmap loading
-    var currentMeshLightmap = new BABYLON.Texture(
-        "assets/lightmaps/" + currentMesh.name + "_LM.jpg",
-        scene
-    );
-    currentMeshLightmap.name = currentMesh.name + "_LM";
-    // we start cycling through each mesh material(s)
-    if (!currentMesh.material) {
-        // no material so skipping
-        continue;
-    } else if (!currentMesh.material.subMaterials) {
-        // no subMaterials
-        assignLightmapOnMaterial(currentMesh.material, currentMeshLightmap);
-    } else if (currentMesh.material.subMaterials) {
-        // we cycle through subMaterials
-        for (var j = 0; j < currentMesh.material.subMaterials.length; j++) {
-            assignLightmapOnMaterial(currentMesh.material.subMaterials[j], currentMeshLightmap);
-        }
-    }
-}
-```
-
-Yep, even the canvas and engine renderloop are handled by \_runtime. Steps will be:
+As even the canvas and engine renderloop can be handled by \_runtime, steps will be:
 
 - delete `<canvas>` tags
-- delete all engine and scene management
+- delete all engine and scene creation
 - replace `SceneLoader.Append()` with `_r.launch()`
-- use `_r.ready()` to be able to use our javascript quoted above
-- we can also create a tiny path for scene (clear & ambient colors)
+- use `_r.ready()` to be able to use our lightmap javascript
+
+Note that it's also possible to keep using your canvas or engine, in case you want custom [EngineOptions](https://doc.babylonjs.com/api/classes/babylon.engine#constructor) for example.
+
+As we're not using a camera stored into the .babylon, but created from scratch, we need to include its creation inside our cameras.patch, then make it current activeCamera in our `_r.ready()`.
+
+To do that, we'll use the "execute" patch functionnality before camera patch properties we've already made:
+
+```javascript
+[{
+        "exec": function () {
+            // we can do the code we want here,
+            // but be sure to "return" the camera object
+            return new BABYLON.ArcRotateCamera(
+                "arcRotateCamera",
+                1, 1, 1, BABYLON.Vector3.Zero(),
+                _r.scene);
+        }
+    },
+    {
+        "arcRotateCamera": {
+            alpha: 5.5,
+            beta: 1.2,
+            [...]
+```
+
+> camera is created, then patched
 
 So here the new structure:
 
+```javascript
+<!doctype html>
+<html>
+
+<head>
+    <title>Converting a raw BJS scene to _runtime</title>
+    <meta charset="UTF-8">
+    <script src="js/babylon.js"></script>
+    <script src="js/pep.min.js"></script>
+    <script src="js/_r.min.js"></script>
+    <style>
+        html,
+        body {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: tahoma, arial, sans-serif;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <script type="text/javascript">
+        _r.launch({
+            scene: "assets/scene-BJS.babylon",
+            patch: [
+                "assets/patches/scene.patch",
+                "assets/patches/cameras.patch",
+                "assets/patches/tweaks.patch",
+            ]
+        });
+
+        _r.ready(function () {
+
+            _r.activateCamera("arcRotateCamera");
+
+            /** LIGHTMAP ASSIGNATION PROCESS **/
+            [...]
+        });
+    </script>
+</body>
+
+</html>
+```
+
+Notice the loss of `#canvas` css which is now useless (\_runtime automatically create a canvas with these parameters).
+
+## Get our hands dirty
+
+Time to see how to deal with lightmaps.
+
+In my original tutorial, my javascript code was as simple as possible, for people able to understand it as much as possible. But this had the inconvenient to assign the texture file even if it was still not downloaded! In raw javascript we need to play with the [onLoad](https://doc.babylonjs.com/api/classes/babylon.texture#constructor) callback, but this is tricky to explain and understand when you're not a dev ([here a playground](https://www.babylonjs-playground.com/#4AJ16M#15) using this callback).
+
+\_runtime will here be useful for us by:
+
+- loading and creating the lightmap texture
+- patching our targets materials and assigning them the right lightmap
+
+*(clone materials, texture creation, looping inside materials inside our meshes selector)*
+
 ## Adding few features
 
-- *loading screen*
+- *custom loading screen*
