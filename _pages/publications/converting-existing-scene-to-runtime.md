@@ -1,12 +1,12 @@
 # Using \_runtime in an existing scene
 
-We will take as example a scene that you maybe already seen, the one I've made for a tutorial about Blender to BabylonJS, including lightmaps management: [From Blender to BabylonJS workflow](https://nothing-is-3d.com/data/medias/folio/3drealtime/lightmaps-workflow-tutorial/demo.html).
+We will take as an example a scene you may have seen before, the one I've made for a tutorial about Blender to BabylonJS, including lightmaps management: [From Blender to BabylonJS workflow](https://nothing-is-3d.com/data/medias/folio/3drealtime/lightmaps-workflow-tutorial/demo.html).
 
 ![thumbnail](converting-existing-scene-to-runtime/thumbnail.jpg)
 
 > notice this scene is in standard workflow, not PBR
 
-[Download link](https://www.nothing-is-3d.com/article27/from-blender-to-babylonjs#tocWorkflowFewWords) is available in the tutorial. Once unzip, delete all html in the root of `/BJS/` folder except `tuto-final.html`, then rename this particular file into `index.html`, and we're ready to go.
+[Download link](https://www.nothing-is-3d.com/article27/from-blender-to-babylonjs#tocWorkflowFewWords) is available in the tutorial. Once unzip, delete all the html files inside the root of `/BJS/` folder except `tuto-final.html`, then rename this particular file into `index.html`, and we're ready to go.
 
 ![tree-structure](converting-existing-scene-to-runtime/tree-structure.png)
 
@@ -26,7 +26,7 @@ You may want to [show](https://doc.babylonjs.com/how_to/debug_layer) and use the
 
 ## Patch...works!
 
-At this time, which is not even yet the beginning, you already be able to use \_runtime! In your browser console, try to copy-paste this command line:
+At this time, which is not even yet the beginning, you already are able to use \_runtime! In your browser console, try to copy-paste this command line:
 
 ```javascript
 _r.patch([
@@ -39,7 +39,7 @@ _r.patch([
 ]);
 ```
 
-If you've already took a look on [the documentation](https://babylon-runtime.github.io/), you probably guess the result this patch give us:
+If you've already took a look on [the documentation](https://babylon-runtime.github.io/), you probably guessed the result this patch is giving us:
 
 ![testing-patch](converting-existing-scene-to-runtime/testing-patch.gif)
 
@@ -126,9 +126,9 @@ _r.patch([
 /* tools */
 ```
 
-Notice that \_r allow you to place comments inside patches.
+Notice that \_r allows you to place comments inside the patches.
 
-And why not put this in a dedicated file, for clarity? We can create a `/patches/` folder inside `/assets/` and name our patch file as we want (except the extension), here `tweaks.patch`:
+And why not to put this inside a dedicated file, for more clarity? We can create a `/patches/` folder inside `/assets/` and name our patch file the way we want (except the extension), here `tweaks.patch`:
 
 ```javascript
 /** END OF LIGHTMAP ASSIGNATION PROCESS **/
@@ -205,7 +205,7 @@ scene.patch:
 
 ## Simplify the loading
 
-We're just going to get rid of the most of the code, using `_r.launch()`. The only code inside `<body>` tag that we'll keep untouched - for now - will be the lightmap assignation processing.
+We're just going to get rid of most of the code, using `_r.launch()`. The only code inside `<body>` tag that we'll keep untouched - for now - will be the lightmap assignation processing.
 
 As even the canvas and engine renderloop can be handled by \_runtime, steps will be:
 
@@ -216,9 +216,9 @@ As even the canvas and engine renderloop can be handled by \_runtime, steps will
 
 Note that it's also possible to keep using your canvas or engine, in case you want custom [EngineOptions](https://doc.babylonjs.com/api/classes/babylon.engine#constructor) for example.
 
-As we're not using a camera stored into the .babylon, but created from scratch, we need to include its creation inside our cameras.patch, then make it current activeCamera in our `_r.ready()`.
+As we're not using a camera stored into the .babylon, but a created one from scratch, we need to include its creation inside our cameras.patch, then make it current activeCamera in our `_r.ready()`.
 
-To do that, we'll use the "execute" patch functionnality before camera patch properties we've already made:
+To do that, we'll use the "execute" patch functionnality before the camera patch properties we've already made:
 
 ```javascript
 [{
@@ -296,7 +296,7 @@ Notice the loss of `#canvas` css which is now useless (\_runtime automatically c
 
 Time to see how to deal with lightmaps.
 
-In my original tutorial, my javascript code was as simple as possible, for people able to understand it as much as possible. But this had the inconvenient to assign the texture file even if it was still not downloaded! In raw javascript we need to play with the [onLoad](https://doc.babylonjs.com/api/classes/babylon.texture#constructor) callback, but this is tricky to explain and understand when you're not a dev ([here a playground](https://www.babylonjs-playground.com/#4AJ16M#15) using this callback).
+In my original tutorial, my javascript code was as simple as possible, to allow people to understand it as much as possible. But this had the inconvenient to assign the texture file even if it was still not downloaded! In raw javascript we need to play with the [onLoad](https://doc.babylonjs.com/api/classes/babylon.texture#constructor) callback, but this is tricky to explain and understand when you're not a dev ([here a playground](https://www.babylonjs-playground.com/#4AJ16M#15) using this callback).
 
 \_runtime will here be useful for us by:
 
