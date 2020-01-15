@@ -22,6 +22,8 @@ Of course, we'll also need to get the [last version of \_runtime](https://github
 
 > this time, ready to go for real!
 
+You may want to [show](https://doc.babylonjs.com/how_to/debug_layer) and use the inspector. If so, as we're on BJS v3, don't forget to [download the right file](https://github.com/BabylonJS/Babylon.js/blob/master/dist/previous%20releases/3.3/inspector/babylon.inspector.bundle.js) (click on Raw button), use `BABYLON.DebugLayer.InspectorURL = "js/babylon.inspector.bundle.js";` and you're now able to call it using `scene.debugLayer.show();`.
+
 ## Patch...works!
 
 At this time, which is not even yet the beginning, you already be able to use \_runtime! In your browser console, try to copy-paste this command line:
@@ -306,3 +308,4 @@ In my original tutorial, my javascript code was as simple as possible, for peopl
 ## Adding few features
 
 - *custom loading screen*
+- *interactions* (light on/off => disable lightmaps? or using a new set)
