@@ -8,18 +8,18 @@ When I (Vincent Lamy, aka [V!nc3r](https://forum.babylonjs.com/u/Vinc3r/summary)
 
 Actually there is an [editor](http://editor.babylonjs.com/) made by a [BJS user](https://github.com/julien-moreau), which is a great piece of work but our workflow soon get into problematics: artists often need to export & re-export 3D scenes multiple times in a day, and unfortunatly by using the editor you're loosing all your wonderful modifications on the BJS side! Plus as a team we need to work at the same time on our applications.
 
-That's why in 2016, my teamate (Fabien Le Vavasseur aka [sharp](https://forum.babylonjs.com/u/sharp/summary)) had in mind to create a kind of overlay of BJS to help me speed up my tasks and not be restrict by my javascript skills, named **\_runtime**.
+That's why in 2016, my teamate (Fabien Le Vavasseur aka [sharp](https://forum.babylonjs.com/u/sharp/summary)) had in mind to create a kind of overlay of BJS to help me speed up my tasks and not be limited by my javascript skills, named **\_runtime**.
 
 ![_runtime-logo-tiny](why-use-runtime-for-artists/_runtime-logo-tiny.png)
 
-This tool allowed me this kind of efficient worklow:
+This tool allows me this kind of efficient worklow:
 
 1. Export my scene from Blender (or any 3D modeler),
 2. Tweak materials and interactions in BabylonJS,
 3. Come back to Blender to make some modifications, then re-export my scene to BJS...
 4. ... and not loosing any of my tweaks!
 
-We called this not-loosed-modifications: **patchs**.
+We call this not-loosed-modifications: **patches**.
 
 ![starting-bjs](why-use-runtime-for-artists/starting-bjs.jpg)
 
@@ -78,7 +78,7 @@ I often had to deal with hundred of materials, and be able to patch one particul
 
 ![hundreds-of-materials](why-use-runtime-for-artists/hundreds-of-materials.jpg)
 
-> an scene example with hundreds of materials, organized in several patch files
+> a scene example with hundreds of materials, organized in several patch files
 
 ## Launch & See
 
@@ -150,7 +150,7 @@ It just works!
 
 > default CornellBox scene with default PBR env
 
-Now, how to patch our scene? Easiest way to do so is to call our patches during launch. Try to guess what each patch are doing:
+Now, how to patch our scene? Easiest way to do so is to call our patches during launch. Try to guess what each patch is doing:
 
 ```javascript
 _r.launch({
@@ -239,17 +239,17 @@ BABYLON.SceneLoader.Append(
 
 ## Tool's potential
 
-Below you'll find a bunch of screenshots from 3D applications running with the great help of \_runtime. They was made by the team of Axeon Software, composed by [Fabien Le Vavasseur](https://forum.babylonjs.com/u/sharp/) (core dev of \_runtime), [Sébastien Montlibert](https://forum.babylonjs.com/u/devaxeon/) (dev), [Quentin Davy](https://forum.babylonjs.com/u/crotmoul) (3D artist) and [myself](https://forum.babylonjs.com/u/Vinc3r/activity) (3D artist playing a bit with code), during the past years (since 2016 actually).
+Below you'll find a bunch of screenshots from 3D applications running with the great help of \_runtime. They were made by the team of Axeon Software, composed with [Fabien Le Vavasseur](https://forum.babylonjs.com/u/sharp/) (core dev of \_runtime), [Sébastien Montlibert](https://forum.babylonjs.com/u/devaxeon/) (dev), [Quentin Davy](https://forum.babylonjs.com/u/crotmoul) (3D artist) and [myself](https://forum.babylonjs.com/u/Vinc3r/activity) (3D artist playing a bit with code), during the past years (since 2016 actually).
 
 As you will see, all these scenes have a lot of assets, and our little artists team would have pulled each other's hair out if we had to tweak all of these in raw javascript. Even our devs use \_runtime to ease their scripts (similar as using jquery for web).
 
-So, feel free to try \_runtime anytime, it can be easily integrated into an already existing project, without breaking everything, just check official website to know more: https://babylon-runtime.github.io/
+So, feel free to try \_runtime anytime, it can be easily integrated into an already existing project, without breaking everything, just check the official website to know more: https://babylon-runtime.github.io/
 
 Oh, yep, it's open source :)
 
 Demo | Description
 :---: | :---
-Hotel Atlantis<br>![atlantis](why-use-runtime-for-artists/demo/atlantis.jpg) | [Available online](http://www.axeon.fr/CLIENT/UAE/Showreel/MAQUETTE_3D/3DRT/)<br>Allow a day/night circle.<br><br>70 drawcalls (16 mat, 592 meshes), 19 MB, 500k tri 
+Hotel Atlantis<br>![atlantis](why-use-runtime-for-artists/demo/atlantis.jpg) | [Available online](http://www.axeon.fr/CLIENT/UAE/Showreel/MAQUETTE_3D/3DRT/)<br>Allows a day/night circle.<br><br>70 drawcalls (16 mat, 592 meshes), 19 MB, 500k tri 
 Château-Gaillard<br>![chateau-gaillard](why-use-runtime-for-artists/demo/chateau-gaillard.jpg) | (not yet available online)<br>Castle reconstruction as it was from 12th century.<br><br>159 drawcalls (153 mat, 631 meshes), 130 MB, 753k tri 
 Virtual Staging<br>![virtual-staging](why-use-runtime-for-artists/demo/virtual-staging.jpg) | [Available online](http://axeon.fr/CLIENT/INFIME/Virtual_Staging_V2/).<br>Appartment configurator.<br><br>450 drawcalls (444 mat, 542 meshes), 125 MB, 564k tri
 La Bastille<br>![bastille](why-use-runtime-for-artists/demo/bastille.jpg) | [Available online](http://www.axeon.fr/CLIENT/AXEON_SOFTWARE/PARIS_Bastille/)<br>Bastille reconstruction before 1789.<br><br>406 drawcalls (252 mat, 540 meshes), 60 MB, 848k tri 
@@ -257,6 +257,6 @@ Petite duchesse<br>![3dscan-duchesse](why-use-runtime-for-artists/demo/3dscan-du
 Eiffage - Hypérion<br>![hyperion](why-use-runtime-for-artists/demo/hyperion.jpg) | [Available online](http://axeon.fr/CLIENT/EIFFAGE/Bordeaux.Hyperion/MAQUETTE_RT/).<br>Building project in Bordeaux (France).<br><br>833 drawcalls (378 mat, 1535 meshes), 127 MB, 457k tri 
 Ilôt Vernon 1950<br>![ilot-vernon](why-use-runtime-for-artists/demo/ilot-vernon.jpg) | [Available online](https://www.axeon.fr/CLIENT/AXEON_360/3DScan/Vernon_Pasteur/) (check LOD HD 400).<br>Based on a 2017 simplified 3D scan, reconstruction of the building in 1950.<br><br>133 drawcalls (127 mat, 174 meshes), 48 MB, 218k tri 
 MacArthurGlen - Cannock<br>![mag-cannock](why-use-runtime-for-artists/demo/mag-cannock.jpg) | Outlet village project.<br><br>204 drawcalls (151 mat, 1527 meshes), 75 MB, 2 600k tri 
-Rosary<br>![misbaha](why-use-runtime-for-artists/demo/misbaha.jpg) | Ancient Koranic rosary.<br><br>103 drawcalls (47 mat, 204 meshes), 20 MB, 283k tri 
+Rosary<br>![misbaha](why-use-runtime-for-artists/demo/misbaha.jpg) | Ancient Quranic rosary.<br><br>103 drawcalls (47 mat, 204 meshes), 20 MB, 283k tri 
 Nexity - Asnières<br>![nexity-asnieres](why-use-runtime-for-artists/demo/nexity-asnieres.jpg) | [Available online](http://axeon.fr/CLIENT/NEXITY/Asnieres/).<br>Building project in Asnieres (France) (T3 appart in screenshot).<br><br>160 drawcalls (254 mat, 43 meshes), 133 MB , 372k tri
 
