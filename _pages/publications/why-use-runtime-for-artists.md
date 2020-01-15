@@ -247,7 +247,7 @@ As you will see, all these scenes have a lot of assets, and our little artists t
 
 So, feel free to try \_runtime anytime, it can be easily integrated into an already existing project, without breaking everything, just check the official website to know more: https://babylon-runtime.github.io/
 
-Oh, yep, it's open source :)
+Oh and, yep, it's open source :)
 
 Demo | Description
 :---: | :---
