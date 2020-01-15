@@ -239,6 +239,8 @@ BABYLON.SceneLoader.Append(
 
 ## Tool's potential
 
+As seen below, \_runtime is speeding up and improving the way an artist can create a 3D scene and its material's tweaking. But it doesn't stop there! In the same way, you'll be able to create and manage every parts of your 3D application, as cameras, animations, scene's graphic settings, and every cool possibilities that Babylon is offering us to imagine and build our own 3D worlds. 
+
 Below you'll find a bunch of screenshots from 3D applications running with the great help of \_runtime. They were made by the team of Axeon Software, composed with [Fabien Le Vavasseur](https://forum.babylonjs.com/u/sharp/) (core dev of \_runtime), [Sébastien Montlibert](https://forum.babylonjs.com/u/devaxeon/) (dev), [Quentin Davy](https://forum.babylonjs.com/u/crotmoul) (3D artist) and [myself](https://forum.babylonjs.com/u/Vinc3r/activity) (3D artist playing a bit with code), during the past years (since 2016 actually).
 
 As you will see, all these scenes have a lot of assets, and our little artists team would have pulled each other's hair out if we had to tweak all of these in raw javascript. Even our devs use \_runtime to ease their scripts (similar as using jquery for web).
