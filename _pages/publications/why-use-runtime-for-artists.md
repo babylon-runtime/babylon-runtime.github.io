@@ -150,6 +150,8 @@ It just works!
 
 > default CornellBox scene with default PBR env
 
+Demo: [![Edit babylonjs-with-runtime](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/Vinc3r/codesandbox-project/tree/master/BabylonJS/_runtime/publications/why-artists-should-use?fontsize=14&hidenavigation=1&theme=dark)
+
 Now, how to patch our scene? Easiest way to do so is to call our patches during launch. Try to guess what each patch is doing:
 
 ```javascript
@@ -199,47 +201,13 @@ _r.launch({
 
 ![launch-02](why-use-runtime-for-artists/launch-02.jpg)
 
-For comparison, the raw javascript:
+Demo: [![Edit patch example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/patch-example-rqrox?fontsize=14&hidenavigation=1&theme=dark)
 
-```javascript
-BABYLON.SceneLoader.Append(
-    "",
-    "cornellBox.glb",
-    scene,
-    function (cornellBox) {
-        // activating imported camera
-        var camera = cornellBox.getCameraByName("Camera");
-        camera.speed = 0.1;
-        camera.minZ = 0.01;
-        camera.attachControl(canvas, true);
-        scene.activeCamera = camera;
-
-        var wall01Mtl = cornellBox.getMaterialByName("cornellBox.wall01.000");
-        wall01Mtl.albedoColor = BABYLON.Color3.Green();
-
-        var wall02Mtl = cornellBox.getMaterialByName("cornellBox.wall02.000");
-        wall02Mtl.albedoColor = BABYLON.Color3.Red();
-
-        var suzanneMtl = cornellBox.getMaterialByName("suzanne.000");
-        suzanneMtl.metallic = 1;
-        suzanneMtl.roughness = 0.15;
-
-        cornellBox.materials.forEach(function (mtl) {
-            if ((mtl.name.indexOf("_r") != -1) ||
-                (mtl.name.indexOf("logo") != -1)) {
-                mtl.unlit = true;
-                mtl.disableLighting = true;
-            }
-        });
-
-        // uncomment below to launch the Inspector
-        // scene.debugLayer.show();
-    });
-```
+For comparison, you can also check this [raw javascript example](https://codesandbox.io/s/patch-example-raw-js-fqmfc?fontsize=14&hidenavigation=1&theme=dark).
 
 ## Tool's potential
 
-As seen below, \_runtime is speeding up and improving the way an artist can create a 3D scene and its material's tweaking. But it doesn't stop there! In the same way, you'll be able to create and manage every parts of your 3D application, as cameras, animations, scene's graphic settings, and every cool possibilities that Babylon is offering us to imagine and build our own 3D worlds. 
+As seen below, \_runtime is speeding up and improving the way an artist can create a 3D scene and its material's tweaking. But it doesn't stop there! In the same way, you'll be able to create and manage every parts of your 3D application, as [cameras](https://codesandbox.io/s/switch-camera-example-qbrew?fontsize=14&hidenavigation=1&theme=dark), animations, user interactions, scene's graphic settings, and every cool possibilities that Babylon is offering us to imagine and build our own 3D worlds. 
 
 Below you'll find a bunch of screenshots from 3D applications running with the great help of \_runtime. They were made by the team of Axeon Software, composed with [Fabien Le Vavasseur](https://forum.babylonjs.com/u/sharp/) (core dev of \_runtime), [Sébastien Montlibert](https://forum.babylonjs.com/u/devaxeon/) (dev), [Quentin Davy](https://forum.babylonjs.com/u/crotmoul) (3D artist) and [myself](https://forum.babylonjs.com/u/Vinc3r/activity) (3D artist playing a bit with code), during the past years (since 2016 actually).
 
