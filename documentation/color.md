@@ -1,4 +1,4 @@
 ---
-title : Launch 
+title : Colors 
 layout : documentation
 ---

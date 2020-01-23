@@ -1,4 +1,4 @@
 ---
-title : Launch 
+title : Animate 
 layout : documentation
 ---

@@ -23,7 +23,7 @@ bundle install
 
 5. Serve the site
 ```
-./serve.bash
+npm run serve
 ```
 and visit it at [http://127.0.0.1:4000](http://127.0.0.1:4000)
 

@@ -1,4 +1,4 @@
 ---
-title : Launch 
+title : Events 
 layout : documentation
 ---

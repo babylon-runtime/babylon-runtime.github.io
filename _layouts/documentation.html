@@ -4,6 +4,43 @@
 <body>
 <div>
     {% include sticky.html %}
+    <div class="uk-hidden@m">
+        <div uk-sticky>
+            <div class="uk-card uk-card-default uk-card-body" style="padding: 20px">
+                <!-- This is a button toggling the off-canvas -->
+                <button uk-toggle="target: #menu-documentation" type="button" uk-icon="menu"></button>
+                <a class="uk-float-right" href="" uk-totop uk-scroll></a>
+                <!-- This is an anchor toggling the off-canvas -->
+                <a  href="#menu-documentation" uk-toggle></a>
+
+                <!-- This is the off-canvas -->
+                <div id="menu-documentation" uk-offcanvas>
+                    <div class="uk-offcanvas-bar">
+                        <button class="uk-offcanvas-close" type="button" uk-close></button>
+                        <h3>General</h3>
+                        <ul class="uk-nav uk-nav-default tm-nav">
+                            <li>
+                                <a href="#">Guide</a>
+                            </li>
+                            <li>
+                                <a href="#">API</a>
+                            </li>
+                            <li>
+                                <a href="#">Examples</a>
+                            </li>
+                            <li>
+                                <a href="#">Help</a>
+                            </li>
+                            <li>
+                                <a href="#">Blog</a>
+                            </li>
+                        {% include sidebar.html %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="tm-sidebar-left uk-visible@m">
         {% include sidebar.html %}
     </div>

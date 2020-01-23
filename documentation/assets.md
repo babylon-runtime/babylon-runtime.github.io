@@ -1,4 +1,4 @@
 ---
-title : Launch 
+title : Assets management 
 layout : documentation
 ---

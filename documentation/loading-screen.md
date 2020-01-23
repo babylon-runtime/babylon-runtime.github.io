@@ -1,4 +1,4 @@
 ---
-title : Launch 
+title : Loading Screen 
 layout : documentation
 ---

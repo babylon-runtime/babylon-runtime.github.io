@@ -1,0 +1,20 @@
+{
+  "name": "babylon-runtime.github.io",
+  "version": "1.0.0",
+  "description": "Available on [babylon-runtime.github.io](https://babylon-runtime.github.io/)",
+  "main": "index.js",
+  "scripts": {
+    "serve": "bash serve.bash"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/babylon-runtime/babylon-runtime.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/babylon-runtime/babylon-runtime.github.io/issues"
+  },
+  "homepage": "https://github.com/babylon-runtime/babylon-runtime.github.io#readme"
+}

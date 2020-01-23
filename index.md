@@ -1,6 +1,6 @@
 ---
 title: "Babylon Runtime Documentation"
-layout: documentation
+layout: home
 ---
 
 ## Code less, Babylon more

@@ -1,4 +1,4 @@
 ---
-title : Launch 
+title : Functions in patch 
 layout : documentation
 ---
