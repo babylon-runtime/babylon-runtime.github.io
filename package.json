@@ -4,7 +4,7 @@
   "description": "Available on [babylon-runtime.github.io](https://babylon-runtime.github.io/)",
   "main": "index.js",
   "scripts": {
-    "serve": "bash serve.bash"
+    "serve": "bundle exec jekyll serve"
   },
   "repository": {
     "type": "git",
