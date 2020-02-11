@@ -9,7 +9,7 @@ layout: home
 
 \_runtime, aka \_r, is a lightweight *&laquo;write less, do more&raquo;* [BabylonJS](https://www.babylonjs.com/) library.
 
-The purpose of \_r is to make BabylonJS much easier to use and maintain in the 3D workflow, for both artists and developpers.
+The purpose of \_r is to make BabylonJS much easier to use and maintain in the 3D workflow, for both artists and developers.
 
 ```javascript
 _r.patch([{
@@ -28,7 +28,7 @@ _r.patch([{
 - avoid as much as possible writing code
 - do simple animations in a fast way
 
-### For developpers
+### For developers
 
 \_runtime will allow you to:
 - mass-select & filter elements in a easy way
