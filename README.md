@@ -39,5 +39,6 @@ and visit it at [http://127.0.0.1:4000](http://127.0.0.1:4000)
 *This is a beautiful logo.*
 ```
 - \_r should be write in markdown as `\_r` (\\ char is here to avoid conflict with markdown syntax)
+- \_runtime should be write also with the `\_` char as prefix
 - codeblocks should have langage name specified. example: ` ```js `
 
