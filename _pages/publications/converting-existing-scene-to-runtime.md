@@ -3,8 +3,7 @@
 We will take as an example a scene you may have seen before, the one I've made for a tutorial about Blender to BabylonJS, including lightmaps management: [From Blender to BabylonJS workflow](https://nothing-is-3d.com/data/medias/folio/3drealtime/lightmaps-workflow-tutorial/demo.html).
 
 ![thumbnail](converting-existing-scene-to-runtime/thumbnail.jpg)
-
-> notice this scene is in standard workflow, not PBR
+*notice this scene is in standard workflow, not PBR*
 
 [Download link](https://www.nothing-is-3d.com/article27/from-blender-to-babylonjs#tocWorkflowFewWords) is available in the tutorial. Once unzip, delete all the html files inside the root of `/BJS/` folder except `tuto-final.html`, then rename this particular file into `index.html`, and we're ready to go.
 
@@ -19,8 +18,7 @@ Of course, we'll also need to get the [last version of \_runtime](https://github
 <script src="js/pep.min.js"></script>
 <script src="js/_r.min.js"></script>
 ```
-
-> this time, ready to go for real!
+*this time, ready to go for real!*
 
 You may want to [show](https://doc.babylonjs.com/how_to/debug_layer) and use the inspector. If so, as we're on BJS v3, don't forget to [download the right file](https://github.com/BabylonJS/Babylon.js/blob/master/dist/previous%20releases/3.3/inspector/babylon.inspector.bundle.js) (click on Raw button), use `BABYLON.DebugLayer.InspectorURL = "js/babylon.inspector.bundle.js";` and you're now able to call it using `scene.debugLayer.show();`.
 
@@ -42,8 +40,7 @@ _r.patch([
 If you've already took a look on [the documentation](https://babylon-runtime.github.io/), you probably guessed the result this patch is giving us:
 
 ![testing-patch](converting-existing-scene-to-runtime/testing-patch.gif)
-
-> Patch patching. (just reload the page to cancel)
+*Patch patching. (just reload the page to cancel)*
 
 Notice that in this exercice we will do a full convertion of our scene, which is already tweaked and finalized, but in other existing projects you can just keep them as they are and just call \_runtime when needed.
 
@@ -60,8 +57,7 @@ _r.patch([{
     }
 }]);
 ```
-
-> This will give the exact same result as we got when using the command line into the browser console. (don't forget to remove this \_r.patch before continuing this tutorial)
+*This will give the exact same result as we got when using the command line into the browser console. (don't forget to remove this \_r.patch before continuing this tutorial)*
 
 So, let's start to convert the easiest part: mesh & material tweaking (line 100 to 130). We just have to use the string part of `scene.getMaterialByName("scene_BJS.lampFabric01.000")` as a \_runtime selector `{"scene_BJS.lampFabric01.000":{ }}`.
 
@@ -137,8 +133,7 @@ _r.patch(["assets/patches/tweaks.patch"]);
 
 /* tools */
 ```
-
-> Better.
+*Better.*
 
 Actually, we can also patch our camera using a camera.patch for example.
 
@@ -237,8 +232,7 @@ To do that, we'll use the "execute" patch functionnality before the camera patch
             beta: 1.2,
             [...]
 ```
-
-> camera is created, then patched
+*camera is created, then patched*
 
 So here the new structure:
 

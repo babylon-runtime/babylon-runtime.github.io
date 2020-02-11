@@ -22,8 +22,7 @@ This tool allows me this kind of efficient worklow:
 We call this not-loosed-modifications: **patches**.
 
 ![starting-bjs](why-use-runtime-for-artists/starting-bjs.jpg)
-
-> one of my firsts tries using BabylonJS
+*one of my firsts tries using BabylonJS*
 
 ## Time to \_run
 
@@ -69,16 +68,14 @@ _r.patch([
     }
 ]);
 ```
-
-> notice the "\*" char which means "no matter what characters you found here"
+*notice the `*` char which means "no matter what characters you found here"*
 
 If you're not very comfortable with code, as most artists are, you probably already understand how \_runtime could benefit to you.
 
 I often had to deal with hundred of materials, and be able to patch one particular or a bunch of them in a short time is enjoyable. Plus when you work with other artists, they can quickly find and modify an existing patch (a simple Ctrl+F and you're ready to go).
 
 ![hundreds-of-materials](why-use-runtime-for-artists/hundreds-of-materials.jpg)
-
-> a scene example with hundreds of materials, organized in several patch files
+*a scene example with hundreds of materials, organized in several patch files*
 
 ## Launch & See
 
@@ -147,8 +144,7 @@ As for \_runtime, you just have to use the `_r.launch` function:
 It just works!
 
 ![first-launch-01](why-use-runtime-for-artists/first-launch-01.jpg)
-
-> default CornellBox scene with default PBR env
+*default CornellBox scene with default PBR env*
 
 Demo: [![Edit babylonjs-with-runtime](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/Vinc3r/codesandbox-project/tree/master/BabylonJS/_runtime/publications/why-artists-should-use?fontsize=14&hidenavigation=1&theme=dark)
 

@@ -5,11 +5,11 @@ layout: home
 
 ## Code less, Babylon more
 
-<p style="text-align:center; width:100%;"><img src="https://raw.githubusercontent.com/babylon-runtime/_r.assets/master/_runtime-logo/exports/_runtime-logo_circleWhite_512.png" alt="babylon runtime logo" width="250" ></p>
+<p style="text-align:center; width:100%;"><img src="assets/logo.png" alt="babylon runtime logo" width="250" ></p>
 
-<span style="color:#e0684b">\_r</span><span style="color:#201936">untime</span>, aka **<span style="color:#e0684b">\_r</span>**, is a lightweight *&laquo;write less, do more&raquo;* [BabylonJS](https://www.babylonjs.com/) library.
+\_runtime, aka \_r, is a lightweight *&laquo;write less, do more&raquo;* [BabylonJS](https://www.babylonjs.com/) library.
 
-The purpose of **<span style="color:#e0684b">\_r</span>** is to make BabylonJS much easier to use and maintain in the 3D workflow, for both artists and developpers.
+The purpose of \_r is to make BabylonJS much easier to use and maintain in the 3D workflow, for both artists and developpers.
 
 ```javascript
 _r.patch([{
@@ -18,19 +18,19 @@ _r.patch([{
     }
 }]);
 ```
-> applying red albedoColor for all wood materials with _runtime
+*Applying red albedoColor for all wood materials with \_runtime.*
 
 ### For artists
 
-<span style="color:#e0684b">\_r</span><span style="color:#201936">untime</span> will allow you to:
+\_runtime will allow you to:
 - easily tweak your BabylonJS scenes
-- export and reexport your scenes as many as you want without loosing your tweaks
+- export and re-export your scenes as many as you want without loosing your tweaks
 - avoid as much as possible writing code
 - do simple animations in a fast way
 
 ### For developpers
 
-<span style="color:#e0684b">\_r</span><span style="color:#201936">untime</span> will allow you to:
+\_runtime will allow you to:
 - mass-select & filter elements in a easy way
 - manage scene files
 - quickly bind user interactions
@@ -110,8 +110,7 @@ var delayCreateScene = function () {
     return scene;
 };
 ```
-
-> using runtime inside a BJS native SceneLoader
+*Using runtime inside a BJS native SceneLoader.*
 
 <br>
 

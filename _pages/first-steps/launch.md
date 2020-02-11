@@ -54,7 +54,7 @@ Let's start from the beginning:
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-> see [examples/first-steps/launch/01.html](https://github.com/babylon-runtime/_r.assets/blob/master/examples/first-steps/launch/01.html)
+*see [examples/first-steps/launch/01.html](https://github.com/babylon-runtime/_r.assets/blob/master/examples/first-steps/launch/01.html)*
 
 You should now already have your first 3D scene loaded using \_runtime!
 

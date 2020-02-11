@@ -76,7 +76,7 @@ That's it!
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-> see [examples/first-steps/patching/00.html](https://github.com/babylon-runtime/_r.assets/blob/master/examples/first-steps/patching/00.html)
+*see [examples/first-steps/patching/00.html](https://github.com/babylon-runtime/_r.assets/blob/master/examples/first-steps/patching/00.html)*
 
 But imaging dealing with dozens of materials: it will surely be more convenient if our patch can be saved in a separated file, if only for the readability.
 
@@ -116,7 +116,7 @@ The floor is now patched!
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-> see [examples/first-steps/patching/01.html](https://github.com/babylon-runtime/_r.assets/blob/master/examples/first-steps/patching/01.html) using [visual-tweaks.patch](https://github.com/babylon-runtime/_r.assets/blob/master/examples/first-steps/patching/assets/visual-tweaks.patch)
+*see [examples/first-steps/patching/01.html](https://github.com/babylon-runtime/_r.assets/blob/master/examples/first-steps/patching/01.html) using [visual-tweaks.patch](https://github.com/babylon-runtime/_r.assets/blob/master/examples/first-steps/patching/assets/visual-tweaks.patch)*
 
 Do you also want to move the camera closer to objects?
 
@@ -146,7 +146,7 @@ As the camera name inside our .babylon file is `Camera`, just add these lines in
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-> see [examples/first-steps/patching/02.html](https://github.com/babylon-runtime/_r.assets/blob/master/examples/first-steps/patching/02.html) using [visual-tweaks02.patch](https://github.com/babylon-runtime/_r.assets/blob/master/examples/first-steps/patching/assets/visual-tweaks02.patch)
+*see [examples/first-steps/patching/02.html](https://github.com/babylon-runtime/_r.assets/blob/master/examples/first-steps/patching/02.html) using [visual-tweaks02.patch](https://github.com/babylon-runtime/_r.assets/blob/master/examples/first-steps/patching/assets/visual-tweaks02.patch)*
 
 ### Multiple patch files
 
@@ -181,7 +181,7 @@ The same logic applies within a file itself by the way (from top of the file to 
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-> see [examples/first-steps/patching/03.html](https://github.com/babylon-runtime/_r.assets/blob/master/examples/first-steps/patching/02.html) using [cameras.patch](https://github.com/babylon-runtime/_r.assets/blob/master/examples/first-steps/patching/assets/cameras.patch) & [materials.patch](https://github.com/babylon-runtime/_r.assets/blob/master/examples/first-steps/patching/assets/materials.patch)
+*see [examples/first-steps/patching/03.html](https://github.com/babylon-runtime/_r.assets/blob/master/examples/first-steps/patching/02.html) using [cameras.patch](https://github.com/babylon-runtime/_r.assets/blob/master/examples/first-steps/patching/assets/cameras.patch) & [materials.patch](https://github.com/babylon-runtime/_r.assets/blob/master/examples/first-steps/patching/assets/materials.patch)*
 
 <br>
 

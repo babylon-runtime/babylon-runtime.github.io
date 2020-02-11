@@ -37,7 +37,7 @@ So in the example above, `oak-leaves.000`, `leavePoplar01.000` and `chestnutleav
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-> see [examples/going-further/advanced-patching/01.html](https://github.com/babylon-runtime/_r.assets/blob/master/examples/going-further/advanced-patching/01.html) using [patch.patch](https://github.com/babylon-runtime/_r.assets/blob/master/examples/going-further/advanced-patching/assets/patch.patch)
+*see [examples/going-further/advanced-patching/01.html](https://github.com/babylon-runtime/_r.assets/blob/master/examples/going-further/advanced-patching/01.html) using [patch.patch](https://github.com/babylon-runtime/_r.assets/blob/master/examples/going-further/advanced-patching/assets/patch.patch)*
 
 How to patch also materials using `Leave` *or* `leave`? We could use `*eave*` selector, but it's not very convenient to read an retrieve. That's why we will use multiple selectors.
 
@@ -62,7 +62,7 @@ In the example above, `oak-leaves.000`, `leavePoplar01.000`, `chestnutleave` and
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-> example with the BJS logo in the cornellBox, see [examples/going-further/advanced-patching/02.html](https://github.com/babylon-runtime/_r.assets/blob/master/examples/going-further/advanced-patching/02.html) using [patch02.patch](https://github.com/babylon-runtime/_r.assets/blob/master/examples/going-further/advanced-patching/assets/patch02.patch)
+*example with the BJS logo in the cornellBox, see [examples/going-further/advanced-patching/02.html](https://github.com/babylon-runtime/_r.assets/blob/master/examples/going-further/advanced-patching/02.html) using [patch02.patch](https://github.com/babylon-runtime/_r.assets/blob/master/examples/going-further/advanced-patching/assets/patch02.patch)*
 
 ### Filters
 
@@ -93,6 +93,6 @@ See [\_r.select API](../../api/select/) to see all available filters.
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-> example with the BJS logo in the cornellBox, see [examples/going-further/advanced-patching/03.html](https://github.com/babylon-runtime/_r.assets/blob/master/examples/going-further/advanced-patching/03.html) using [patch03.patch](https://github.com/babylon-runtime/_r.assets/blob/master/examples/going-further/advanced-patching/assets/patch03.patch)
+*example with the BJS logo in the cornellBox, see [examples/going-further/advanced-patching/03.html](https://github.com/babylon-runtime/_r.assets/blob/master/examples/going-further/advanced-patching/03.html) using [patch03.patch](https://github.com/babylon-runtime/_r.assets/blob/master/examples/going-further/advanced-patching/assets/patch03.patch)*
 
 ## _r.patch()

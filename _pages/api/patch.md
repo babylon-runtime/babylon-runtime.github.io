@@ -43,8 +43,7 @@ You can access to a single material using its name:
    }
 }
 ```
-
-> Material **myMaterialName.000** will get its ambientColor set to **#e0684b**.
+_Material **myMaterialName.000** will get its ambientColor set to **#e0684b**_.
 
 You can set up multiples properties on multiples elements:
 
@@ -69,8 +68,7 @@ You can access to any materials containing a keyword in their name, using `*`:
    }
 }
 ```
-
-> Each material having **keyword** in its name will get its ambientColor set to **#e0684b**.
+_Each material having **keyword** in its name will get its ambientColor set to **#e0684b**_.
 
 ### Filters
 
