@@ -4,32 +4,32 @@ layout : documentation
 ---
 
 
-`_r` is a set of methods to write web application rendered with BABYLON. It is originally a wrapper for redundant BABYLON tasks. 
-* ```_r``` never modifies the BABYLON objects
-* ```_r``` is compatible anywhere in existing code
+`_r` is a set of methods to write web applications rendered with BabylonJS. It is originally a wrapper for redundant BabylonJS tasks. 
+* ```_r``` never modifies the BabylonJS objects
+* ```_r``` is compatible with any existing code
 * You can pick only what fits to your needs
 
 <div class="uk-alert">
-(```_r```)untime insure a **maintainable workflow between developers and 3D artists** 
+_runtime insure a **maintainable workflow between developers and 3D artists**:
 * 3D artists should not have to write code
 * developers should not have to tweak the materials
 </div>
 
 <div class="uk-alert">
-(```_r```)untime can be used :
+_runtime can be used:
 * as a standalone library to write your web app in a more **scripting friendly** way, 
 * as a module to **build your own framework**.
 </div>
 
-Summary :
-* [A set of methods for usual BABYLON needs]()
+Summary:
+* [A set of methods for usual BabylonJS needs]()
 * [Debug your existing app with _r]()
-* [A framework to make games and 3D web app]().
+* [A framework to make games and 3D web app]()
 * [Utilities (loading screen, gizmo, colors, etc)]()
 
-# A set of methods for usual BABYLON needs
+# A set of methods for usual BabylonJS needs
 
-The API is inspired by JQuery so if you know jQuery you can see _r as the jQuery for BABYLON.
+The API is inspired by JQuery so if you know jQuery you can see _r as the jQuery for BabylonJS.
  
 ## Basic Examples
 ### Launching a scene
@@ -47,7 +47,7 @@ _r.ready(function() {
 ```
 [Launch in details](./launch)
  
-**It's 100% BABYLON.js**, ```_r.launch``` do what you would have to do to launch the babylon engine :
+**It's 100% BABYLON.js**, ```_r.launch``` do what you would have to do to launch the babylon engine:
 1. Create a canvas
 2. Create an BABYLON.Engine
 3. Use BABYLON.SceneLoader to load the scene
@@ -74,17 +74,18 @@ _r.select("bloc.000").animate({
 
 ## Scene manipulation
 
-With ```_r.select``` you can retrieve nodes in the scene then batch operations :
+With ```_r.select``` you can retrieve nodes in the scene then batch operations:
 ```js
 _r.select('material.0*').patch({
     alpha : 0.5,
     diffuseColor : red
 })
 ```
-Note the special character ```*``` that mean in this context all nodes objets in the scene with the attribute name starting by *material.0". 
-It could be : ```material.01```,```material.0XY```
+Note the special character ```*``` that means in this context: *all elements in the scene with name starting by `material.0`*. 
 
-You can query the scene the same way you would query the DOM with Jquery :
+It could be: ```material.01```,```material.0-whateverIwant.28```.
+
+You can query the scene the same way you would query the DOM with JQuery:
 ```js
 _r.select(":mesh[isVisible=true][opacity=1]").animate({
     'material' : {
@@ -93,7 +94,7 @@ _r.select(":mesh[isVisible=true][opacity=1]").animate({
 })
 ```
 
-You can ```_r.select``` : 
+You can ```_r.select```: 
 - scene
 - cameras
 - textures
@@ -103,14 +104,15 @@ You can ```_r.select``` :
 
 [Selector in details]()
 
-# Debug with runtime
+# Debug with \_runtime
 
-insert the runtime script in one of your existing app or look at this example :
+Insert the \_runtime script in one of your existing app or look at this example:
 
-There's no code wrote in _r, but in the devtools console you can select elements from the scene directly  :
+There's no code wrote in \_r, but in the devtools console you can select elements from the scene directly:
 
-_r is very usefull to debug application, for example if you would to inspect an object :
-# A framework to make games and 3D RT application
+\_r is very useful to debug BJS applications, for example if you would to inspect an object:
+
+# A framework to make games and 3D realtime applications
 
 ## Patch files (could be seen as css for the babylon nodes)
 
@@ -126,14 +128,14 @@ Patching is a mechanism for splitting app into separate modules
     }
 }]
 ```
-Patch has a simple syntax to read and maintain (~JSON). You can organize your patch files to fit your needs (by materials, by features, by interactions, etc).
+Patch has a simple syntax to read and maintain (similar as JSON). You can organize your patch files to fit your needs (by materials, features, interactions, etc).
 ```js
 _r.patch('materials.patch').then(function() {
     // patch applied
 });
 ```
 
-Patch can also be applied at launch time : 
+Patch can also be applied at launch time: 
 ```js
 _r.launch({
     scene : "https://models.babylonjs.com/CornellBox/cornellBox.babylon",
@@ -146,7 +148,7 @@ _r.launch({
     ]
 })
 ```
-The same selector mechanisms that ```_r.select``` is available in patch files :
+The same selector mechanisms as ```_r.select``` are availabled in patch files:
 ```js
 {
 ":mesh[isVisible=true][opacity=1]": {
@@ -161,7 +163,7 @@ The same selector mechanisms that ```_r.select``` is available in patch files :
 
 ## Assets management
 
-You can load any assets with _r.load
+You can load any assets with \_r.load:
 ```js
   _r.load(["https://www.babylonjs-playground.com/textures/grass.jpg", "https://models.babylonjs.com/CornellBox/cornellBox.babylon"]).then(function(result) {
             var texture = result[0];
@@ -169,7 +171,7 @@ You can load any assets with _r.load
             console.log(texture, assets);
         })
 ```
-It's still BABYLON behind (BABYLON.Scene.AssetManager && BABYLON.Scene.TaskManager)
+It's still BabylonJS behind, \_r.load use seamlessly BJS [AssetsManager](https://doc.babylonjs.com/api/classes/babylon.assetsmanager).
 
 You can remove / add assets from the current scene
 ```js
@@ -183,7 +185,7 @@ You can remove / add assets from the current scene
 
 ## Mesh events
 
-Availables events (string versions of BABYLON.MeshEvents): 
+Availables events (string versions of [ActionManager](https://doc.babylonjs.com/api/classes/babylon.actionmanager)): 
 * OnDoublePickTrigger
 * OnPickTrigger
 * OnLeftPickTrigger
@@ -208,19 +210,19 @@ _r.select("*mesh*").on("OnPickTrigger", function() {
 
 
 ## Global Events
-In a launch.js file :
+In a launch.js file:
 ```js
 _r.launch({
-    scene : ""
+    scene : "myScene.glb"
 })
 
 _r.ready(function() {
-    _r.scene.createDefaultEnvironment
-    _r.scene.trigger('3D-ready')
+    _r.scene.createDefaultEnvironment();
+    _r.scene.trigger('3D-ready');
 })
 ```
 
-Then in module.js :
+Then in module.js:
 ```js
 _r.on("3D-ready", function() {
     // scene has been loaded and rendering just started
