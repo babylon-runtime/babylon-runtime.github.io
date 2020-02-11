@@ -1,9 +1,36 @@
 ---
-title : Getting Started 
+title : Overwiew
 layout : documentation
 ---
-_r make writing applications and game made with BABYLON more easiest, it's basically a set of functions to wrap some BABYLON codes.
 
+
+`_r` is a set of methods to write web application rendered with BABYLON. It is originally a wrapper for redundant BABYLON tasks. 
+* ```_r``` never modifies the BABYLON objects
+* ```_r``` is compatible anywhere in existing code
+* You can pick only what fits to your needs
+
+<div class="uk-alert">
+(```_r```)untime insure a **maintainable workflow between developers and 3D artists** 
+* 3D artists should not have to write code
+* developers should not have to tweak the materials
+</div>
+
+<div class="uk-alert">
+(```_r```)untime can be used :
+* as a standalone library to write your web app in a more **scripting friendly** way, 
+* as a module to **build your own framework**.
+</div>
+
+Summary :
+* [A set of methods for usual BABYLON needs]()
+* [Debug your existing app with _r]()
+* [A framework to make games and 3D web app]().
+* [Utilities (loading screen, gizmo, colors, etc)]()
+
+# A set of methods for usual BABYLON needs
+
+The API is inspired by JQuery so if you know jQuery you can see _r as the jQuery for BABYLON.
+ 
 ## Basic Examples
 ### Launching a scene
 
@@ -20,11 +47,10 @@ _r.ready(function() {
 ```
 [Launch in details](./launch)
  
-It's 100% BABYLON.js, _r.launch do what you would have to do to launch the babylon engine :
+**It's 100% BABYLON.js**, ```_r.launch``` do what you would have to do to launch the babylon engine :
 1. Create a canvas
 2. Create an BABYLON.Engine
 3. Use BABYLON.SceneLoader to load the scene
-4. Call _r.ready
 
 ### Animations 
 
@@ -44,14 +70,49 @@ _r.select("bloc.000").animate({
 ```
 [Animations in details]()
 
-_r.animate (inspired by the jQuery animation API) will create all the BABYLON.Animation, BABYLON.AnimationTypes, Animation key, etc for you.
+```_r.animate``` (inspired by the jQuery animation API) will create all the BABYLON.Animation, BABYLON.AnimationTypes, Animation key, etc for you.
 
-## A framework to make games and 3D RT application
-_r provide utilities for a maintainable workflow between developers and 3D artists 
-* 3D artists should not have to write code 
-* developers should not have to tweak the materials (textures)
+## Scene manipulation
 
-### Patch files (could be seen as CSS for the Scene)
+With ```_r.select``` you can retrieve nodes in the scene then batch operations :
+```js
+_r.select('material.0*').patch({
+    alpha : 0.5,
+    diffuseColor : red
+})
+```
+Note the special character ```*``` that mean in this context all nodes objets in the scene with the attribute name starting by *material.0". 
+It could be : ```material.01```,```material.0XY```
+
+You can query the scene the same way you would query the DOM with Jquery :
+```js
+_r.select(":mesh[isVisible=true][opacity=1]").animate({
+    'material' : {
+        alpha : 0.5
+    }
+})
+```
+
+You can ```_r.select``` : 
+- scene
+- cameras
+- textures
+- materials
+- mesh 
+- lights
+
+[Selector in details]()
+
+# Debug with runtime
+
+insert the runtime script in one of your existing app or look at this example :
+
+There's no code wrote in _r, but in the devtools console you can select elements from the scene directly  :
+
+_r is very usefull to debug application, for example if you would to inspect an object :
+# A framework to make games and 3D RT application
+
+## Patch files (could be seen as css for the babylon nodes)
 
 Patching is a mechanism for splitting app into separate modules
 ```json
@@ -72,7 +133,7 @@ _r.patch('materials.patch').then(function() {
 });
 ```
 
-Patch can also be applied before rendering 
+Patch can also be applied at launch time : 
 ```js
 _r.launch({
     scene : "https://models.babylonjs.com/CornellBox/cornellBox.babylon",
@@ -85,32 +146,7 @@ _r.launch({
     ]
 })
 ```
-[Patch in details]()
-
-### Scene manipulation
-
-With _r.select you can select nodes in the scene then bulk operations on them :
-```js
-_r.select('material.0*').patch({
-    alpha : 0.5,
-    diffuseColor : red
-})
-```
-Note the special character ```*``` that mean in this context all nodes objets in the scene with the attribute name starting by *material.0". 
-It could be : ```material.01```,```material.0XY```
-
-You can query the scene the same way you would query the DOM with Jquery :
-```js
-_r.select(":mesh[isVisible=true][opacity=1]").animate({
-    'material' : {
-        alpha : 0.5
-    }
-})
-```
-
-You can select everything with _r.select : scene, cameras, textures, materials, mesh and lights.
-
-The same selector mechanisms is available in patch files :
+The same selector mechanisms that ```_r.select``` is available in patch files :
 ```js
 {
 ":mesh[isVisible=true][opacity=1]": {
@@ -120,22 +156,10 @@ The same selector mechanisms is available in patch files :
     }
 }
 ```
-[Selector in details]()
 
-## Pick only the features you need
+[Patch in details]()
 
-You can pick only what you need, for example : you don't have to use _r.launch to use _r.select; and you can use _r.animate everywhere in your existing code.
-
-### Debug with _r
-
-insert the runtime script in one of your existing app or look at this example :
-
-There's no code wrote in _r, but in the devtools console you can select elements from the scene directly  :
-
-_r is very usefull to debug application, for example if you would to inspect an object :
-
-
-### Assets management
+## Assets management
 
 You can load any assets with _r.load
 ```js
@@ -157,7 +181,7 @@ You can remove / add assets from the current scene
 
 [Assets management in details]()
 
-### Mesh events
+## Mesh events
 
 Availables events (string versions of BABYLON.MeshEvents): 
 * OnDoublePickTrigger
@@ -183,7 +207,7 @@ _r.select("*mesh*").on("OnPickTrigger", function() {
 ```
 
 
-### Global Events
+## Global Events
 In a launch.js file :
 ```js
 _r.launch({
@@ -204,9 +228,5 @@ _r.on("3D-ready", function() {
 ```
 [Events in details]()
 
-
-
-
-
-
+# Utilities (loading screen, gizmo, colors, etc)
 
