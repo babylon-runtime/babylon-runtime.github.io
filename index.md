@@ -70,7 +70,7 @@ Or download and load it locally from the [github repo releases](https://github.c
 
 ## Use
 
-As soon as _r is loaded, you can start using it in your BabylonJS app:
+As soon as \_r is loaded, you can start using it in your BabylonJS app:
 
 ```javascript
 var delayCreateScene = function () {

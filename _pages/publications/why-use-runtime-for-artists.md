@@ -1,4 +1,4 @@
-# Why artists should use _runtime
+# Why artists should use \_runtime
 
 ![runtime-for-artists-chapo](why-use-runtime-for-artists/runtime-for-artists-chapo.jpg)
 

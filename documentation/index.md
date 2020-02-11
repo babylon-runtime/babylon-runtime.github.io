@@ -4,32 +4,32 @@ layout : documentation
 ---
 
 
-`_r` is a set of methods to write web applications rendered with BabylonJS. It is originally a wrapper for redundant BabylonJS tasks. 
-* ```_r``` never modifies the BabylonJS objects
-* ```_r``` is compatible with any existing code
+\_r is a set of methods to write web applications rendered with BabylonJS. It is originally a wrapper for redundant BabylonJS tasks. 
+* \_r never modifies the BabylonJS objects
+* \_r is compatible with any existing code
 * You can pick only what fits to your needs
 
 <div class="uk-alert">
-_runtime insure a **maintainable workflow between developers and 3D artists**:
+\_runtime insure a **maintainable workflow between developers and 3D artists**:
 * 3D artists should not have to write code
 * developers should not have to tweak the materials
 </div>
 
 <div class="uk-alert">
-_runtime can be used:
+\_runtime can be used:
 * as a standalone library to write your web app in a more **scripting friendly** way, 
 * as a module to **build your own framework**.
 </div>
 
 Summary:
 * [A set of methods for usual BabylonJS needs]()
-* [Debug your existing app with _r]()
+* [Debug your existing app with \_r]()
 * [A framework to make games and 3D web app]()
 * [Utilities (loading screen, gizmo, colors, etc)]()
 
 # A set of methods for usual BabylonJS needs
 
-The API is inspired by JQuery so if you know jQuery you can see _r as the jQuery for BabylonJS.
+The API is inspired by JQuery so if you know jQuery you can see \_r as the jQuery for BabylonJS.
  
 ## Basic Examples
 ### Launching a scene

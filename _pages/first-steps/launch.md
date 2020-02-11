@@ -106,7 +106,7 @@ But two important points to note:
 
 ## \_r.scene
 
-From the moment \_runtime take the hand on your 3d scene - just after the `scene` property in the `\_r.launch()` - it starts working into this newly created scene: `_r.scene`.
+From the moment \_runtime take the hand on your 3d scene - just after the `scene` property in the `_r.launch()` - it starts working into this newly created scene: `_r.scene`.
 
 This `_r.scene` will be reachable globally, which will be very useful for all your future scripts.
 
