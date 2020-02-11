@@ -31,6 +31,7 @@ and visit it at [http://127.0.0.1:4000](http://127.0.0.1:4000)
 
 ## Conventions
 
+- images should be saved in `/assets/` folder, well named and classified
 - image or code caption should be placed below these elements, in italic, starting with a capital letter, ending with punctuation. example:
 
 ```markdown
@@ -38,3 +39,5 @@ and visit it at [http://127.0.0.1:4000](http://127.0.0.1:4000)
 *This is a beautiful logo.*
 ```
 - \_r should be write in markdown as `\_r` (\\ char is here to avoid conflict with markdown syntax)
+- codeblocks should have langage name specified. example: ` ```javascript `
+
