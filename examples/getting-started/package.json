@@ -3,17 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.html",
-  "scripts": {
-    "start": "serve"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/codesandbox-app/static-template.git"
-  },
   "keywords": [],
   "author": "",
-  "license": "MIT",
-  "devDependencies": {
-    "serve": "^11.2.0"
-  }
+  "license": "MIT"
 }
