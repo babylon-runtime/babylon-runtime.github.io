@@ -13,43 +13,37 @@
     });
 
     _r.ready(function() {
-        _r.launch({
-            scene: "https://models.babylonjs.com/CornellBox/cornellBox.babylon"
-        });
-
-        _r.ready(function() {
-            _r.select("cornellBox*").animate(
-                {
-                    diffuseColor: "red"
-                },
-                5 // 5 seconds
-            );
-            // we can pass options instead of a duration number
-            _r.select("bloc.000, suzanne.000").animate(
-                {
-                    position: {
-                        x: 10
-                    }
-                },
-                {
-                    duration: 5,
-                    easing: "easeOutCubic", // choose an easing in https://easings.net/
-                    // called when mesh animation completed
-                    complete: function() {
-                        // let animate the camera
-                        _r.select("Camera").animate(
-                            {
-                                position: {
-                                    x: 10,
-                                    z: 0
-                                }
-                            },
-                            2 // for 2 seconds
-                        );
-                    }
+        _r.select("cornellBox*").animate(
+            {
+                diffuseColor: "red"
+            },
+            5 // 5 seconds
+        );
+        // we can pass options instead of a duration number
+        _r.select("bloc.000, suzanne.000").animate(
+            {
+                position: {
+                    x: 10
                 }
-            );
-        });
+            },
+            {
+                duration: 5,
+                easing: "easeOutCubic", // choose an easing in https://easings.net/
+                // called when mesh animation completed
+                complete: function() {
+                    // let animate the camera
+                    _r.select("Camera").animate(
+                        {
+                            position: {
+                                x: 10,
+                                z: 0
+                            }
+                        },
+                        2 // for 2 seconds
+                    );
+                }
+            }
+        );
     })
 </script>
 </body>
