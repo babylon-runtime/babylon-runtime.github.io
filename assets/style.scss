@@ -12,6 +12,18 @@
   }
 }
 
+.tm-main.home {
+  background-color: #201936;
+  color:white;
+  h1, h2, h3, h4, h5 {
+    color:white;
+  }
+  .uk-card-default {
+    background-color: #201936;
+    color:white;
+  }
+}
+
 .tm-sidebar-left {
   position: fixed;
   top: 80px;
