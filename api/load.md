@@ -7,6 +7,8 @@ layout : api
 _r.load( file, patch )
 ```
 
+This return a [BABYLON.AssetContainer](https://doc.babylonjs.com/api/classes/babylon.assetcontainer).
+
 ```javascript
 _r.load(
     "file.gltf",
@@ -19,9 +21,19 @@ _r.load(
 });
 ```
 
-`newAssets` is a [BABYLON.AssetContainer](https://doc.babylonjs.com/api/classes/babylon.assetcontainer)
+---
 
-- _r.load.texture(file, patch)
+```js
+_r.load.texture( file, patch )
+```
+
+This return a [BABYLON.Texture](https://doc.babylonjs.com/api/classes/babylon.texture).
+
+```js
+_r.load.texture("texture.jpg").then(function(texture){
+    myMaterial.albedotexture = texture;
+});
+```
 
 ```js
 _r.patch([{
