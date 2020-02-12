@@ -1,6 +1,6 @@
 ---
 title : _r.launch 
-layout : api
+layout : documentation
 ---
 
 ```js

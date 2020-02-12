@@ -1,4 +1,4 @@
 ---
 title : API
-layout : api
+layout : documentation
 ---

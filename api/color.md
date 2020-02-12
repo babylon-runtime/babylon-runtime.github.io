@@ -1,6 +1,6 @@
 ---
 title : _r.color 
-layout : api
+layout : documentation
 ---
 
 ```js

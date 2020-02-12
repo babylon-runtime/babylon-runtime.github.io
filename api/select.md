@@ -1,6 +1,6 @@
 ---
 title : _r.select 
-layout : api
+layout : documentation
 ---
 
 ```js

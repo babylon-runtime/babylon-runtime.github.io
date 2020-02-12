@@ -1,6 +1,6 @@
 ---
 title : _r.off  
-layout : api
+layout : documentation
 ---
 
 ## Mesh pointer events

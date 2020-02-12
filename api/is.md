@@ -1,6 +1,6 @@
 ---
 title : _r.is 
-layout : api
+layout : documentation
 ---
 
 ## JavaScript

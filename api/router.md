@@ -1,6 +1,6 @@
 ---
 title : _r.router 
-layout : api
+layout : documentation
 ---
 
 _r.router is a helper for [hashchange](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event) events.

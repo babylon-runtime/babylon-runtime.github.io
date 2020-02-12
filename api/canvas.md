@@ -1,6 +1,6 @@
 ---
 title : _r.canvas
-layout : api
+layout : documentation
 ---
 
 - add a css id:

@@ -1,6 +1,6 @@
 ---
 title : _r.patch 
-layout : api
+layout : documentation
 ---
 
 ```js
