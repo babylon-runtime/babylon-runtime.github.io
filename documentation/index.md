@@ -26,24 +26,24 @@ Have a look at this example
      allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
      sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
      
- - **line 8 & 9** : insert babylon and _r
- - **line 11** : launch the cornellbox scene with_r.launch. By default it will create everything for you (engine, canvas, renderloop) but you could have defined them before calling _r.launch.
- - **line 15** : _r.ready is used to know when everything is ready after a _r.launch (scene is downloaded, rendering started)
- - **line 17-18-19** : You can access _r.scene, _r.engine, _r.canvas everywhere
+ - **line 8 & 9**: insert babylon and _r
+ - **line 11**: launch the cornellbox scene with_r.launch. By default it will create everything for you (engine, canvas, renderloop) but you could have defined them before calling _r.launch.
+ - **line 15**: _r.ready is used to know when everything is ready after a _r.launch (scene is downloaded, rendering started)
+ - **line 17-18-19**: You can access _r.scene, _r.engine, _r.canvas everywhere
  
-Open the Sandbox then open the console (or your browser's console)  and copy/paste this :
+Open the Sandbox then open the console (or your browser's console)  and copy/paste this:
 ```js
 _r.select("*").log('name')
 ```
 This will output all the object's name from the scene (meshes, materials, lights, cameras, textures). 
-With _r.select you can query the scene graph, for example you could query only the meshes :
+With _r.select you can query the scene graph, for example you could query only the meshes:
 ```js
 // this will output only the meshes names
 _r.select("*:mesh").log('name')
 ```
 Or filter only the objects starting with **cornellBox** (note the \* character)
 ```js
-// this will output only the object name starting with 'cornellbox' :
+// this will output only the object name starting with 'cornellbox':
 _r.select("cornellBox*").log('name')
 ```
 
@@ -59,10 +59,10 @@ You will have to write a lot of code if you want the same result in pure BABYLON
 
 {:.uk-alert}
 <div>
-*\_r*{:._r} automates things by generating BABYLON code.
+*\_r*{:._r} automates tasks by generating BABYLON code.
 </div>
  
-_r.animate analyzes parameters to :
+_r.animate analyzes parameters to:
 - create a BABYLON.AnimationGroup with one or more BABYLON.Animation set with the correct keys, types, etc. 
 - play the BABYLON.AnimationGroup 
 - return the BABYLON.AnimationGroup
@@ -83,7 +83,7 @@ You can pick only the features you want and paste it in your existing code.
 
 ## Patch files 
 
-**Patching is a mechanism for splitting app into separate modules**.Patch could be seen as css for the scene...with much powerfull capabilities.
+**Patching is a mechanism for splitting app into separate modules**. Patch could be seen as css for the scene... with much powerful capabilities.
 
 ```json
 /// materials.patch
@@ -97,7 +97,7 @@ You can pick only the features you want and paste it in your existing code.
 ```
 Patch has a simple syntax to read and maintain (similar as JSON). You can organize your patch files to fit your needs (by materials, features, interactions, etc).
 
-**3D artists write patch files** (it's still code, but with a very simple syntax), developers applied them when needed :
+**3D artists write patch files** (it's still code, but with a very simple syntax), developers applied them when needed:
 ```js
 _r.patch('materials.patch').then(function() {
     // patch applied
@@ -121,14 +121,14 @@ _r.launch({
 
 Patch are easy to read, and easy to maintain, you just have to refer to the BABYLON documentation to find the property you want to set.
 
-You can make a lot of things with patch :
+You can make a lot of things with patch:
 - Execute functions
-- Handling app events
-- Make dynamic lightmaps assignemnts
-- Interact with the loading screen
+- Handling app events & user interactions
+- Make dynamic lightmaps assignments
+- Customize & interact with the loading screen
 - Use Promise
 
-You can even make your own patch plugin, to create a new patch property for example...But it's out of this gettings start. To know more about patches :
+You can even make your own patch plugin, to create a new patch property... But it's out of this Getting Started. To know more about patches:
 - [??]()
 
 ## Assets management
@@ -225,7 +225,7 @@ _r.on("3D-ready", function() {
 ## Loading screen
 There's a lot of question about custom loading screen in the babylon forum so we made a very simple API to wrap the Custom loading screen.
  
-Create your loading screen in a separate html page then :
+Create your loading screen in a separate html page then:
 * use ```_r.loadingScreen.iframe("loading-screen.html")``` to initialize the loading screen
 * ```_r.loadingScreen.isVisible = true``` / ```_r.loadingScreen.isVisible = false``` to show / hide the loading screen.
 
@@ -251,7 +251,7 @@ When the document is reloaded or the URL is modified somehow, it will detect tha
 
 With patch, assets, events and routes you have a solid skeleton to make your 3D app development much easier. 
 
-Here is a complete demo of how you could organize your code :
+Here is a complete demo of how you could organize your code:
 
 ## Some utilities you may also need
 
