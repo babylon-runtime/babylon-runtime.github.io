@@ -38,12 +38,10 @@ _r.load.texture("texture.jpg").then(function(texture){
 ```js
 _r.patch([{
     "materialName": {
-        "lightmapTexture": function () {
-            return _r.load.texture("lightmapName.jpg",{
-                "vScale": -1,
-                "coordinatesIndex": 1
-            });
-        }
+        "lightmapTexture": _r.load.texture("lightmapName.jpg", {
+            "vScale": -1,
+            "coordinatesIndex": 1
+        })
     }
 }]);
 ```
