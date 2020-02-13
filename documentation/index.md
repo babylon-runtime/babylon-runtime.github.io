@@ -19,24 +19,27 @@ It can be used:
 
 Have a look at this example 
 
-<iframe
-     src="https://codesandbox.io/embed/github/babylon-runtime/babylon-runtime.github.io/tree/master/examples/getting-started?autoresize=1&fontsize=14&hidenavigation=1&theme=dark&view=editor"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="getting-started"
-     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
-     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+<div class="uk-cover-container">
+   <iframe
+        src="https://codesandbox.io/embed/github/babylon-runtime/babylon-runtime.github.io/tree/master/examples/getting-started?autoresize=1&fontsize=14&hidenavigation=1&theme=dark&view=editor"
+        style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+        title="getting-started"
+        allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+        sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+
+</div>
      
  - **line 8 & 9**: insert babylon and _r
- - **line 11**: launch the cornellbox scene with_r.launch. By default it will create everything for you (engine, canvas, renderloop) but you could have defined them before calling _r.launch.
- - **line 15**: _r.ready is used to know when everything is ready after a _r.launch (scene is downloaded, rendering started)
- - **line 17-18-19**: You can access _r.scene, _r.engine, _r.canvas everywhere
+ - **line 11**: launch the cornellbox scene with_r.launch. By default it will create everything for you (engine, canvas, etc) but you could have defined them before calling [_r.launch](/api/launch).
+ - **line 15**: _r.ready is used to know when everything is ready after a [_r.launch](/api/launch) (scene is downloaded, rendering started)
+ - **line 17-18-19**: You can access [_r.scene](/api/scene), [_r.engine](/api/engine), [_r.canvas](/api/canvas) everywhere
  
 Open the Sandbox then open the console (or your browser's console)  and copy/paste this:
 ```js
 _r.select("*").log('name')
 ```
 This will output all the object's name from the scene (meshes, materials, lights, cameras, textures). 
-With _r.select you can query the scene graph, for example you could query only the meshes:
+With [_r.select](/api/select) you can query the scene graph, for example you could query only the meshes:
 ```js
 // this will output only the meshes names
 _r.select("*:mesh").log('name')
@@ -47,7 +50,7 @@ Or filter only the objects starting with **cornellBox** (note the \* character)
 _r.select("cornellBox*").log('name')
 ```
 
-Now you understood the basic principles of _r.select you can make animations 
+[_r.select](/api/select) has a lot of features, for example you can make [animations](/api/animate). 
 <iframe
      src="https://codesandbox.io/embed/github/babylon-runtime/babylon-runtime.github.io/tree/master/examples/basic-animation?fontsize=14&hidenavigation=1&theme=dark&view=editor"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
@@ -74,7 +77,7 @@ So it's compatible with your existing code.
 You can use *\_r*{:._r} everywhere in existing code.
 </div>
 
-Each _r feature can be use standalone. For example you can use _r.animate without _r.launch and _r.ready. 
+Each *\_r*{:._r} feature can be use standalone. For example you can use [_r.animate](/api/animate) without [_r.launch](/api/launch) and [_r.ready](/api/ready). 
 
 {:.uk-alert}
 <div>
@@ -83,7 +86,7 @@ You can pick only the features you want and paste it in your existing code.
 
 ## Patch files 
 
-**Patching is a mechanism for splitting app into separate modules**. Patch could be seen as css for the scene... with much powerful capabilities.
+**Patching is a mechanism for splitting app into separate modules**. Patch could be seen as stylesheet(CSS) for the scene... with much powerful capabilities.
 
 ```json 
 // materials.patch
@@ -137,10 +140,10 @@ You don't want to preload all the assets before start the rendering because it w
 
 {:.uk-alert}
 <div>
-_r.load import your assets dynamically in a very simple way. 
+[_r.load](/api/load) import your assets dynamically in a very simple way. 
 </div>
 
-**_r.load does not add the imported nodes to the current scene** (so you can launch background loading). Nodes should be added with ```_r.select(asset).addAllToScene()```;
+**[_r.load](/api/load) does not add the imported nodes to the current scene** (so you can launch background loading). Nodes should be added with ```_r.select(asset).addAllToScene()```;
 
 ```js
 // Scene
@@ -163,7 +166,7 @@ _r.load("https://models.babylonjs.com/CornellBox/cornellBox.babylon")
 // css
 ```
 
-Again it's BABYLON behind, _r.load is just a wrapper around [AssetsManager](https://doc.babylonjs.com/api/classes/babylon.assetsmanager) and BABYLON.SceneLoader.
+Again it's BABYLON behind, _r.load is just a wrapper around [AssetsManager](https://doc.babylonjs.com/api/classes/babylon.assetsmanager) and [SceneLoader](https://doc.babylonjs.com/api/classes/babylon.sceneloader).
 
 ## Mesh events
 
@@ -220,6 +223,12 @@ _r.on("3D-ready", function() {
 });
 ```
 
+Events API :
+- [_r.on](/api/on)
+- [_r.one](/api/one)
+- [_r.off](/api/off)
+- [_r.trigger](/api/trigger)
+
 ## Loading screen
 There's a lot of question about custom loading screen in the babylon forum so we made a very simple API to wrap the Custom loading screen.
  
@@ -262,7 +271,7 @@ _r.router.on(function() {
 });
 ```
 
-See [_r.route]() for more informations.
+See [_r.route](/api/route) for more informations.
 
 
 ## App skeleton with Patch / assets / events 
@@ -273,15 +282,69 @@ With patch, assets, events and routes you have a solid skeleton to make your 3D 
 
 ## Some utilities you may also need
 
-### _r.activateCamera
+### Activate camera
 
-### Bouding box, Gizmo, normals
+```js
+_r.activateCamera('CameraName')
+```
+[_r.activateCamera](/api/activateCamera) will [detachControl](https://doc.babylonjs.com/api/classes/babylon.camera#detachcontrol), set the active camera by name, then [attachControl](https://doc.babylonjs.com/api/classes/babylon.camera#attachcontrol) to the canvas.
 
-### _r.color
 
-### _r.data
+### Wireframe, Gizmo, Normals
 
-### _r.is
+```js
+_r.select('mesh1').show.wireframe();
+_r.select('mesh1').show.normals();
+_r.select('mesh1').show.gizmo();
+```
 
+```js
+_r.select('mesh1').hide.wireframe();
+_r.select('mesh1').hide.normals();
+_r.select('mesh1').hide.gizmo();
+```
+
+### Colors
+
+[_r.color](/api/color) convert something to [Color3](https://doc.babylonjs.com/api/classes/babylon.color3)
+```js
+_r.color("#ff0000");
+_r.color({ r : 1, g : 0, b : 0 });
+_r.color("red");
+_r.color("rgb(255, 0, 0)");
+_r.color([1, 0, 0]);
+```
+
+### Data
+
+You can associate data with elements in a way that is safe from circular references.
+
+For example you can manage a custom state for objects.
+ 
+```js
+_r.select('mesh1').data('initial-position', { x : 10, y : 10, z : 10});
+
+// then restore the state when picking the mesh for example
+_r.select('mesh1').on("OnPickTrigger", function() {
+    var initialPosition = _r.select('mesh1').data('initial-position');
+    _r.select('mesh1').attr('position', initialPosition);
+})
+```
+
+See [_r.data](/api/data)
+
+### is 
+
+[_r.is](/api/is) is a namespace to test object type.
+
+```js
+if(_r.is.Mesh(obj1)) {
+    console.log("obj1 is a mesh")
+}
+
+if(_r.is.Number(obj1)) {
+    console.log("obj1 is a number")
+}
+```
 
 
