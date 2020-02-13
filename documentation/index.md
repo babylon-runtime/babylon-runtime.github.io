@@ -19,15 +19,12 @@ It can be used:
 
 Have a look at this example 
 
-<div class="uk-cover-container">
-   <iframe
+ <iframe
         src="https://codesandbox.io/embed/github/babylon-runtime/babylon-runtime.github.io/tree/master/examples/getting-started?autoresize=1&fontsize=14&hidenavigation=1&theme=dark&view=editor"
         style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
         title="getting-started"
         allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
-        sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin" uk-cover></iframe>
-
-</div>
+        sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin" ></iframe>
      
  - **line 8 & 9**: insert babylon and _r
  - **line 11**: launch the cornellbox scene with_r.launch. By default it will create everything for you (engine, canvas, etc) but you could have defined them before calling [_r.launch](/api/launch).
@@ -86,7 +83,7 @@ You can pick only the features you want and paste it in your existing code.
 
 ## Patch files 
 
-**Patching is a mechanism for splitting app into separate modules**. Patch could be seen as stylesheet(CSS) for the scene... with much powerful capabilities.
+**Patching is a mechanism for splitting app into separate modules**. Patch could be seen as stylesheet (CSS) for the scene... with much powerful capabilities.
 
 ```json 
 // materials.patch
