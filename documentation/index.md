@@ -63,9 +63,9 @@ You will have to write a lot of code if you want the same result in pure BABYLON
 </div>
  
 _r.animate analyzes parameters to:
-- create a BABYLON.AnimationGroup with one or more BABYLON.Animation set with the correct keys, types, etc. 
-- play the BABYLON.AnimationGroup 
-- return the BABYLON.AnimationGroup
+- create a [AnimationGroup](https://doc.babylonjs.com/api/classes/babylon.animationgroup) with one or more [Animation](https://doc.babylonjs.com/api/classes/babylon.animation) set with the correct keys, types, etc. 
+- play the [AnimationGroup](https://doc.babylonjs.com/api/classes/babylon.animationgroup)
+- return the [AnimationGroup](https://doc.babylonjs.com/api/classes/babylon.animationgroup)
 
 So it's compatible with your existing code.
 
@@ -85,8 +85,8 @@ You can pick only the features you want and paste it in your existing code.
 
 **Patching is a mechanism for splitting app into separate modules**. Patch could be seen as css for the scene... with much powerful capabilities.
 
-```json
-/// materials.patch
+```json 
+// materials.patch
 [{
     "mesh1" : {
         "material" : {
@@ -104,7 +104,6 @@ _r.patch('materials.patch').then(function() {
 });
 ```
 
-
 Patch can also be applied at launch time: 
 ```js
 _r.launch({
@@ -119,17 +118,18 @@ _r.launch({
 })
 ```
 
-Patch are easy to read, and easy to maintain, you just have to refer to the BABYLON documentation to find the property you want to set.
+Patch are easy to read and maintain, you just have to refer to the BABYLON documentation to find the property you want to set.
 
 You can make a lot of things with patch:
 - Execute functions
 - Handling app events & user interactions
 - Make dynamic lightmaps assignments
-- Customize & interact with the loading screen
-- Use Promise
+- Show / Hide the loading screen
+- Use Promise to make sequentiel patch
 
-You can even make your own patch plugin, to create a new patch property... But it's out of this Getting Started. To know more about patches:
-- [??]()
+See [_r.patch]() for more informations
+
+You can even [make your own patch plugin](), to create a new patch property. This allow developers to encapsulate features and let the 3D artists use them in a simple way.
 
 ## Assets management
 
@@ -163,9 +163,7 @@ _r.load("https://models.babylonjs.com/CornellBox/cornellBox.babylon")
 // css
 ```
 
-
 Again it's BABYLON behind, _r.load is just a wrapper around [AssetsManager](https://doc.babylonjs.com/api/classes/babylon.assetsmanager) and BABYLON.SceneLoader.
-
 
 ## Mesh events
 
@@ -234,7 +232,9 @@ Create your loading screen in a separate html page then:
 Use _r.loadingScreen.iframe to declare your loading Screen and it will be used by BABYLON instead of the default one.
 </div>
 
-To show/hide the loading screen you can use the BABYLON way of doing it, however we recommend the use of the isVisible parameter witch resolve some problems with the native BABYLON loader (like displaying/hiding while animation is still in progress) 
+To show/hide the loading screen you can use the BABYLON way of doing it, however we recommend the use of the ```isVisible``` parameter witch resolve some problems with the native BABYLON loader (like displaying/hiding while animation is still in progress) 
+
+See [_r.loadingScreen]() for more details.
 
 ## Routes
 
@@ -246,14 +246,36 @@ The router will be in charge of simulating transitions between views by watching
 </div>
 When the document is reloaded or the URL is modified somehow, it will detect that change and render the view that is associated with the new URL.
 
+```js
+// change the current route when user click on hotspot-1
+_r.select("hotspot-1").on("OnPickTrigger", function() {
+    _r.router.set('/hotspot/hotspot-1');
+});
+
+// handling the route (could be in another file / module)
+_r.router.on('/hotspot/hotspot-1', function() {
+    console.log("http://localhost/index.html/#/hotspot/hotspot-1")
+});
+
+_r.router.on(function() {
+   console.log("called each time a route is set")
+});
+```
+
+See [_r.route]() for more informations.
+
 
 ## App skeleton with Patch / assets / events 
 
 With patch, assets, events and routes you have a solid skeleton to make your 3D app development much easier. 
 
-Here is a complete demo of how you could organize your code:
+[Here is a complete demo of how you could organize your code]()
 
 ## Some utilities you may also need
+
+### _r.activateCamera
+
+### Bouding box, Gizmo, normals
 
 ### _r.color
 
