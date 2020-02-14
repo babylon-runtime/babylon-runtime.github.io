@@ -3,24 +3,34 @@
 We will take as an example a scene you may have seen before, the one I've made for a tutorial about Blender to BabylonJS, including lightmaps management: [From Blender to BabylonJS workflow](https://nothing-is-3d.com/data/medias/folio/3drealtime/lightmaps-workflow-tutorial/demo.html).
 
 ![thumbnail](converting-existing-scene-to-runtime/thumbnail.jpg)
-*notice this scene is in standard workflow, not PBR*
 
-[Download link](https://www.nothing-is-3d.com/article27/from-blender-to-babylonjs#tocWorkflowFewWords) is available in the tutorial. Once unzip, delete all the html files inside the root of `/BJS/` folder except `tuto-final.html`, then rename this particular file into `index.html`, and we're ready to go.
+*Note that this scene is in standard workflow, not PBR*
 
-![tree-structure](converting-existing-scene-to-runtime/tree-structure.png)
+[Here a download link](https://github.com/babylon-runtime/_r.assets/raw/master/converting-existing-scene-to-runtime/converting-existing-scene-to-runtime.zip), containing:
 
-Also, don't forget to point a [local webserver](https://www.nothing-is-3d.com/article28/use-a-local-webserver) into this `/BJS/` folder. Notice that this scene was made on BJS [v3.3.0](https://github.com/BabylonJS/Babylon.js/tree/master/dist/previous%20releases/3.3) and Blender [2.79](https://download.blender.org/release/Blender2.79/) (with the now [deprecated](https://github.com/BabylonJS/BlenderExporter/tree/master/deprecated) .babylon exporter v5.6).
+- **original** folder: the raw BabylonJS scene, ready to be edited by you
+- **converted** folder: full converted scene to \_runtime
 
-Of course, we'll also need to get the [last version of \_runtime](https://github.com/babylon-runtime/_r/releases/latest). Place the `_r.min.js` from the zip (located in the `/dist/` folder) into our `/js/` folder, and link the script in `index.html` below pep (line 8).
+Also, don't forget to point a [local webserver](https://www.nothing-is-3d.com/article28/use-a-local-webserver) into your unzipped folder. Notice that this scene was made on BJS [v3.3.0](https://github.com/BabylonJS/Babylon.js/tree/master/dist/previous%20releases/3.3) and Blender [2.79](https://download.blender.org/release/Blender2.79/) (with the now [deprecated](https://github.com/BabylonJS/BlenderExporter/tree/master/deprecated) .babylon exporter v5.6).
+
+Of course, we'll also need to get the [last version of \_runtime](https://github.com/babylon-runtime/_r/releases/latest). You can notice I've already linked it line 9 of `index.html`:
 
 ```javascript
 <script src="js/babylon.js"></script>
 <script src="js/pep.min.js"></script>
 <script src="js/_r.min.js"></script>
 ```
-*this time, ready to go for real!*
+*Ready to go!*
 
-You may want to [show](https://doc.babylonjs.com/how_to/debug_layer) and use the inspector. If so, as we're on BJS v3, don't forget to [download the right file](https://github.com/BabylonJS/Babylon.js/blob/master/dist/previous%20releases/3.3/inspector/babylon.inspector.bundle.js) (click on Raw button), use `BABYLON.DebugLayer.InspectorURL = "js/babylon.inspector.bundle.js";` and you're now able to call it using `scene.debugLayer.show();`.
+In case you want to show the Inspector, uncomment the `scene.debugLayer.show();` part (lines 134 & 135).
+
+<iframe
+     src="https://codesandbox.io/embed/github/babylon-runtime/_r.assets/tree/master/converting-existing-scene-to-runtime/original?fontsize=12&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="babylonjs-with-runtime"
+     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+   ></iframe>
 
 ## Patch...works!
 
@@ -30,8 +40,8 @@ At this time, which is not even yet the beginning, you already are able to use \
 _r.patch([
     {
         "*lamp*:material":{
-            emissiveTexture: null,
-            ambientColor: "red"
+            "emissiveTexture": null,
+            "ambientColor": "red"
         }
     }
 ]);
@@ -44,7 +54,7 @@ If you've already took a look on [the documentation](https://babylon-runtime.git
 
 Notice that in this exercice we will do a full convertion of our scene, which is already tweaked and finalized, but in other existing projects you can just keep them as they are and just call \_runtime when needed.
 
-Example, inside our `SceneLoader.Append` line 129:
+Example, if we insert this patch inside our `SceneLoader.Append` line 129:
 
 ```javascript
 var books01 = scene.getMaterialByName("scene_BJS.books01.000");
@@ -52,25 +62,27 @@ books01.invertNormalMapX = true;
 
 _r.patch([{
     "*lamp*:material": {
-        emissiveTexture: null,
-        ambientColor: "red"
+        "emissiveTexture": null,
+        "ambientColor": "red"
     }
 }]);
 ```
-*This will give the exact same result as we got when using the command line into the browser console. (don't forget to remove this \_r.patch before continuing this tutorial)*
+*This will give the exact same result as we got when using the command line into the browser console. (don't forget to remove this \_r.patch before continuing this tutorial). Check line 147 on the CodeSandbox below.*
 
-So, let's start to convert the easiest part: mesh & material tweaking (line 100 to 130). We just have to use the string part of `scene.getMaterialByName("scene_BJS.lampFabric01.000")` as a \_runtime selector `{"scene_BJS.lampFabric01.000":{ }}`.
+[![Edit convert-scene-first-try-with-patch-ef2p5](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/convert-scene-first-try-with-patch-ef2p5?fontsize=12&hidenavigation=1&theme=dark)
 
-Here I like to use the `*` char, to ease the patch reading: `{"*lampFabric01.*":{ }}`. This `*` will already allow some versatility in our workflow:
+So, let's start to convert the easiest part: mesh & material tweaking (line 117 to 145). We just have to convert  `scene.getMaterialByName("scene_BJS.lampFabric01.000")` as a \_runtime selector `{"scene_BJS.lampFabric01.000":{ [...] }}`.
 
-- the old .babylon exporter was adding a prefix using exported file name to the materials, using the `*` as suffix on the \_r selector, we don't care any more what exporter you're using (names can be `scene_BJS.lampFabric` or `lampFabric`, they both will be taken into account).
+Here I like to use the `*` char, to ease the patch reading: `{"*lampFabric01.*":{ [...] }}`. This `*` will already allow some versatility in our workflow:
+
+- the old .babylon exporter was adding a prefix (using .babylon file name) to the materials, using the `*` as suffix on the \_r selector, we don't care any more what exporter you're using (names can be `scene_BJS.lampFabric` or `lampFabric`, they both will be taken into account).
 - the `.000` suffix can be instantly broke on Blender if the cgartist make a material duplication (turning into `.001`). Again, the `*` as suffix don't pay attention any longer to this part
 
-Now the properties. `.diffuseColor = BABYLON.Color3.Black();` will become `diffuseColor : "black",`.
+Now the properties: `.diffuseColor = BABYLON.Color3.Black();` will become `diffuseColor : "black",`.
 
-Try to convert all the tweaks inside a `_r.patch`, pay attention to `,`!
+Try to convert all the tweaks inside a `_r.patch`, pay attention to `,`! Once materials are done, why not also include collisions meshes?
 
-Below the result:
+Below the result, check line 116 on the CodeSandbox:
 
 ```javascript
 /** END OF LIGHTMAP ASSIGNATION PROCESS **/
@@ -81,7 +93,7 @@ _r.patch([
 
     {
         "_collisions": {
-            isVisible: false,
+            "isVisible": false
         }
     },
 
@@ -89,42 +101,46 @@ _r.patch([
 
     {
         "*lampFabric01.*": {
-            diffuseColor: "black",
-            ambientColor: "black",
-            emissiveColor: [0.47, 0.28, 0.07], // in combination with emissiveTexture
-            useEmissiveAsIllumination: true, // we want light to burn
+            "diffuseColor": "black",
+            "ambientColor": "black",
+            "emissiveColor": [0.47, 0.28,
+                0.07
+            ], // in combination with emissiveTexture
+            "useEmissiveAsIllumination": true // we want light to burn
         }
     },
     {
         "*lampBulb01.*": {
-            emissiveColor: "#ffffff",
+            "emissiveColor": "#ffffff"
         }
     },
     {
         "*lampMetal01.*": {
-            diffuseColor: "black",
-            ambientColor: "#222222",
-            specularColor: [0.88, 0.59, 0.41],
-            specularPower: 80,
+            "diffuseColor": "black",
+            "ambientColor": "#222222",
+            "specularColor": [0.88, 0.59, 0.41],
+            "specularPower": 80
         }
     },
     {
         "*holdout.*": {
-            disableLighting: true,
+            "disableLighting": true
         }
     }, {
         "*floor01.*, *books01.*": {
-            invertNormalMapX: true,
+            "invertNormalMapX": true
         }
-    },
+    }
 ]);
 
 /* tools */
 ```
 
+[![Edit convert-scene-tweaks-as-patch-zew4r](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/convert-scene-tweaks-as-patch-zew4r?fontsize=12&hidenavigation=1&theme=dark)
+
 Notice that \_r allows you to place comments inside the patches.
 
-And why not to put this inside a dedicated file, for more clarity? We can create a `/patches/` folder inside `/assets/` and name our patch file the way we want (except the extension), here `tweaks.patch`:
+And why not putting this inside a dedicated file, for more clarity? We can create a `/patches/` folder inside `/assets/` and name our patch file the way we want (except the extension), here `tweaks.patch`:
 
 ```javascript
 /** END OF LIGHTMAP ASSIGNATION PROCESS **/
@@ -135,68 +151,21 @@ _r.patch(["assets/patches/tweaks.patch"]);
 ```
 *Better.*
 
-Actually, we can also patch our camera using a camera.patch for example.
-
-line 37:
+Actually, we can also patch our camera using a camera.patch for example, and, let's be crazy, also our scene. Keep for now the camera raw BJS creation (line 36):
 
 ```javascript
-var arcRotCam = new BABYLON.ArcRotateCamera("arcRotateCamera", 1, 1, 1, BABYLON.Vector3.Zero(), scene);
+var arcRotCam = new BABYLON.ArcRotateCamera(
+    "arcRotateCamera",
+    5.5,
+    1.2,
+    3.75,
+    new BABYLON.Vector3(-0.8, 0.75, 0.8),
+    scene
+);
 arcRotCam.attachControl(canvas, true);
 ```
 
-line 82:
-
-```javascript
-/** END OF LIGHTMAP ASSIGNATION PROCESS **/
-
-_r.patch([
-    "assets/patches/tweaks.patch",
-    "assets/patches/cameras.patch",
-]);
-
-/* tools */
-```
-
-cameras.patch:
-
-```javascript
-[{
-    "arcRotateCamera": {
-        alpha: 5.5,
-        beta: 1.2,
-        radius: 3.75,
-        target: {
-            x: -0.8,
-            y: 0.75,
-            z: 0.8
-        },
-        wheelPrecision: 200,
-        pinchPrecision: 100,
-        minZ: 0.005,
-        panningSensibility: 2000,
-        allowUpsideDown: false,
-        checkCollisions: true,
-        collisionRadius: [0.1, 0.1, 0.1],
-        lowerAlphaLimit: 4.5,
-        upperAlphaLimit: 6.5,
-        lowerBetaLimit: 0,
-        upperBetaLimit: 1.8,
-        upperRadiusLimit: 7,
-    }
-}]
-```
-And, let's be crazy, also our scene:
-
-scene.patch:
-```javascript
-[{
-    "scene": {
-        clearColor: "#10111e",
-        ambientColor: "white",
-    }
-}]
-```
-
+[![Edit convert-scene-multiple-patch-files](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/convert-scene-multiple-patch-files-20pz3?fontsize=12&hidenavigation=1&theme=dark)
 
 ## Simplify the loading
 
@@ -208,6 +177,7 @@ As even the canvas and engine renderloop can be handled by \_runtime, steps will
 - delete all engine and scene creation
 - replace `SceneLoader.Append()` with `_r.launch()`
 - use `_r.ready()` to be able to use our lightmap javascript
+- as we'll loose our scene variable: replace `scene` by `_r.scene` 
 
 Note that it's also possible to keep using your canvas or engine, in case you want custom [EngineOptions](https://doc.babylonjs.com/api/classes/babylon.engine#constructor) for example.
 
@@ -218,12 +188,15 @@ To do that, we'll use the "execute" patch functionnality before the camera patch
 ```javascript
 [{
         "exec": function () {
-            // we can do the code we want here,
-            // but be sure to "return" the camera object
-            return new BABYLON.ArcRotateCamera(
+            // we can do the code we want here
+            new BABYLON.ArcRotateCamera(
                 "arcRotateCamera",
-                1, 1, 1, BABYLON.Vector3.Zero(),
-                _r.scene);
+                5.5,
+                1.2,
+                3.75,
+                new BABYLON.Vector3(-0.8, 0.75, 0.8),
+                _r.scene // don't forget the _r as prefix
+            );
         }
     },
     {
@@ -236,53 +209,13 @@ To do that, we'll use the "execute" patch functionnality before the camera patch
 
 So here the new structure:
 
-```javascript
-<!doctype html>
-<html>
-
-<head>
-    <title>Converting a raw BJS scene to _runtime</title>
-    <meta charset="UTF-8">
-    <script src="js/babylon.js"></script>
-    <script src="js/pep.min.js"></script>
-    <script src="js/_r.min.js"></script>
-    <style>
-        html,
-        body {
-            overflow: hidden;
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            font-family: tahoma, arial, sans-serif;
-            color: white;
-        }
-    </style>
-</head>
-
-<body>
-    <script type="text/javascript">
-        _r.launch({
-            scene: "assets/scene-BJS.babylon",
-            patch: [
-                "assets/patches/scene.patch",
-                "assets/patches/cameras.patch",
-                "assets/patches/tweaks.patch",
-            ]
-        });
-
-        _r.ready(function () {
-
-            _r.activateCamera("arcRotateCamera");
-
-            /** LIGHTMAP ASSIGNATION PROCESS **/
-            [...]
-        });
-    </script>
-</body>
-
-</html>
-```
+<iframe
+     src="https://codesandbox.io/embed/convert-scene-using-launch-cct37?fontsize=12&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="convert-scene-using-launch"
+     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+   ></iframe>
 
 Notice the loss of `#canvas` css which is now useless (\_runtime automatically create a canvas with these parameters).
 
@@ -292,10 +225,7 @@ Time to see how to deal with lightmaps.
 
 In my original tutorial, my javascript code was as simple as possible, to allow people to understand it as much as possible. But this had the inconvenient to assign the texture file even if it was still not downloaded! In raw javascript we need to play with the [onLoad](https://doc.babylonjs.com/api/classes/babylon.texture#constructor) callback, but this is tricky to explain and understand when you're not a dev ([here a playground](https://www.babylonjs-playground.com/#4AJ16M#15) using this callback).
 
-\_runtime will here be useful for us by:
-
-- loading and creating the lightmap texture
-- patching our targets materials and assigning them the right lightmap
+\_runtime will here be useful for us by loading and creating the lightmap texture and only then patching our targets materials and assigning them the right lightmap.
 
 *(clone materials, texture creation, looping inside materials inside our meshes selector)*
 
@@ -303,3 +233,7 @@ In my original tutorial, my javascript code was as simple as possible, to allow 
 
 - *custom loading screen*
 - *interactions* (light on/off => disable lightmaps? or using a new set)
+
+---
+
+don't forget to update the download zip
