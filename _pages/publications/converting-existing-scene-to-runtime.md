@@ -11,6 +11,8 @@ We will take as an example a scene you may have seen before, the one I've made f
 - **original** folder: the raw BabylonJS scene, ready to be edited by you
 - **converted** folder: full converted scene to \_runtime
 
+You can also simply play with codesandboxes you'll find among this tutorial.
+
 Also, don't forget to point a [local webserver](https://www.nothing-is-3d.com/article28/use-a-local-webserver) into your unzipped folder. Notice that this scene was made on BJS [v3.3.0](https://github.com/BabylonJS/Babylon.js/tree/master/dist/previous%20releases/3.3) and Blender [2.79](https://download.blender.org/release/Blender2.79/) (with the now [deprecated](https://github.com/BabylonJS/BlenderExporter/tree/master/deprecated) .babylon exporter v5.6).
 
 Of course, we'll also need to get the [last version of \_runtime](https://github.com/babylon-runtime/_r/releases/latest). You can notice I've already linked it line 9 of `index.html`:
@@ -217,7 +219,7 @@ To do that, we'll use the "execute" patch functionnality before the camera patch
 So here the new structure:
 
 <iframe
-     src="https://codesandbox.io/embed/convert-scene-using-launch-cct37?codemirror=1&fontsize=12&hidenavigation=1&theme=dark"
+     src="https://codesandbox.io/embed/convert-scene-using-launch-cct37?codemirror=1&fontsize=12&hidenavigation=1&theme=dark&runonclick=1"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="convert-scene-using-launch"
      allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
@@ -265,7 +267,7 @@ Notice that we also take the opportunity to assign UV2 channel on the fly. Don't
 We should now have our lightmaps:
 
 <iframe
-     src="https://codesandbox.io/embed/convert-scene-lightmaps-eg709?codemirror=1&fontsize=12&hidenavigation=1&module=%2Fassets%2Fpatches%2Flightmaps.patch&theme=dark"
+     src="https://codesandbox.io/embed/convert-scene-lightmaps-eg709?codemirror=1&fontsize=12&hidenavigation=1&module=%2Fassets%2Fpatches%2Flightmaps.patch&theme=dark&runonclick=1"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="convert-scene-lightmaps-using-patch-materials"
      allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
@@ -377,7 +379,7 @@ Oops, it seems we forgot to set `useLightmapAsShadowmap` as true. You can add it
 And that's all, our scene is now fully converted!
 
 <iframe
-     src="https://codesandbox.io/embed/convert-scene-lightmaps-using-javascript-02-6089o?codemirror=1&fontsize=12&hidenavigation=1&theme=dark&highlights=9,31,39"
+     src="https://codesandbox.io/embed/convert-scene-lightmaps-using-javascript-02-6089o?codemirror=1&fontsize=12&hidenavigation=1&theme=dark&highlights=9,31,39&runonclick=1"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="convert-scene-lightmaps-using-javascript-02"
      allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
@@ -401,11 +403,96 @@ We'll start by something which is a bit painful to customize in raw BJS, named..
 
 ### Custom loading screen
 
-Don't forget to check the [\_r API](https://babylon-runtime.github.io/api/loading-screen).
+Don't forget to check the [\_r API](https://babylon-runtime.github.io/api/loading-screen) if needed.
 
-- *custom loading screen*
+First, we will simply create and design our loadingscreen, by using a dedicated html file. Near index.html, create an basic html5 page, here named `loadingScreen.html`. To keep things readable, we can also create a css file for this loadingscreen (here in `/css/loadingScreen.css`) and linked it in our html.
+
+As we have our html file, during the design process we can show only loadingscreen just by ask it through the url!
+
+[![Edit convert-scene-add-loading-01](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/convert-scene-add-loading-01-uzlpz?fontsize=12&hidenavigation=1&initialpath=loadingScreen.html&module=%2FloadingScreen.html&theme=dark)
+
+*As example on my local webserver, my url is `http://localhost:8082/converted/loadingScreen.html`.*
+
+Now, do whatever design you want, just don't use class and id names found in the \_r API, which are reserved by \_runtime. Here is my beautiful design:
+
+<iframe
+     src="https://codesandbox.io/embed/convert-scene-add-loading-02-ryinb?fontsize=12&hidenavigation=1&initialpath=loadingScreen.html&module=%2FloadingScreen.html&theme=dark&previewwindow=browser"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="convert-scene-add-loading-02"
+     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+   ></iframe>
+
+Time to link it in our app!
+
+It seems too easy, as we just have to declare our html file, and copy-paste some css properties.
+
+To tell \_runtime you have a custom loadingscreen, just put `_r.loadingScreen.iframe("loadingScreen.html");` before `_r.launch()`.
+Now we have to use some css so as to make loading iframe visible. In loadingScreen.css, copy-paste this bits of code:
+
+```css
+.runtime-loadingScreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    border: none;
+    transition: opacity 1s;
+}
+
+.runtime-loadingScreen.visible {
+    opacity: 1;
+}
+```
+
+Also, don't forget to link this css in index.html too:
+
+<iframe
+     src="https://codesandbox.io/embed/convert-scene-add-loading-03-9uveu?codemirror=1&highlights=11,16&fontsize=12&hidenavigation=1&theme=dark&runonclick=1"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="convert-scene-add-loading-03"
+     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+   ></iframe>
+
+But, it feels like we miss something, like... percents!
+
+Here we'll use the `progress` property in `_r.launch()`, in combination with class naming inside loadingScreen.html.
+
+In `_r.launch()`, add this overcomplicated mathematical operation:
+
+```js
+progress: function (evt) {
+    var progress = parseInt(Math.abs((100 * evt.loaded) / evt.total));
+    _r.loadingScreen.progress = progress;
+}
+```
+
+This `_r.loadingScreen.progress` will automatically overwrite `runtime-loading-progress` class content in loadingscreen iframe. So in my example, I'm going to create a span using this class inside my `loadingContent` div:
+
+<iframe
+     src="https://codesandbox.io/embed/convert-scene-add-loading-04-nqgd8?codemirror=1&module=%2FloadingScreen.html&highlights=14&fontsize=12&hidenavigation=1&theme=dark&runonclick=1"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="convert-scene-add-loading-03"
+     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+   ></iframe>
+
+Tips: your browser probably allow you to fake slow network through its console, here in Firefox & Chrome:
+
+![fake-slow-network](converting-existing-scene-to-runtime/fake-slow-network.jpg)
+
+You'll find more advanced features on the API.
+
+---
+
 - *interactions* (light on/off => disable lightmaps? or using a new set)
 
 ---
 
-don't forget to update the download zip
+- don't forget to update the download zip
