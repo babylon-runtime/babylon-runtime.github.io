@@ -1,15 +1,15 @@
 # Using \_runtime in an existing scene
 
-We will take as an example a scene you may have seen before, the one I've made for a tutorial about Blender to BabylonJS, including lightmaps management: [From Blender to BabylonJS workflow](https://nothing-is-3d.com/data/medias/folio/3drealtime/lightmaps-workflow-tutorial/demo.html).
+We will take as an example a scene you may have seen before, the one I've made for a tutorial about Blender to BabylonJS, including lightmaps management: [From Blender to BabylonJS workflow](https://nothing-is-3d.com/article27/from-blender-to-babylonjs).
 
 ![thumbnail](converting-existing-scene-to-runtime/thumbnail.jpg)
 
 *Note that this scene is in standard workflow, not PBR.*
 
-[Here a download link](https://github.com/babylon-runtime/_r.assets/raw/master/converting-existing-scene-to-runtime/converting-existing-scene-to-runtime.zip), containing:
+[Here a download link](https://github.com/babylon-runtime/_r.assets/raw/master/converting-existing-scene-to-runtime/converting-existing-scene-to-runtime.zip) for this tutorial, containing:
 
 - **original** folder: the raw BabylonJS scene, ready to be edited by you
-- **converted** folder: full converted scene to \_runtime
+- **converted** folder: full converted scene to \_runtime, allowing cheating if you're feeling lost
 
 You can also simply play with codesandboxes you'll find among this tutorial.
 
@@ -24,7 +24,7 @@ Of course, we'll also need to get the [last version of \_runtime](https://github
 ```
 *Ready to go!*
 
-In case you want to show the Inspector, uncomment the `scene.debugLayer.show();` part (lines 117 & 118).
+In case you want to show the (old v3) Inspector, uncomment the `scene.debugLayer.show();` part (lines 117 & 118).
 
 <iframe
      src="https://codesandbox.io/embed/github/babylon-runtime/_r.assets/tree/master/converting-existing-scene-to-runtime/original?codemirror=1&highlights=117,118&fontsize=12&hidenavigation=1&theme=dark"
@@ -34,7 +34,7 @@ In case you want to show the Inspector, uncomment the `scene.debugLayer.show();`
      sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
    ></iframe>
 
-## Patch...works!
+## Patch... works!
 
 At this time, which is not even yet the beginning, you already are able to use \_runtime! In your browser or in codesanbox console, try to copy-paste this command line:
 
@@ -308,6 +308,10 @@ Right. Solution is simple: patch also materials:
 
 [![Edit convert-scene-lightmaps-using-patch-meshes](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/embed/convert-scene-lightmaps-using-patch-meshes-02-s4lj2?codemirror=1&highlights=5,6,10,11,12&fontsize=12&hidenavigation=1&module=%2Fassets%2Fpatches%2Flightmaps.patch&theme=dark)
 
+But why do I want an advanced way here, if it's already work as patch? Actually, for performance reason, it's not a great idea to use _r.load for each material on a mesh, especially if there's a lot: this increase textures number as it create a new element at each call. Patch way for this need is probably not the best practice.
+
+That's why we need to go further.
+
 ### Advanced way, mix of javascript & \_r
 
 Sometimes, for particular operations, you'll not avoid using raw javascript.
@@ -489,10 +493,88 @@ Tips: your browser probably allow you to fake slow network through its console, 
 
 You'll find more advanced features on the API.
 
----
+### User interactions
 
-- *interactions* (light on/off => disable lightmaps? or using a new set)
+Level up! It could be great to turn on & off this lamp by clicking on it right? We'll use [\_r events](https://babylon-runtime.github.io/api/on) for that. Note that we can also set events via [patches](https://babylon-runtime.github.io/api/patch), but I've made the choice to do full scripting here.
 
----
+We're going to:
 
-- don't forget to update the download zip
+- preload both lightmaps set (on/off) and modify our lightmap script so as to tell it which set we want
+- load pickable mesh (I've created a separated file for it)
+
+- add OnPickTrigger event on lamp (actually, on the invisible mesh over the lamp)
+- save lamp status (on/off)
+- change lightmaps set and adapt & tweak materials depending of the lamp status
+
+If you've download the zip, you'll find `_interactions.glb` file into `converted/assets/` folder. Lightmaps "off" set is on `converted/assets/lightmaps/`, using `_LM-off` suffix.
+
+So create `interactions.js` in your `/js/` folder, don't forget to reference it in `index.html`.
+
+I've put the `_r.load` into a `_r.ready` to be sure our scene is already on da place. As I've used glTF file, you'll notice that I'm doing some basic fix to handle the different axys convention:
+
+```js
+_r.ready(function() {
+  _r.load("assets/_interactions.glb").then(function(assets) {
+    var interactionsRoot = _r.select(assets).select("__root__")[0]; // on BJS v3, gltf root is a Mesh Class (TransformNode on BJS v4)
+    interactionsRoot.name = "__interactions__";
+    interactionsRoot.rotate(
+      new BABYLON.Vector3(0, 1, 0),
+      BABYLON.Tools.ToRadians(180)
+    ); // as gltf use another axys convention, we have to rotate it from 180°
+```
+
+*Tips: if you don't remember a mesh name, you can quickly get a list in the console using \_r.select("\*:mesh").log("name")*
+
+Next step is easy: adding new assets to the scene and patch them. We don't want this pickable mesh to be visible, but we can't set isVisible to false: this will make it... not pickable! So we'll use visibility = 0 instead.
+
+All that's left now is adding an interaction:
+
+```js
+_r.ready(function() {
+    [...]
+	_r.select("_interact-lamp.000:mesh").on("OnPickTrigger", function() {
+      clickOnLamp();
+    });
+  });
+});
+
+function clickOnLamp() {
+  console.log("yep yep yep, you've clicked on the lamp!");
+}
+```
+![pickable-mesh](converting-existing-scene-to-runtime/pickable-mesh.gif)
+
+<iframe
+     src="https://codesandbox.io/embed/convert-scene-add-interactions-01-ds0ed?codemirror=1&highlights=13,14,15&expanddevtools=1&fontsize=12&hidenavigation=1&module=%2Fjs%2Finteractions.js&theme=dark&runonclick=1"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="convert-scene-add-interactions-01"
+     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+   ></iframe>
+
+*Yeah, console.log everywhere!*
+
+Now a more tricky part: we have to modify our lightmap script so as to tell him which lightmap set we want. As it's not the purpose of this part (which is telling you how to add interactions), I will give you the demo as it is, but here the logic:
+
+- we need lightmap list readable from everywhere (global variable)
+- we need preload lightmaps and only then launch our lightmap assignation script
+    - lightmap loading still use mesh name list, but also a suffix (`""` [default lightmaps] and `"-off"`)
+    - lightmap script will not anymore use `_r.load`
+- we need our lamp status readable from everywhere (global variable)
+
+Modify parts are `_r.ready` in index.html, lightmaps.js and interactions.js:
+
+<iframe
+     src="https://codesandbox.io/embed/convert-scene-add-interactions-01-lg09v?codemirror=1&fontsize=12&hidenavigation=1&module=%2Fjs%2Finteractions.js&theme=dark&runonclick=1"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="convert-scene-add-interactions-02"
+     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+   ></iframe>
+
+## \_runtime everywhere!
+
+I think I give you enough leads to follow for this scene, feel free to share your tests and experiments! You can contact us by [visiting this page](https://babylon-runtime.github.io/help/).
+
+I hope this tutorial helps you to understand how to kindly integrate \_r in your workflow. As I already said, you can already use it without doing any transformation on an existing project (to select some meshes, to patch some elements and so on), in the same way as using jQuery actually.
+
