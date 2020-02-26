@@ -17,3 +17,4 @@ _r.color("rgb(255, 0, 0)");
 _r.color([1, 0, 0]);
 ```
 
+Color keywords list: `red`, `green`, `blue`, `black`, `white`, `purple`, `magenta` / `pink`, `yellow`, `teal` / `cyan`, `gray` / `grey`, `random`.
