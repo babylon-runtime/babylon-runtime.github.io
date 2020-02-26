@@ -15,12 +15,12 @@ It can be used:
 - 3D artists should not have to write code
 - developers should not have to tweak the materials
 
-## Getting started
+# Getting started
 
 Have a look at this example 
 
  <iframe
-        src="https://codesandbox.io/embed/github/babylon-runtime/babylon-runtime.github.io/tree/master/examples/getting-started?autoresize=1&fontsize=14&hidenavigation=1&theme=dark&view=editor"
+        src="https://codesandbox.io/embed/github/babylon-runtime/babylon-runtime.github.io/tree/master/examples/getting-started?autoresize=1&fontsize=14&hidenavigation=1&theme=dark"
         style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
         title="getting-started"
         allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
@@ -32,7 +32,7 @@ Have a look at this example
  - **line 17-18-19**: You can access [_r.scene](/api/scene), [_r.engine](/api/engine), [_r.canvas](/api/canvas) everywhere
  
 Open the Sandbox then open the console (or your browser's console)  and copy/paste this:
-```js
+```javascript
 _r.select("*").log('name')
 ```
 This will output all the object's name from the scene (meshes, materials, lights, cameras, textures). 
@@ -49,7 +49,7 @@ _r.select("cornellBox*").log('name')
 
 [_r.select](/api/select) has a lot of features, for example you can make [animations](/api/animate). 
 <iframe
-     src="https://codesandbox.io/embed/github/babylon-runtime/babylon-runtime.github.io/tree/master/examples/basic-animation?fontsize=14&hidenavigation=1&theme=dark&view=editor"
+     src="https://codesandbox.io/embed/github/babylon-runtime/babylon-runtime.github.io/tree/master/examples/basic-animation?fontsize=14&hidenavigation=1&theme=dark"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="getting-started"
      allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
@@ -81,14 +81,14 @@ Each *\_r*{:._r} feature can be use standalone. For example you can use [_r.anim
 You can pick only the features you want and paste it in your existing code.
 </div>
 
-## Patch files 
+# Patch files 
 
 **Patching is a mechanism for splitting app into separate modules**. Patch could be seen as stylesheet (CSS) for the scene... with much powerful capabilities.
 
 ```json 
 // materials.patch
 [{
-    "mesh1" : {
+    "mesh1, mesh2, mesh3" : {
         "material" : {
             "diffuseColor" : "blue",
         }
@@ -105,7 +105,7 @@ _r.patch('materials.patch').then(function() {
 ```
 
 Patch can also be applied at launch time: 
-```js
+```javascript
 _r.launch({
     scene : "https://models.babylonjs.com/CornellBox/cornellBox.babylon",
     patch : [
@@ -127,11 +127,11 @@ You can make a lot of things with patch:
 - Show / Hide the loading screen
 - Use Promise to make sequentiel patch
 
-See [_r.patch]() for more informations
+See [_r.patch](/api/patch) for more informations
 
-You can even [make your own patch plugin](), to create a new patch property. This allow developers to encapsulate features and let the 3D artists use them in a simple way.
+You can even [make your own patch plugin](/api/patch/#write-your-own-patch-plugins), to create a new patch property. This allow developers to encapsulate features and let the 3D artists use them in a simple way.
 
-## Assets management
+# Assets management
 
 You don't want to preload all the assets before start the rendering because it will take to much time (10 seconds is about the limit to keep the user). 
 
@@ -165,7 +165,7 @@ _r.load("https://models.babylonjs.com/CornellBox/cornellBox.babylon")
 
 Again it's BABYLON behind, _r.load is just a wrapper around [AssetsManager](https://doc.babylonjs.com/api/classes/babylon.assetsmanager) and [SceneLoader](https://doc.babylonjs.com/api/classes/babylon.sceneloader).
 
-## Mesh events
+# Mesh events
 
 {:.uk-alert}
 <div>
@@ -194,7 +194,7 @@ _r.select("*mesh*").on("OnPickTrigger", function() {
     console.log("pick on " + this.name)
 })
 ```
-## Global Events
+# Global Events
 
 {:.uk-alert}
 <div>
@@ -226,7 +226,7 @@ Events API :
 - [_r.off](/api/off)
 - [_r.trigger](/api/trigger)
 
-## Loading screen
+# Loading screen
 There's a lot of question about custom loading screen in the babylon forum so we made a very simple API to wrap the Custom loading screen.
  
 Create your loading screen in a separate html page then:
@@ -242,7 +242,7 @@ To show/hide the loading screen you can use the BABYLON way of doing it, however
 
 See [_r.loadingScreen]() for more details.
 
-## Routes
+# Routes
 
 A Javascript router is a key component in most frontend frameworks. It is the piece of software in charge to organize the states of the application, switching between different views. 
 
@@ -271,15 +271,15 @@ _r.router.on(function() {
 See [_r.route](/api/route) for more informations.
 
 
-## App skeleton with Patch / assets / events 
+# App skeleton with Patch / assets / events 
 
 With patch, assets, events and routes you have a solid skeleton to make your 3D app development much easier. 
 
 [Here is a complete demo of how you could organize your code]()
 
-## Some utilities you may also need
+# Some utilities you may also need
 
-### Activate camera
+## Activate camera
 
 ```js
 _r.activateCamera('CameraName')
@@ -287,7 +287,7 @@ _r.activateCamera('CameraName')
 [_r.activateCamera](/api/activateCamera) will [detachControl](https://doc.babylonjs.com/api/classes/babylon.camera#detachcontrol), set the active camera by name, then [attachControl](https://doc.babylonjs.com/api/classes/babylon.camera#attachcontrol) to the canvas.
 
 
-### Wireframe, Gizmo, Normals
+## Wireframe, Gizmo, Normals
 
 ```js
 _r.select('mesh1').show.wireframe();
@@ -301,7 +301,7 @@ _r.select('mesh1').hide.normals();
 _r.select('mesh1').hide.gizmo();
 ```
 
-### Colors
+## Colors
 
 [_r.color](/api/color) convert something to [Color3](https://doc.babylonjs.com/api/classes/babylon.color3)
 ```js
@@ -312,7 +312,7 @@ _r.color("rgb(255, 0, 0)");
 _r.color([1, 0, 0]);
 ```
 
-### Data
+## Data
 
 You can associate data with elements in a way that is safe from circular references.
 
@@ -330,7 +330,7 @@ _r.select('mesh1').on("OnPickTrigger", function() {
 
 See [_r.data](/api/data)
 
-### is 
+## is 
 
 [_r.is](/api/is) is a namespace to test object type.
 
