@@ -27,7 +27,7 @@ This animate camera1 *position*, *rotation* and *fov* to targetted values, in 2 
 | patch | properties to animate, with target value, using patch syntax |
 | options | number (time in seconds) or object (list of options) 
 
-
+Note that when animating instances meshes, BabylonJS set some properties as read-only (e.g.: visibility), which can throw us an error. This can be avoid by using this selector filter: `_r.select("*:mesh[instances.length==0]")`.
 
 ## Options
 
