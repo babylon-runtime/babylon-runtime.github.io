@@ -132,3 +132,4 @@ _r.select("myMesh:mesh").on("OnPickTrigger", function() {
 
 - if a patch on a element seems to be not applied, check if the same element is patch elsewhere
 - you get a `SyntaxError`: you probably forget a `,` somewhere in your patchs
+- you can associate .patch to javascript syntax in your code editor
