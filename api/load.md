@@ -21,6 +21,8 @@ _r.load(
 });
 ```
 
+> check [\_r.select](/api/select) methods to know how to manipulate new assets
+
 ---
 
 ```js
