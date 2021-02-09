@@ -6,9 +6,9 @@ layout : documentation
 ## Mesh pointer events
 
 ```js
-_r.select("*:mesh").on("OnPickTrigger", function() {
+_r.select("*:mesh").on("OnPickTrigger", function () {
     console.log(this.name + ' has be picked');
-}
+});
 ```
 
 ### Available events
@@ -56,7 +56,7 @@ e.sourceEvent.code contains the current key see [https://www.w3.org/TR/uievents-
 ```js
 _r.on("myCustomEvent", function() {
     console.log("myCustomEvent handler");
-})
+});
 ```
 Attach an event handler function for one or more events.
 
